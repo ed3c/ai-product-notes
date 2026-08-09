@@ -1,0 +1,45 @@
+{
+  "schema_version": "2.1",
+  "canonical_repository": "ed3c/ai-product-notes",
+  "canonical_branch": "main",
+  "generated_at": "2026-08-09T10:28:53+08:00",
+  "market_monitor_date": "2026-08-09",
+  "market_delta": {
+    "qualified_items": 0,
+    "best_new": 0,
+    "best_updated": 0,
+    "best_dropped": 0,
+    "solopreneur_new": 0,
+    "solopreneur_updated": 0,
+    "solopreneur_dropped": 0
+  },
+  "datasets": {
+    "top_100_best_ai_products": {
+      "active_records": 100,
+      "shards": [
+        "data/products/best/001-020.json",
+        "data/products/best/021-040.json",
+        "data/products/best/041-060.json",
+        "data/products/best/061-080.json",
+        "data/products/best/081-100.json"
+      ],
+      "composite_formula": "0.35*WTP+0.25*FundingScale+0.20*UserTraction+0.20*MarketGapMoat"
+    },
+    "top_100_solopreneur_products": {
+      "active_records": 100,
+      "shards": [
+        "data/products/solopreneur/001-020.json",
+        "data/products/solopreneur/021-040.json",
+        "data/products/solopreneur/041-060.json",
+        "data/products/solopreneur/061-080.json",
+        "data/products/solopreneur/081-100.json"
+      ],
+      "composite_formula": "0.35*TechSimplicity+0.25*ProfitMargin+0.25*GapSize+0.15*DistributionEase"
+    }
+  },
+  "storage_migration": {
+    "legacy_workspace_writes_disabled": true,
+    "repository_note_urls_replaced": 20,
+    "unique_migrated_notes": 11
+  }
+}
