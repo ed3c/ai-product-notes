@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ProductOpenSourceMap",
+  "type": "object",
+  "required": ["product", "assets", "license_evidence", "not_found"],
+  "properties": {
+    "product": {"type": "string"},
+    "official_url": {"type": ["string", "null"]},
+    "assets": {
+      "type": "object",
+      "required": ["code", "llm_models", "data", "trajectories"],
+      "properties": {
+        "code": {"type": "array", "items": {"type": "object"}},
+        "llm_models": {"type": "array", "items": {"type": "object"}},
+        "data": {"type": "array", "items": {"type": "object"}},
+        "trajectories": {"type": "array", "items": {"type": "object"}}
+      }
+    },
+    "license_evidence": {"type": "array", "items": {"type": "object"}},
+    "production_gaps": {"type": "array", "items": {"type": "string"}},
+    "not_found": {"type": "array", "items": {"type": "string"}}
+  }
+}
