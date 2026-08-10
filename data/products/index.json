@@ -2,16 +2,16 @@
   "schema_version": "2.1",
   "canonical_repository": "ed3c/ai-product-notes",
   "canonical_branch": "main",
-  "generated_at": "2026-08-09T10:28:53+08:00",
-  "market_monitor_date": "2026-08-09",
+  "generated_at": "2026-08-10T09:03:55+08:00",
+  "market_monitor_date": "2026-08-10",
   "market_delta": {
-    "qualified_items": 0,
-    "best_new": 0,
-    "best_updated": 0,
-    "best_dropped": 0,
-    "solopreneur_new": 0,
+    "qualified_items": 6,
+    "best_new": 2,
+    "best_updated": 1,
+    "best_dropped": 2,
+    "solopreneur_new": 1,
     "solopreneur_updated": 0,
-    "solopreneur_dropped": 0
+    "solopreneur_dropped": 1
   },
   "datasets": {
     "top_100_best_ai_products": {
@@ -41,5 +41,9 @@
     "legacy_workspace_writes_disabled": true,
     "repository_note_urls_replaced": 20,
     "unique_migrated_notes": 11
+  },
+  "run_artifacts": {
+    "new_deep_notes": 3,
+    "verified_open_assets_added_to_rank": 2
   }
 }
