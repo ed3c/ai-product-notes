@@ -13,7 +13,7 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 
 只對 `PASS` 進正式排行。Code、model weights、dataset、trajectory 必須分別驗證授權。
 
-### Verified ranking — 2026-08-10
+### Verified ranking — 2026-08-11
 
 | Rank | Asset | Type | License gate | Hackathon MVP | Business | Research | Production | Stack compatibility | Avg |
 |---:|---|---|---|---:|---:|---:|---:|---:|---:|
@@ -27,9 +27,31 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 | 8 | LangChain | agent/RAG framework | PASS / MIT | 10 | 8 | 8 | 8 | 10 | 8.8 |
 | 9 | LlamaIndex | data/RAG framework | PASS / MIT | 10 | 8 | 9 | 8 | 9 | 8.8 |
 | 10 | Open Policy Agent | policy engine | PASS / Apache-2.0 | 8 | 9 | 8 | 10 | 9 | 8.8 |
-| 11 | AgentConnect | multi-agent collaboration/control plane | PASS / Apache-2.0 | 9 | 8 | 8 | 7 | 10 | 8.4 |
-| 12 | MemoryCustodian | repo-native agent memory | PASS / MIT | 9 | 7 | 8 | 6 | 9 | 7.8 |
-| 13 | Soup CLI | local LLM fine-tuning/post-training CLI | PASS / Apache-2.0 | 8 | 6 | 9 | 7 | 9 | 7.8 |
+| 11 | Paritok gateway + Paritok-4B-v1 | coding-agent context compression | PASS / Apache-2.0 code + adapter; Qwen base Apache-2.0 | 10 | 9 | 9 | 6 | 9 | 8.6 |
+| 12 | Prime Agent | self-improving coding/research agent | PASS / MIT | 9 | 8 | 10 | 7 | 9 | 8.6 |
+| 13 | AgentConnect | multi-agent collaboration/control plane | PASS / Apache-2.0 | 9 | 8 | 8 | 7 | 10 | 8.4 |
+| 14 | MemoryCustodian | repo-native agent memory | PASS / MIT | 9 | 7 | 8 | 6 | 9 | 7.8 |
+| 15 | Soup CLI | local LLM fine-tuning/post-training CLI | PASS / Apache-2.0 | 8 | 6 | 9 | 7 | 9 | 7.8 |
+
+### 2026-08-11 新增驗證
+
+**Paritok gateway + Paritok-4B-v1**
+- Primary repo: https://github.com/Paritok-official/paritok-4b-v1
+- Primary code license: https://github.com/Paritok-official/paritok-4b-v1/blob/main/LICENSE
+- Adapter/model card: https://huggingface.co/paritok/paritok-4b-v1
+- Base model: https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507
+- License gate: `PASS` for repository code/gateway and Paritok adapter under Apache-2.0; Qwen base model card also states Apache-2.0.
+- 產品價值：drop-in context-compression gateway，針對 tool schemas、file/tool outputs、stale history 做可回復壓縮，適合 Claude Code、Codex、Cursor、OpenHands 與 OpenAI/Anthropic-compatible agents。
+- Evidence caution：compression / SWE-bench quality 數字為 upstream self-reported。45K training trajectory samples 的完整可再利用 dataset + independent commercial data license 尚未驗證，因此 **trajectory/data 不列為 PASS asset**。
+- Production risk：identifier loss、語言/程式語言 distribution 偏差、agent protocol churn、provider caching interaction。
+
+**Prime Agent**
+- Primary repo: https://github.com/PrimeIntellect-ai/prime-agent
+- Primary license: https://github.com/PrimeIntellect-ai/prime-agent/blob/main/LICENSE
+- License gate: `PASS / MIT`
+- 產品價值：persistent Python REPL、recursive subagents、daemon-backed sessions、persistent goals、heartbeats/schedules，以及可把 trajectory evidence 轉為 prompts / memories / skills / subagent specs 的 Continual Harness。
+- Safety boundary：upstream README 明確指出 worker/kernel isolation 不是 security sandbox；agent 執行 model-generated Python 與 project commands 時具有使用者權限。Self-refinement 因此需要 mutation audit、regression gate 與 rollback。
+- Scope caution：MIT code license 不代表外接 models、datasets、skills、extensions 自動具有相同權利，必須逐項驗證。
 
 ### 2026-08-10 新增驗證
 
@@ -59,10 +81,16 @@ Only `PASS` entries receive a formal rank. Code, model weights, datasets, and tr
 
 Evaluation dimensions: Hackathon MVP speed, Business monetization leverage, Research/reproducibility value, Production maturity, and compatibility with common production AI stacks.
 
-### New verified assets — 2026-08-10
+### New verified assets — 2026-08-11
 
-**AgentConnect** is Apache-2.0 and enters at rank 11. It is a strong reference implementation for vendor-neutral multi-agent collaboration, identity/permissions, placement, shared channels, and heterogeneous runtimes. Production risk remains around security boundaries, credential handling, public ingress, and fast-moving runtime integrations.
+**Paritok gateway + Paritok-4B-v1** enters at rank 11 with an internal 8.6 average. The repository code/gateway and Paritok adapter are Apache-2.0, and the Qwen3-4B-Instruct-2507 base model card also states Apache-2.0. Its strongest value is a reversible, drop-in context-compression layer for coding agents. Upstream benchmark and savings numbers are treated as self-reported evidence. The 45K training trajectories are not ranked as a reusable trajectory/data asset because an independently licensed public dataset was not verified.
 
-**Soup CLI** is Apache-2.0 and enters at rank 13. It is useful for local fine-tuning/post-training workflows and integrates with common training and serving stacks. Its flagship layer-streaming path is explicitly BETA. The project states that the published RTX 3050 4 GB throughput numbers predate a correctness repair and have not yet been re-measured on that card, so those numbers are treated as historical measurement evidence rather than current-release benchmark proof.
+**Prime Agent** enters at rank 12 with an internal 8.6 average. The repository is MIT licensed. Its persistent REPL, recursive subagents, daemon-backed continuity, and Continual Harness are strong reference patterns for long-running and self-improving agents. Production scoring is deliberately lower because the upstream project explicitly warns that it is not a security sandbox and self-modifying harness state creates new governance and rollback requirements.
+
+### Previous verified assets — 2026-08-10
+
+**AgentConnect** is Apache-2.0 and remains a strong reference implementation for vendor-neutral multi-agent collaboration, identity/permissions, placement, shared channels, and heterogeneous runtimes. Production risk remains around security boundaries, credential handling, public ingress, and fast-moving runtime integrations.
+
+**Soup CLI** is Apache-2.0 and remains useful for local fine-tuning/post-training workflows. Its flagship layer-streaming path is explicitly BETA, and historical throughput results are not treated as current-release benchmark proof.
 
 `MemoryCustodian` remains attractive for repository-native project memory and cross-agent interoperability but has lower production evidence. `Spine-AI/medley` remains conditional because only its plugin shim is MIT while the engine is proprietary.
