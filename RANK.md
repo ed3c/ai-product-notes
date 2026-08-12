@@ -13,7 +13,7 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 
 只對 `PASS` 進正式排行。Code、model weights、dataset、trajectory 必須分別驗證授權。
 
-### Verified ranking — 2026-08-11
+### Verified ranking — 2026-08-12
 
 | Rank | Asset | Type | License gate | Hackathon MVP | Business | Research | Production | Stack compatibility | Avg |
 |---:|---|---|---|---:|---:|---:|---:|---:|---:|
@@ -30,8 +30,20 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 | 11 | Paritok gateway + Paritok-4B-v1 | coding-agent context compression | PASS / Apache-2.0 code + adapter; Qwen base Apache-2.0 | 10 | 9 | 9 | 6 | 9 | 8.6 |
 | 12 | Prime Agent | self-improving coding/research agent | PASS / MIT | 9 | 8 | 10 | 7 | 9 | 8.6 |
 | 13 | AgentConnect | multi-agent collaboration/control plane | PASS / Apache-2.0 | 9 | 8 | 8 | 7 | 10 | 8.4 |
-| 14 | MemoryCustodian | repo-native agent memory | PASS / MIT | 9 | 7 | 8 | 6 | 9 | 7.8 |
-| 15 | Soup CLI | local LLM fine-tuning/post-training CLI | PASS / Apache-2.0 | 8 | 6 | 9 | 7 | 9 | 7.8 |
+| 14 | NVIDIA-NeMo/Switchyard | LLM protocol translation & routing proxy | PASS / Apache-2.0 code | 9 | 9 | 9 | 5 | 10 | 8.4 |
+| 15 | MemoryCustodian | repo-native agent memory | PASS / MIT | 9 | 7 | 8 | 6 | 9 | 7.8 |
+| 16 | Soup CLI | local LLM fine-tuning/post-training CLI | PASS / Apache-2.0 | 8 | 6 | 9 | 7 | 9 | 7.8 |
+
+### 2026-08-12 新增驗證
+
+**NVIDIA-NeMo/Switchyard**
+- Primary repo: https://github.com/NVIDIA-NeMo/Switchyard
+- Immutable verification commit: `58f355a132d6fdd95191501aaa8522e100e06834`
+- Primary license: https://github.com/NVIDIA-NeMo/Switchyard/blob/58f355a132d6fdd95191501aaa8522e100e06834/LICENSE
+- License gate: `PASS / Apache-2.0` **for repository code only**.
+- 產品價值：Rust-based LLM traffic proxy/library，可在 OpenAI Chat、OpenAI Responses、Anthropic Messages 之間做 protocol translation，並把 Claude Code / Codex 等 client 導向 vLLM、NVIDIA NIM、Ollama 或 OpenAI-compatible backends。提供 classifier/stage/escalation/random routing 與 Prometheus metrics，適合作為 multi-model routing、A/B benchmark、fallback 與 agent protocol interoperability 的 reference implementation。
+- Evidence boundary：本次沒有把任何 Nemotron model weights、training data 或 trajectory 視為同一授權資產；這些必須另外讀 model card / dataset license 才能進榜。
+- Production risk：upstream README 明確標示 **pre-alpha / experimental / not for production use**，因此 Production score 僅 5/10。API 與 routing algorithms 在 v1.0 前可能有大幅變更。
 
 ### 2026-08-11 新增驗證
 
@@ -81,16 +93,18 @@ Only `PASS` entries receive a formal rank. Code, model weights, datasets, and tr
 
 Evaluation dimensions: Hackathon MVP speed, Business monetization leverage, Research/reproducibility value, Production maturity, and compatibility with common production AI stacks.
 
-### New verified assets — 2026-08-11
+### New verified asset — 2026-08-12
 
-**Paritok gateway + Paritok-4B-v1** enters at rank 11 with an internal 8.6 average. The repository code/gateway and Paritok adapter are Apache-2.0, and the Qwen3-4B-Instruct-2507 base model card also states Apache-2.0. Its strongest value is a reversible, drop-in context-compression layer for coding agents. Upstream benchmark and savings numbers are treated as self-reported evidence. The 45K training trajectories are not ranked as a reusable trajectory/data asset because an independently licensed public dataset was not verified.
+**NVIDIA-NeMo/Switchyard** enters at rank 14 with an internal 8.4 average. Repository code was verified at commit `58f355a132d6fdd95191501aaa8522e100e06834` under Apache-2.0. It is a strong reference for OpenAI/Anthropic protocol translation, multi-backend routing, model A/B tests, and agent-to-open-model interoperability. Its production score is intentionally low because the upstream README labels it pre-alpha, experimental, and not for production. The license decision covers repository code only; no Nemotron model, dataset, or trajectory rights are inferred from the code license.
 
-**Prime Agent** enters at rank 12 with an internal 8.6 average. The repository is MIT licensed. Its persistent REPL, recursive subagents, daemon-backed continuity, and Continual Harness are strong reference patterns for long-running and self-improving agents. Production scoring is deliberately lower because the upstream project explicitly warns that it is not a security sandbox and self-modifying harness state creates new governance and rollback requirements.
+### Previous verified assets
 
-### Previous verified assets — 2026-08-10
+**Paritok gateway + Paritok-4B-v1** remains rank 11 at 8.6. Repository code/gateway and the adapter are Apache-2.0; the training trajectories remain excluded as a reusable data asset until a separate license is verified.
 
-**AgentConnect** is Apache-2.0 and remains a strong reference implementation for vendor-neutral multi-agent collaboration, identity/permissions, placement, shared channels, and heterogeneous runtimes. Production risk remains around security boundaries, credential handling, public ingress, and fast-moving runtime integrations.
+**Prime Agent** remains rank 12 at 8.6 under MIT. It is useful for persistent and self-improving agent patterns but requires mutation governance and rollback.
 
-**Soup CLI** is Apache-2.0 and remains useful for local fine-tuning/post-training workflows. Its flagship layer-streaming path is explicitly BETA, and historical throughput results are not treated as current-release benchmark proof.
+**AgentConnect** remains rank 13 at 8.4 under Apache-2.0 and is a strong reference for heterogeneous multi-agent collaboration and permission-aware control planes.
+
+**Soup CLI** remains useful for local post-training, with layer streaming explicitly treated as BETA rather than production-proven.
 
 `MemoryCustodian` remains attractive for repository-native project memory and cross-agent interoperability but has lower production evidence. `Spine-AI/medley` remains conditional because only its plugin shim is MIT while the engine is proprietary.
