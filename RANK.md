@@ -13,7 +13,7 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 
 只對 `PASS` 進正式排行。Code、model weights、dataset、trajectory 必須分別驗證授權。
 
-### Verified ranking — 2026-08-12
+### Verified ranking — 2026-08-14
 
 | Rank | Asset | Type | License gate | Hackathon MVP | Business | Research | Production | Stack compatibility | Avg |
 |---:|---|---|---|---:|---:|---:|---:|---:|---:|
@@ -33,6 +33,20 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 | 14 | NVIDIA-NeMo/Switchyard | LLM protocol translation & routing proxy | PASS / Apache-2.0 code | 9 | 9 | 9 | 5 | 10 | 8.4 |
 | 15 | MemoryCustodian | repo-native agent memory | PASS / MIT | 9 | 7 | 8 | 6 | 9 | 7.8 |
 | 16 | Soup CLI | local LLM fine-tuning/post-training CLI | PASS / Apache-2.0 | 8 | 6 | 9 | 7 | 9 | 7.8 |
+| 17 | Aureka OpenDDE | biomolecular foundation model / drug-discovery engine | PASS / Apache-2.0 code + released checkpoints; datasets/search DB scope separate | 7 | 8 | 10 | 5 | 8 | 7.6 |
+
+### 2026-08-14 新增驗證
+
+**Aureka OpenDDE**
+- Primary repo: https://github.com/aurekaresearch/OpenDDE
+- Immutable verification commit: `d42760d264637a4518c0ab56d021451b9888d1f9`
+- Primary code license: https://github.com/aurekaresearch/OpenDDE/blob/d42760d264637a4518c0ab56d021451b9888d1f9/LICENSE
+- Model repository: https://huggingface.co/aurekaresearch/OpenDDE
+- License gate: `PASS / Apache-2.0` for repository code and the released OpenDDE checkpoints according to Aureka's release statement and model repository. **No commercial-rights inference is made for training datasets, external sequence/template search databases, or third-party biological data.**
+- 技術價值：open-source all-atom biomolecular foundation model，涵蓋 proteins、nucleic acids、small molecules 的 co-folding；提供 Python package、CLI、Docker、CPU/GPU inference、released checkpoints 與 multi-GPU Fold-CP。適合作為 drug-discovery research / evaluation / model-serving reference stack，而不是通用 LLM infrastructure。
+- Research value：training code、inference pipeline、checkpoints、benchmarks 與 technical report 可用於 reproduction 與 comparative research；upstream 同時提供固定 checkpoint hashes / runtime setup。
+- Production risk：README 明確標示 preview release、released checkpoints/API 可能變更、predictions 跨 release 不保證 reproducibility，且 **not yet intended for production pipelines**，因此 Production score 僅 5/10。
+- Data/trajectory boundary：本次未找到一個可獨立再利用、具明確 permissive license 的 training dataset 或 trajectory corpus，因此 `data` / `trajectory` 不列為 PASS asset。
 
 ### 2026-08-12 新增驗證
 
@@ -93,9 +107,13 @@ Only `PASS` entries receive a formal rank. Code, model weights, datasets, and tr
 
 Evaluation dimensions: Hackathon MVP speed, Business monetization leverage, Research/reproducibility value, Production maturity, and compatibility with common production AI stacks.
 
+### New verified asset — 2026-08-14
+
+**Aureka OpenDDE** enters at rank 17 with an internal 7.6 average. Repository code was verified at commit `d42760d264637a4518c0ab56d021451b9888d1f9` under Apache-2.0. Aureka's release statement and the Hugging Face model repository also identify the released OpenDDE checkpoints as Apache-2.0. This decision does not extend to training datasets, external search databases, or third-party biological data. OpenDDE is a strong research and reproduction asset for all-atom co-folding and drug-discovery workflows, but its production score is intentionally low because upstream labels it a preview release and explicitly says it is not yet intended for production pipelines.
+
 ### New verified asset — 2026-08-12
 
-**NVIDIA-NeMo/Switchyard** enters at rank 14 with an internal 8.4 average. Repository code was verified at commit `58f355a132d6fdd95191501aaa8522e100e06834` under Apache-2.0. It is a strong reference for OpenAI/Anthropic protocol translation, multi-backend routing, model A/B tests, and agent-to-open-model interoperability. Its production score is intentionally low because the upstream README labels it pre-alpha, experimental, and not for production. The license decision covers repository code only; no Nemotron model, dataset, or trajectory rights are inferred from the code license.
+**NVIDIA-NeMo/Switchyard** remains rank 14 with an internal 8.4 average. Repository code was verified at commit `58f355a132d6fdd95191501aaa8522e100e06834` under Apache-2.0. It is a strong reference for OpenAI/Anthropic protocol translation, multi-backend routing, model A/B tests, and agent-to-open-model interoperability. Its production score is intentionally low because the upstream README labels it pre-alpha, experimental, and not for production. The license decision covers repository code only; no Nemotron model, dataset, or trajectory rights are inferred from the code license.
 
 ### Previous verified assets
 
