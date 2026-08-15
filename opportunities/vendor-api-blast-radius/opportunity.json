@@ -1,0 +1,275 @@
+{
+  "capability_analysis": [
+    {
+      "accepted_asset_candidates": [
+        {
+          "asset_id": "tree-sitter-core",
+          "matched_capabilities": [
+            "language-source-analysis"
+          ],
+          "maturity": 9
+        },
+        {
+          "asset_id": "ts-morph",
+          "matched_capabilities": [
+            "typescript-source-analysis"
+          ],
+          "maturity": 8
+        }
+      ],
+      "description": "Parse and navigate TypeScript source while retaining stable call-site anchors.",
+      "gap_state": "covered",
+      "id": "language-source-analysis",
+      "importance": "must",
+      "private_portfolio_matches": [],
+      "public_portfolio_matches": [],
+      "rejected_asset_candidates": [],
+      "required_asset_types": [
+        "code"
+      ]
+    },
+    {
+      "accepted_asset_candidates": [
+        {
+          "asset_id": "openapi-diff",
+          "matched_capabilities": [
+            "openapi-semantic-diff"
+          ],
+          "maturity": 8
+        }
+      ],
+      "description": "Classify endpoint, parameter, request and response schema changes.",
+      "gap_state": "covered",
+      "id": "openapi-semantic-diff",
+      "importance": "must",
+      "private_portfolio_matches": [],
+      "public_portfolio_matches": [],
+      "rejected_asset_candidates": [],
+      "required_asset_types": [
+        "code"
+      ]
+    },
+    {
+      "accepted_asset_candidates": [],
+      "description": "Join actual repository usage to relevant vendor changes; this is the proposed proprietary value layer.",
+      "gap_state": "gap",
+      "id": "callsite-impact-join",
+      "importance": "must",
+      "private_portfolio_matches": [],
+      "public_portfolio_matches": [],
+      "rejected_asset_candidates": [],
+      "required_asset_types": [
+        "code"
+      ]
+    },
+    {
+      "accepted_asset_candidates": [],
+      "description": "Bind findings to exact source paths and stable evidence rather than generic advice.",
+      "gap_state": "covered",
+      "id": "repository-source-anchoring",
+      "importance": "must",
+      "private_portfolio_matches": [],
+      "public_portfolio_matches": [
+        {
+          "capability_id": "repository-source-anchoring",
+          "contract_version": "openwiki-evaluation.v1",
+          "evidence_label": "technical_equivalent",
+          "source": "public",
+          "state": "TESTED"
+        }
+      ],
+      "rejected_asset_candidates": [],
+      "required_asset_types": [
+        "code"
+      ]
+    },
+    {
+      "accepted_asset_candidates": [],
+      "description": "Re-fetch current vendor evidence and keep provenance separate from semantic relevance.",
+      "gap_state": "covered",
+      "id": "current-claim-verification",
+      "importance": "must",
+      "private_portfolio_matches": [],
+      "public_portfolio_matches": [
+        {
+          "capability_id": "current-claim-verification",
+          "contract_version": "evidence-closure.v1",
+          "evidence_label": "technical_equivalent",
+          "source": "public",
+          "state": "TESTED"
+        }
+      ],
+      "rejected_asset_candidates": [],
+      "required_asset_types": [
+        "code"
+      ]
+    },
+    {
+      "accepted_asset_candidates": [
+        {
+          "asset_id": "octokit-rest",
+          "matched_capabilities": [
+            "github-check-publisher"
+          ],
+          "maturity": 9
+        }
+      ],
+      "description": "Publish a bounded pull-request warning/check through an authorized GitHub App.",
+      "gap_state": "covered",
+      "id": "github-check-publisher",
+      "importance": "must",
+      "private_portfolio_matches": [],
+      "public_portfolio_matches": [],
+      "rejected_asset_candidates": [],
+      "required_asset_types": [
+        "code"
+      ]
+    },
+    {
+      "accepted_asset_candidates": [
+        {
+          "asset_id": "libcst",
+          "matched_capabilities": [
+            "python-source-analysis"
+          ],
+          "maturity": 8
+        }
+      ],
+      "description": "Later Python support after the first TypeScript wedge.",
+      "gap_state": "covered",
+      "id": "python-source-analysis",
+      "importance": "could",
+      "private_portfolio_matches": [],
+      "public_portfolio_matches": [],
+      "rejected_asset_candidates": [],
+      "required_asset_types": [
+        "code"
+      ]
+    },
+    {
+      "accepted_asset_candidates": [],
+      "description": "Evaluate reusable Agent/Skill wrappers separately from product-market evidence.",
+      "gap_state": "covered",
+      "id": "skill-runtime-qualification",
+      "importance": "should",
+      "private_portfolio_matches": [],
+      "public_portfolio_matches": [
+        {
+          "capability_id": "skill-runtime-qualification",
+          "contract_version": "run-artifact.v1",
+          "evidence_label": "technical_equivalent",
+          "source": "public",
+          "state": "TESTED"
+        }
+      ],
+      "rejected_asset_candidates": [],
+      "required_asset_types": [
+        "code"
+      ]
+    }
+  ],
+  "decision": "VALIDATE",
+  "gaps": {
+    "delivery": [
+      "Durable implementation owner not selected",
+      "Hosted CI, live Git Town sync and market pilot are not exercised by compilation"
+    ],
+    "evidence": [
+      "No customer-origin evidence; current evidence proves recurrence/competition only"
+    ],
+    "market": [
+      "No direct paid demand receipt for this product"
+    ],
+    "portfolio": [
+      "No admitted portfolio capability for callsite-impact-join"
+    ],
+    "rights_privacy": [],
+    "stack": [
+      "Uncovered must capability: callsite-impact-join"
+    ]
+  },
+  "gates": {
+    "blockers": [],
+    "demand": {
+      "customer_origin_evidence": [],
+      "direct_paid_demand": false,
+      "direct_paid_evidence_ids": [],
+      "independent_evidence_groups": [
+        "competitor-oxpecker",
+        "vendor-openai",
+        "vendor-stripe"
+      ],
+      "qualified": true,
+      "qualified_evidence_count": 3
+    },
+    "freshness": {
+      "event_date": "2026-08-14",
+      "source_date": "2026-08-14",
+      "status": "PASS",
+      "window_hours": 24
+    },
+    "hard_rights_gaps": [],
+    "uncovered_must_capabilities": [
+      "callsite-impact-join"
+    ]
+  },
+  "handoff": {
+    "durable_owner_state": "UNSELECTED",
+    "private_data_export": "FORBIDDEN",
+    "required_next_state": "EXPERIMENT_RUNNING",
+    "shared_index_owner": "convergence-leaf"
+  },
+  "mvp_experiment": {
+    "budget_usd": 1500,
+    "hypothesis": "API-heavy teams will pay US$99 per repository per month when a GitHub Check identifies relevant vendor breaking changes with exact call-site evidence and less than 10% false-positive rate.",
+    "maximum_days": 14,
+    "non_goals": [
+      "No automatic code repair.",
+      "No universal language or vendor support.",
+      "No production write access beyond an explicitly authorized GitHub Check.",
+      "No claim of market validation before paid-pilot receipts exist."
+    ],
+    "price_test_usd_month": 99,
+    "stop_loss": [
+      "Stop after 10 interviews if fewer than 3 teams confirm the exact problem.",
+      "Stop or narrow the wedge if false-positive rate is 20% or higher after two bounded repair passes.",
+      "Stop if the historical replay contains fewer than 3 relevant changes.",
+      "Stop if required vendor specifications cannot be acquired under acceptable terms."
+    ],
+    "success_metrics": [
+      "Interview 10 qualified teams and obtain at least 3 strong pain confirmations.",
+      "Replay at least 12 months of changes across 10 repositories and find at least 5 relevant breakages.",
+      "Keep false-positive rate below 10% on the admitted replay set.",
+      "Produce an impact report in under 5 minutes for the first TypeScript/AI-API wedge.",
+      "Obtain two paid pilots or equivalent binding commitments at the declared price."
+    ]
+  },
+  "non_claims": [
+    "A compiler result is not paid demand or market validation.",
+    "A PASS code license does not grant rights to unrelated models, data, trajectories, services, patents, trademarks, or third-party content.",
+    "Portfolio matches are candidates until the owning runtime produces subject-bound equivalence evidence.",
+    "This packet does not prove hosted CI, live Git Town synchronization, merge, ship, production safety, or Human Admit."
+  ],
+  "opportunity": {
+    "id": "vendor-api-blast-radius-ci",
+    "problem": "Vendor changelogs and schema diffs are noisy; teams need to know which changed endpoint or field reaches the exact call-sites they actually use before a deployment fails.",
+    "target_segment": "API-heavy B2B SaaS teams using fast-changing AI, payments, communications, or data-provider APIs",
+    "title": "Vendor API Blast-Radius CI",
+    "wedge": "One TypeScript repository plus one AI-model API family; emit an evidence-linked GitHub Check for used endpoint and field changes without automatic repair."
+  },
+  "packet_digest": "sha256:45752a84a18efb5d25d8559fe4a9249a46448b0393c5db5c029d9e071e651364",
+  "schema_version": "opportunity-packet.v1",
+  "score": {
+    "competition_penalty": 9.0,
+    "portfolio_fit_1_10": 3.33,
+    "score_0_100": 62.06,
+    "substitution_coverage_1_10": 5.0
+  },
+  "source_identity": {
+    "asset_registry_digest": "sha256:21249b83aaf17b20702527bd8151d061b0b042c219f1b2f55b4d708f089fe97d",
+    "private_overlay_digest": null,
+    "public_portfolio_digest": "sha256:d4430d492ce48a88ee4fac3852289f751ecfd83a3f734a2ace60cc00594278b6",
+    "signal_digest": "sha256:4983aa4452f9314cc7178ad1ea4ce73cf9723689826d7519bffffb18a80ad8a6",
+    "signal_id": "vendor-api-blast-radius-ci"
+  }
+}
