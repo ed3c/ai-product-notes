@@ -2,7 +2,7 @@
 
 Epic: [#3 — Market-to-MVP control plane](https://github.com/ed3c/ai-product-notes/issues/3).
 Final reconciliation: [Issue #12](https://github.com/ed3c/ai-product-notes/issues/12) → [PR #13](https://github.com/ed3c/ai-product-notes/pull/13).
-Post-merge receipt pointer: [Issue #14](https://github.com/ed3c/ai-product-notes/issues/14); its PR metadata is the authoritative terminal receipt for this non-self-referential housekeeping leaf.
+Post-merge receipt pointer: [Issue #14](https://github.com/ed3c/ai-product-notes/issues/14) → [PR #15](https://github.com/ed3c/ai-product-notes/pull/15). Its GitHub metadata and Issue #14 completion comment are the authoritative terminal receipt for this non-self-referential housekeeping leaf.
 
 ## Original molecular graph
 
@@ -42,7 +42,7 @@ main
 | Convergence | [#6](https://github.com/ed3c/ai-product-notes/issues/6) | `agent/6-portfolio-convergence` | `agent/5-opportunity-compiler@849b50a011abdbe9940fa52d597a456902601e64` | stage `6d88ed1fc26c74d8e5ad0d0e0fdef09e38560d81`; final head `83243ba32729a75e953125370a8cb0b61cee197f` | [#9](https://github.com/ed3c/ai-product-notes/pull/9) | `MERGED@fe7e03557f07b7c9ae91210d0405745b870dafcc` |
 | CI evidence | [#10](https://github.com/ed3c/ai-product-notes/issues/10) | `agent/10-exact-head-ci` | `agent/6-portfolio-convergence@83243ba32729a75e953125370a8cb0b61cee197f`; retargeted to `main@fe7e03557f07b7c9ae91210d0405745b870dafcc` | stage `5b646ec6fe70dd2047734636b8dfd517ee2998b2`; final head `e37bf18dd39f91f207753d6aaad546125b62a6f1` | [#11](https://github.com/ed3c/ai-product-notes/pull/11) | `MERGED@0e2654f6a89c6110728950161d968b233c7e96b4` |
 | Final reconciliation | [#12](https://github.com/ed3c/ai-product-notes/issues/12) | `agent/12-final-stack-reconciliation` | `main@0e2654f6a89c6110728950161d968b233c7e96b4` | `2b7f2db9d832f894adace6772e63e0db824bab39` | [#13](https://github.com/ed3c/ai-product-notes/pull/13) | `MERGED@407f537018d59da52231f011ed52d69bfc0b6be2` |
-| Receipt pointer | [#14](https://github.com/ed3c/ai-product-notes/issues/14) | `agent/14-final-receipt-pointer` | `main@407f537018d59da52231f011ed52d69bfc0b6be2` | current subject and final result are authoritative in GitHub PR metadata | receipt-only PR | no product or roadmap mutation |
+| Receipt pointer | [#14](https://github.com/ed3c/ai-product-notes/issues/14) | `agent/14-final-receipt-pointer` | `main@407f537018d59da52231f011ed52d69bfc0b6be2` | current subject and final result are authoritative in PR metadata | [#15](https://github.com/ed3c/ai-product-notes/pull/15) | no product or roadmap mutation |
 
 ## Admission sequence
 
@@ -51,7 +51,7 @@ main
 3. `PASS` — PR #9 retargeted to `main` and merged as `fe7e03557f07b7c9ae91210d0405745b870dafcc`.
 4. `PASS` — PR #11 retargeted to `main`, revalidated in both CI lanes, and merged as `0e2654f6a89c6110728950161d968b233c7e96b4`.
 5. `PASS` — PR #13 passed both CI lanes, merged as `407f537018d59da52231f011ed52d69bfc0b6be2`, and passed exact-main validation.
-6. `RECEIPT_ONLY` — Issue #14 replaces the stale pre-merge wording. Its PR and completion comment provide the final housekeeping receipt without attempting to embed the correcting commit's own merge SHA.
+6. `RECEIPT_ONLY` — PR #15 replaces stale pre-merge wording. Its PR metadata and Issue #14 completion comment provide the final housekeeping receipt without attempting to embed its own merge SHA.
 
 No force update, automatic conflict resolution, `git town ship`, production promotion or roadmap upgrade occurred.
 
@@ -102,7 +102,7 @@ packet digest: sha256:45752a84a18efb5d25d8559fe4a9249a46448b0393c5db5c029d9e071e
 synthetic-merge lane: SKIPPED_BY_EVENT_POLICY on push
 ```
 
-All recorded runs are `HOSTED_VERIFIED` only for their exact subjects.
+All recorded runs are `HOSTED_VERIFIED` only for their exact subjects. PR #15 must establish its own exact-head and synthetic-merge receipt before admission.
 
 ## Path-lease reconciliation
 
@@ -111,7 +111,7 @@ All recorded runs are `HOSTED_VERIFIED` only for their exact subjects.
 - PR #9 owned opportunity, experiment, roadmap and portfolio handoff, then reconciled the first three leaves.
 - PR #11 owned exact-head/synthetic-merge separation and terminal CI index updates.
 - PR #13 owned final merged-state README and ledger reconciliation.
-- Issue #14 owns only stale receipt wording in `README.md` and this ledger.
+- Issue #14 / PR #15 owns only stale receipt wording in `README.md` and this ledger.
 - All leaves used one active branch writer and explicit parent/path scope.
 
 ## Evidence state
@@ -127,7 +127,7 @@ pre-retarget terminal receipt: PASS (run 31878346277)
 final implementation receipt: PASS (run 31881831160)
 final reconciliation receipt: PASS (run 31882048251)
 post-merge exact-main receipt: PASS (run 31882091779)
-receipt-pointer housekeeping: read Issue #14 and its PR metadata
+receipt-pointer housekeeping: read Issue #14 and PR #15 metadata
 shared Git Town method: DOCUMENTED
 exact Git Town executable admission: ABSENT / BLOCKED_POLICY
 live Git Town sync: NOT_EXERCISED
