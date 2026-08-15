@@ -1,0 +1,19 @@
+{
+  "$id": "https://github.com/ed3c/ai-product-notes/schemas/private-capability-overlay.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "capabilities": {
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "private-capability-overlay.v1"
+    }
+  },
+  "required": [
+    "schema_version",
+    "capabilities"
+  ],
+  "title": "Private Capability Overlay v1",
+  "type": "object"
+}
