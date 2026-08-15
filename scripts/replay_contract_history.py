@@ -11,6 +11,7 @@ from typing import Any
 
 ALLOWED_ADAPTERS = {"mcp-tool", "protocol-envelope", "registry-schema", "sdk-api"}
 COUNTABLE_CONSUMER_CLASSES = {"upstream_test_fixture", "public_downstream_fixture"}
+REQUIRED_SDK_CI_JOBS = ("TypeScript Typecheck", "Typecheck & Build", "Test & Build")
 
 
 class CorpusError(ValueError):
@@ -129,6 +130,113 @@ def validate_sdk_api(
     return _result(reasons)
 
 
+def _validate_source_binding(case_id: str, lane: str, source: Any) -> None:
+    if not isinstance(source, dict):
+        raise CorpusError(f"{case_id}: missing source lane {lane}")
+    for field in ("repository", "commit", "path", "blob_sha"):
+        if not source.get(field):
+            raise CorpusError(f"{case_id}: {lane} source missing {field}")
+    if len(source["commit"]) != 40 or len(source["blob_sha"]) != 40:
+        raise CorpusError(f"{case_id}: {lane} source is not immutable")
+
+
+def _validate_sdk_downstream_provenance(case: dict[str, Any]) -> None:
+    case_id = case["case_id"]
+    sources = case["sources"]
+    validation = case.get("validation")
+    if not isinstance(validation, dict):
+        raise CorpusError(f"{case_id}: countable sdk-api case requires validation")
+
+    consumer_source = sources["consumer"]
+    dependency_lock = validation.get("dependency_lock")
+    workflow = validation.get("workflow")
+    old_ci = validation.get("old_ci")
+    old_package_manifest = validation.get("old_package_manifest")
+    new_package_manifest = validation.get("new_package_manifest")
+
+    for lane, source in (
+        ("validation.dependency_lock", dependency_lock),
+        ("validation.workflow", workflow),
+        ("validation.old_package_manifest", old_package_manifest),
+        ("validation.new_package_manifest", new_package_manifest),
+    ):
+        _validate_source_binding(case_id, lane, source)
+
+    for lane, source in (
+        ("dependency lock", dependency_lock),
+        ("workflow", workflow),
+    ):
+        if source["repository"] != consumer_source["repository"]:
+            raise CorpusError(
+                f"{case_id}: {lane} repository must match downstream consumer"
+            )
+        if source["commit"] != consumer_source["commit"]:
+            raise CorpusError(
+                f"{case_id}: {lane} commit must match downstream consumer"
+            )
+
+    if not isinstance(old_ci, dict):
+        raise CorpusError(f"{case_id}: countable sdk-api case requires old_ci")
+    if not isinstance(old_ci.get("run_id"), int) or old_ci["run_id"] <= 0:
+        raise CorpusError(f"{case_id}: old_ci run_id must be positive")
+    if old_ci.get("head_sha") != consumer_source["commit"]:
+        raise CorpusError(
+            f"{case_id}: old_ci head must equal downstream consumer commit"
+        )
+    if old_ci.get("workflow_path") != workflow["path"]:
+        raise CorpusError(f"{case_id}: old_ci workflow path drift")
+    if old_ci.get("conclusion") != "success":
+        raise CorpusError(f"{case_id}: old_ci must conclude success")
+
+    jobs = old_ci.get("jobs")
+    if not isinstance(jobs, dict):
+        raise CorpusError(f"{case_id}: old_ci jobs must be an object")
+    for job_name in REQUIRED_SDK_CI_JOBS:
+        if jobs.get(job_name) != "success":
+            raise CorpusError(
+                f"{case_id}: required old_ci job is not successful: {job_name}"
+            )
+
+    old_contract = case["old_contract"]
+    new_contract = case["new_contract"]
+    if old_contract.get("migration_kind") != "sdk-major-package-migration":
+        raise CorpusError(f"{case_id}: sdk package migration kind must be explicit")
+    if new_contract.get("migration_kind") != "sdk-major-package-migration":
+        raise CorpusError(f"{case_id}: sdk package migration kind must be explicit")
+
+    old_package = old_contract.get("package_identity")
+    old_version = old_contract.get("validated_package_version")
+    new_package = new_contract.get("package_identity")
+    new_version = new_contract.get("validated_package_version")
+
+    if dependency_lock.get("package") != old_package:
+        raise CorpusError(f"{case_id}: dependency lock package does not match old contract")
+    if dependency_lock.get("version") != old_version:
+        raise CorpusError(f"{case_id}: dependency lock version does not match old contract")
+    if not str(dependency_lock.get("integrity", "")).startswith("sha512-"):
+        raise CorpusError(f"{case_id}: dependency lock integrity is absent")
+
+    if old_package_manifest.get("package") != old_package:
+        raise CorpusError(f"{case_id}: old package manifest identity drift")
+    if old_package_manifest.get("version") != old_version:
+        raise CorpusError(f"{case_id}: old package manifest version drift")
+    if new_package_manifest.get("package") != new_package:
+        raise CorpusError(f"{case_id}: new package manifest identity drift")
+    if new_package_manifest.get("version") != new_version:
+        raise CorpusError(f"{case_id}: new package manifest version drift")
+
+    if old_package == new_package:
+        raise CorpusError(
+            f"{case_id}: major package migration must not be rendered as a same-package patch"
+        )
+
+    adjudication = case.get("adjudication", {})
+    if adjudication.get("consumer_class") != "public_downstream_fixture":
+        raise CorpusError(
+            f"{case_id}: countable sdk-api case requires public_downstream_fixture"
+        )
+
+
 def _validate_case_shape(case: dict[str, Any]) -> None:
     case_id = case.get("case_id")
     adapter = case.get("adapter")
@@ -141,19 +249,15 @@ def _validate_case_shape(case: dict[str, Any]) -> None:
     if not isinstance(sources, dict):
         raise CorpusError(f"{case_id}: sources must be an object")
     for lane in ("old_contract", "new_contract", "consumer", "change"):
-        source = sources.get(lane)
-        if not isinstance(source, dict):
-            raise CorpusError(f"{case_id}: missing source lane {lane}")
-        for field in ("repository", "commit", "path", "blob_sha"):
-            if not source.get(field):
-                raise CorpusError(f"{case_id}: {lane} source missing {field}")
-        if len(source["commit"]) != 40 or len(source["blob_sha"]) != 40:
-            raise CorpusError(f"{case_id}: {lane} source is not immutable")
+        _validate_source_binding(case_id, lane, sources.get(lane))
 
     if case.get("history_class") == "synthetic" and case.get(
         "counts_toward_real_breakage_gate"
     ):
         raise CorpusError(f"{case_id}: synthetic case cannot count toward the gate")
+
+    if adapter == "sdk-api" and case.get("counts_toward_real_breakage_gate"):
+        _validate_sdk_downstream_provenance(case)
 
 
 def replay_case(case: dict[str, Any]) -> dict[str, Any]:
@@ -170,6 +274,8 @@ def replay_case(case: dict[str, Any]) -> dict[str, Any]:
         "new_contract": digest(case["new_contract"]),
     }
     consumer_digest = digest(case["consumer"])
+    validation = case.get("validation")
+    validation_digest = digest(validation) if validation is not None else None
 
     if adapter == "protocol-envelope":
         old_result = {"status": "NOT_EXERCISED", "reasons": []}
@@ -225,7 +331,7 @@ def replay_case(case: dict[str, Any]) -> dict[str, Any]:
             )
 
     receipt: dict[str, Any] = {
-        "schema_version": "contract-history-receipt.v1",
+        "schema_version": "contract-history-receipt.v2",
         "case_id": case["case_id"],
         "adapter": adapter,
         "history_class": case["history_class"],
@@ -238,13 +344,23 @@ def replay_case(case: dict[str, Any]) -> dict[str, Any]:
         "new_result": new_result,
         "adjudication": case.get("adjudication", {}),
     }
+    if validation_digest is not None:
+        receipt["validation_digest"] = validation_digest
+        receipt["validation_summary"] = {
+            "old_ci_run_id": validation["old_ci"]["run_id"],
+            "old_ci_head_sha": validation["old_ci"]["head_sha"],
+            "old_ci_conclusion": validation["old_ci"]["conclusion"],
+            "locked_package": validation["dependency_lock"]["package"],
+            "locked_version": validation["dependency_lock"]["version"],
+            "required_jobs": dict(sorted(validation["old_ci"]["jobs"].items())),
+        }
     if unsupported_reason is not None:
         receipt["unsupported_reason"] = unsupported_reason
     return receipt
 
 
 def compile_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
-    if manifest.get("schema_version") != "contract-history-corpus.v1":
+    if manifest.get("schema_version") != "contract-history-corpus.v2":
         raise CorpusError("unsupported corpus schema_version")
     cases = manifest.get("cases")
     if not isinstance(cases, list) or len(cases) < 3:
@@ -269,7 +385,7 @@ def compile_manifest(manifest: dict[str, Any]) -> dict[str, Any]:
         )
 
     output = {
-        "schema_version": "contract-history-corpus-receipt.v1",
+        "schema_version": "contract-history-corpus-receipt.v2",
         "corpus_id": manifest["corpus_id"],
         "manifest_digest": digest(manifest),
         "summary": {

@@ -1,11 +1,12 @@
 {
-  "schema_version": "contract-history-corpus.v1",
+  "schema_version": "contract-history-corpus.v2",
   "corpus_id": "mcp-contract-evolution-public-history-2026-08-15",
   "generated_policy": {
     "minimum_cases": 3,
     "historical_breakage_gate_target": 5,
     "market_state": "VALIDATE",
-    "changelog_prose_is_not_breakage_proof": true
+    "changelog_prose_is_not_breakage_proof": true,
+    "countable_sdk_api_requires_ci_bound_downstream": true
   },
   "cases": [
     {
@@ -47,8 +48,15 @@
       },
       "old_contract": {
         "schema_kind": "object-field-contract",
-        "target_path": ["packages", 0],
-        "required": ["registry_type", "identifier", "version"],
+        "target_path": [
+          "packages",
+          0
+        ],
+        "required": [
+          "registry_type",
+          "identifier",
+          "version"
+        ],
         "allowed": [
           "registry_type",
           "registry_base_url",
@@ -65,8 +73,15 @@
       },
       "new_contract": {
         "schema_kind": "object-field-contract",
-        "target_path": ["packages", 0],
-        "required": ["registryType", "identifier", "version"],
+        "target_path": [
+          "packages",
+          0
+        ],
+        "required": [
+          "registryType",
+          "identifier",
+          "version"
+        ],
         "allowed": [
           "registryType",
           "registryBaseUrl",
@@ -89,7 +104,9 @@
             "registry_base_url": "https://registry.npmjs.org",
             "identifier": "test-package",
             "version": "1.0.0",
-            "transport": {"type": "stdio"}
+            "transport": {
+              "type": "stdio"
+            }
           }
         ]
       },
@@ -102,32 +119,33 @@
       }
     },
     {
-      "case_id": "mcp-typescript-sdk-get-task-result-2026-03",
+      "case_id": "mcp-typescript-sdk-get-task-result-1x-to-2x",
       "adapter": "sdk-api",
       "history_class": "public_real_history",
-      "evidence_basis": "upstream_self_consumer_and_exact_contract",
-      "counts_toward_real_breakage_gate": false,
+      "evidence_basis": "public_downstream_ci_dependency_lock_and_exact_contract",
+      "counts_toward_real_breakage_gate": true,
       "sources": {
         "old_contract": {
           "repository": "modelcontextprotocol/typescript-sdk",
-          "commit": "ccb78f20438a853f0205b8ed7f642af7780208e6",
-          "path": "packages/client/src/experimental/tasks/client.ts",
-          "blob_sha": "696862c9cef34f96ad507ec529aee0f869f40397",
-          "locus": "getTaskResult(taskId, resultSchema?, options?)"
+          "commit": "e12cbd7078db388152f6e839abdbe09ba01f3f32",
+          "path": "src/experimental/tasks/client.ts",
+          "blob_sha": "f62941dc8f7ec664b09853f4483cb6c41c55803a",
+          "tag": "v1.29.0",
+          "locus": "legacy getTaskResult(taskId, resultSchema?, options?)"
         },
         "new_contract": {
           "repository": "modelcontextprotocol/typescript-sdk",
           "commit": "0784be1a67fb3cc2aba0182d88151264f4ea73c8",
           "path": "packages/client/src/experimental/tasks/client.ts",
           "blob_sha": "96e1613e705173ef430aa1071f07a0558818254b",
-          "locus": "getTaskResult(taskId, options?)"
+          "locus": "modular getTaskResult(taskId, options?)"
         },
         "consumer": {
-          "repository": "modelcontextprotocol/typescript-sdk",
-          "commit": "ccb78f20438a853f0205b8ed7f642af7780208e6",
-          "path": "packages/client/src/experimental/tasks/client.ts",
-          "blob_sha": "696862c9cef34f96ad507ec529aee0f869f40397",
-          "locus": "upstream wrapper forwards resultSchema as the second semantic argument"
+          "repository": "adcontextprotocol/adcp-client",
+          "commit": "ff88581e741c79cfbb5f6ddb827b90f39447be71",
+          "path": "src/lib/protocols/mcp-tasks.ts",
+          "blob_sha": "cc06941536c58e1f0a4e6d251eff8975353bbe7f",
+          "locus": "getTaskResult(capturedTaskId, undefined, requestOptions)"
         },
         "change": {
           "repository": "modelcontextprotocol/typescript-sdk",
@@ -135,40 +153,137 @@
           "path": ".changeset/support-standard-json-schema.md",
           "blob_sha": "1ceff358448970a4efd2d314cbdca0c6f98fa5d9",
           "pull_request": 1689,
-          "locus": "resultSchema parameter removal"
+          "locus": "resultSchema parameter removal in modular 2.x client"
         }
       },
       "old_contract": {
         "schema_kind": "positional-call-contract",
+        "migration_kind": "sdk-major-package-migration",
+        "package_identity": "@modelcontextprotocol/sdk",
+        "validated_package_version": "1.29.0",
         "symbol": "client.experimental.tasks.getTaskResult",
         "parameters": [
-          {"name": "taskId", "roles": ["task_id"], "optional": false},
-          {"name": "resultSchema", "roles": ["result_schema"], "optional": true},
-          {"name": "options", "roles": ["request_options"], "optional": true}
+          {
+            "name": "taskId",
+            "roles": [
+              "task_id"
+            ],
+            "optional": false
+          },
+          {
+            "name": "resultSchema",
+            "roles": [
+              "result_schema",
+              "omitted_optional_placeholder"
+            ],
+            "optional": true
+          },
+          {
+            "name": "options",
+            "roles": [
+              "request_options"
+            ],
+            "optional": true
+          }
         ]
       },
       "new_contract": {
         "schema_kind": "positional-call-contract",
+        "migration_kind": "sdk-major-package-migration",
+        "package_identity": "@modelcontextprotocol/client",
+        "validated_package_version": "2.0.0-alpha.0",
         "symbol": "client.experimental.tasks.getTaskResult",
         "parameters": [
-          {"name": "taskId", "roles": ["task_id"], "optional": false},
-          {"name": "options", "roles": ["request_options"], "optional": true}
+          {
+            "name": "taskId",
+            "roles": [
+              "task_id"
+            ],
+            "optional": false
+          },
+          {
+            "name": "options",
+            "roles": [
+              "request_options"
+            ],
+            "optional": true
+          }
         ]
       },
       "consumer": {
-        "schema_version": "sdk-call-consumer.v1",
+        "schema_version": "sdk-call-consumer.v2",
         "symbol": "client.experimental.tasks.getTaskResult",
         "arguments": [
-          {"role": "task_id", "value": "task-123"},
-          {"role": "result_schema", "value": "CallToolResultSchema"}
+          {
+            "role": "task_id",
+            "value": "capturedTaskId"
+          },
+          {
+            "role": "omitted_optional_placeholder",
+            "value": "undefined"
+          },
+          {
+            "role": "request_options",
+            "value": "requestOptions"
+          }
         ]
       },
+      "validation": {
+        "dependency_lock": {
+          "repository": "adcontextprotocol/adcp-client",
+          "commit": "ff88581e741c79cfbb5f6ddb827b90f39447be71",
+          "path": "package-lock.json",
+          "blob_sha": "0a12962435de429f6121c78d783aad63d01232a0",
+          "package": "@modelcontextprotocol/sdk",
+          "version": "1.29.0",
+          "integrity": "sha512-zo37mZA9hJWpULgkRpowewez1y6ML5GsXJPY8FI0tBBCd77HEvza4jDqRKOXgHNn867PVGCyTdzqpz0izu5ZjQ=="
+        },
+        "workflow": {
+          "repository": "adcontextprotocol/adcp-client",
+          "commit": "ff88581e741c79cfbb5f6ddb827b90f39447be71",
+          "path": ".github/workflows/ci.yml",
+          "blob_sha": "1e3cffdd516f98a1030a44a27a24df4d2e9820e0"
+        },
+        "old_package_manifest": {
+          "repository": "modelcontextprotocol/typescript-sdk",
+          "commit": "e12cbd7078db388152f6e839abdbe09ba01f3f32",
+          "path": "package.json",
+          "blob_sha": "22d26ca56e0d3611f8865c476b604791967de173",
+          "package": "@modelcontextprotocol/sdk",
+          "version": "1.29.0"
+        },
+        "new_package_manifest": {
+          "repository": "modelcontextprotocol/typescript-sdk",
+          "commit": "0784be1a67fb3cc2aba0182d88151264f4ea73c8",
+          "path": "packages/client/package.json",
+          "blob_sha": "a8cd73c3b4ab60bc2830fb4ecbd6d4551d291520",
+          "package": "@modelcontextprotocol/client",
+          "version": "2.0.0-alpha.0"
+        },
+        "old_ci": {
+          "run_id": 31865385554,
+          "head_sha": "ff88581e741c79cfbb5f6ddb827b90f39447be71",
+          "workflow_path": ".github/workflows/ci.yml",
+          "event": "push",
+          "conclusion": "success",
+          "jobs": {
+            "TypeScript Typecheck": "success",
+            "Typecheck & Build": "success",
+            "Test & Build": "success"
+          },
+          "job_ids": {
+            "TypeScript Typecheck": 94965492902,
+            "Typecheck & Build": 94965846412,
+            "Test & Build": 94966006787
+          }
+        }
+      },
       "adjudication": {
-        "consumer_class": "upstream_self_consumer",
-        "adjudicator": "deterministic-sdk-api-adapter.v1",
+        "consumer_class": "public_downstream_fixture",
+        "adjudicator": "deterministic-sdk-api-adapter.v2",
         "expected_old": "PASS",
         "expected_new": "FAIL",
-        "notes": "The exact exported call contract changed, but no independent downstream public failure fixture is bound; this case must not count toward the five-case market gate."
+        "notes": "An independent downstream call site compiled under the exact locked legacy SDK and exact successful CI head. The unchanged three-argument call is incompatible with the modular 2.x client contract."
       }
     },
     {
@@ -221,9 +336,18 @@
       "consumer": {
         "schema_version": "protocol-envelope-consumer.v1",
         "discover_result": {
-          "supportedVersions": ["2026-07-28"],
-          "capabilities": {"tools": {"listChanged": true}},
-          "serverInfo": {"name": "gateway-target", "version": "1.0.0"},
+          "supportedVersions": [
+            "2026-07-28"
+          ],
+          "capabilities": {
+            "tools": {
+              "listChanged": true
+            }
+          },
+          "serverInfo": {
+            "name": "gateway-target",
+            "version": "1.0.0"
+          },
           "resultType": "complete"
         },
         "read_path": "serverInfo"

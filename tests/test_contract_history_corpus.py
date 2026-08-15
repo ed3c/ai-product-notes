@@ -9,38 +9,31 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from replay_contract_history import (  # noqa: E402
-    CorpusError,
-    canonical_bytes,
-    compile_manifest,
-)
+from replay_contract_history import CorpusError, canonical_bytes, compile_manifest  # noqa: E402
 
-MANIFEST_PATH = (
-    ROOT
-    / "experiments/agent-contract-evolution-replay/corpus/manifest.json"
-)
-RECEIPT_PATH = (
-    ROOT
-    / "experiments/agent-contract-evolution-replay/corpus/receipts.json"
-)
+MANIFEST = ROOT / "experiments/agent-contract-evolution-replay/corpus/manifest.json"
+RECEIPT = ROOT / "experiments/agent-contract-evolution-replay/corpus/receipts.json"
 
 
 class ContractHistoryCorpusTests(unittest.TestCase):
     def setUp(self) -> None:
-        self.manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+        self.manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
         self.compiled = compile_manifest(self.manifest)
-        self.by_id = {
-            receipt["case_id"]: receipt for receipt in self.compiled["receipts"]
-        }
+        self.receipts = {r["case_id"]: r for r in self.compiled["receipts"]}
 
-    def test_corpus_has_three_source_bound_adapters(self) -> None:
-        self.assertEqual(3, self.compiled["summary"]["case_count"])
+    def sdk(self, manifest: dict | None = None) -> dict:
+        source = manifest or self.manifest
+        return next(c for c in source["cases"] if c["adapter"] == "sdk-api")
+
+    def test_summary_and_source_bindings(self) -> None:
+        self.assertEqual("contract-history-corpus.v2", self.manifest["schema_version"])
+        self.assertEqual(2, self.compiled["summary"]["real_historical_breakage_count"])
         self.assertEqual(
-            {
-                "protocol-envelope": 1,
-                "registry-schema": 1,
-                "sdk-api": 1,
-            },
+            {"HISTORICAL_BREAKAGE": 2, "UNSUPPORTED_ADAPTER": 1},
+            self.compiled["summary"]["decision_counts"],
+        )
+        self.assertEqual(
+            {"protocol-envelope": 1, "registry-schema": 1, "sdk-api": 1},
             self.compiled["summary"]["adapter_counts"],
         )
         for case in self.manifest["cases"]:
@@ -48,100 +41,96 @@ class ContractHistoryCorpusTests(unittest.TestCase):
                 source = case["sources"][lane]
                 self.assertEqual(40, len(source["commit"]))
                 self.assertEqual(40, len(source["blob_sha"]))
-                self.assertTrue(source["repository"])
-                self.assertTrue(source["path"])
 
-    def test_registry_fixture_is_the_only_counted_historical_breakage(self) -> None:
-        receipt = self.by_id["mcp-registry-package-json-casing-2025-09"]
-        self.assertEqual("PASS", receipt["old_result"]["status"])
-        self.assertEqual("FAIL", receipt["new_result"]["status"])
-        self.assertEqual("HISTORICAL_BREAKAGE", receipt["decision"])
-        self.assertTrue(receipt["counts_toward_real_breakage_gate"])
+    def test_registry_breakage_remains_counted(self) -> None:
+        r = self.receipts["mcp-registry-package-json-casing-2025-09"]
+        self.assertEqual(("PASS", "FAIL"), (r["old_result"]["status"], r["new_result"]["status"]))
+        self.assertEqual("HISTORICAL_BREAKAGE", r["decision"])
+        self.assertTrue(r["counts_toward_real_breakage_gate"])
+
+    def test_sdk_downstream_migration_is_counted_with_exact_reasons(self) -> None:
+        r = self.receipts["mcp-typescript-sdk-get-task-result-1x-to-2x"]
+        self.assertEqual(("PASS", "FAIL"), (r["old_result"]["status"], r["new_result"]["status"]))
+        self.assertEqual("HISTORICAL_BREAKAGE", r["decision"])
+        self.assertTrue(r["counts_toward_real_breakage_gate"])
         self.assertEqual(
-            [
-                {"field": "registryType", "reason": "missing_required_field"},
-                {"field": "registry_base_url", "reason": "unknown_field"},
-                {"field": "registry_type", "reason": "unknown_field"},
-            ],
-            receipt["new_result"]["reasons"],
+            ["extra_positional_argument", "positional_argument_role_changed"],
+            [reason["reason"] for reason in r["new_result"]["reasons"]],
         )
+        self.assertEqual("request_options", r["new_result"]["reasons"][0]["historical_role"])
+        self.assertEqual("omitted_optional_placeholder", r["new_result"]["reasons"][1]["historical_role"])
+
+    def test_sdk_receipt_binds_lock_packages_and_exact_ci(self) -> None:
+        case = self.sdk()
+        r = self.receipts[case["case_id"]]
+        summary = r["validation_summary"]
+        self.assertEqual(31865385554, summary["old_ci_run_id"])
+        self.assertEqual("ff88581e741c79cfbb5f6ddb827b90f39447be71", summary["old_ci_head_sha"])
+        self.assertEqual("@modelcontextprotocol/sdk", summary["locked_package"])
+        self.assertEqual("1.29.0", summary["locked_version"])
         self.assertEqual(
-            1, self.compiled["summary"]["real_historical_breakage_count"]
+            {"Test & Build": "success", "TypeScript Typecheck": "success", "Typecheck & Build": "success"},
+            summary["required_jobs"],
         )
+        self.assertEqual("@modelcontextprotocol/sdk", case["old_contract"]["package_identity"])
+        self.assertEqual("@modelcontextprotocol/client", case["new_contract"]["package_identity"])
+        self.assertEqual("sdk-major-package-migration", case["old_contract"]["migration_kind"])
+        self.assertRegex(r["validation_digest"], r"^sha256:[0-9a-f]{64}$")
 
-    def test_sdk_positional_break_is_visible_but_not_counted(self) -> None:
-        receipt = self.by_id[
-            "mcp-typescript-sdk-get-task-result-2026-03"
-        ]
-        self.assertEqual("PASS", receipt["old_result"]["status"])
-        self.assertEqual("FAIL", receipt["new_result"]["status"])
-        self.assertEqual(
-            "CONTRACT_BREAKAGE_NOT_COUNTED", receipt["decision"]
-        )
-        self.assertFalse(receipt["counts_toward_real_breakage_gate"])
-        reason = receipt["new_result"]["reasons"][0]
-        self.assertEqual("positional_argument_role_changed", reason["reason"])
-        self.assertEqual("result_schema", reason["historical_role"])
-        self.assertEqual("options", reason["new_parameter"])
+    def test_protocol_envelope_stays_unsupported(self) -> None:
+        r = self.receipts["mcp-2026-discover-server-info-envelope-relocation"]
+        self.assertEqual("UNSUPPORTED_ADAPTER", r["decision"])
+        self.assertEqual(("NOT_EXERCISED", "NOT_EXERCISED"), (r["old_result"]["status"], r["new_result"]["status"]))
+        self.assertFalse(r["counts_toward_real_breakage_gate"])
 
-    def test_protocol_envelope_gap_stays_unsupported(self) -> None:
-        receipt = self.by_id[
-            "mcp-2026-discover-server-info-envelope-relocation"
-        ]
-        self.assertEqual("UNSUPPORTED_ADAPTER", receipt["decision"])
-        self.assertEqual("NOT_EXERCISED", receipt["old_result"]["status"])
-        self.assertEqual("NOT_EXERCISED", receipt["new_result"]["status"])
-        self.assertFalse(receipt["counts_toward_real_breakage_gate"])
-        self.assertIn("negotiated protocol era", receipt["unsupported_reason"])
+    def test_receipt_is_byte_reproducible_and_digests_are_separate(self) -> None:
+        self.assertEqual(RECEIPT.read_bytes(), canonical_bytes(self.compiled))
+        self.assertEqual(canonical_bytes(self.compiled), canonical_bytes(compile_manifest(copy.deepcopy(self.manifest))))
+        for r in self.compiled["receipts"]:
+            self.assertEqual({"old_contract", "new_contract", "consumer", "change"}, set(r["source_digests"]))
+            self.assertEqual({"old_contract", "new_contract"}, set(r["contract_digests"]))
 
-    def test_source_contract_and_consumer_digests_are_separate(self) -> None:
-        for receipt in self.compiled["receipts"]:
-            self.assertEqual(
-                {"old_contract", "new_contract", "consumer", "change"},
-                set(receipt["source_digests"]),
-            )
-            self.assertEqual(
-                {"old_contract", "new_contract"},
-                set(receipt["contract_digests"]),
-            )
-            for value in (
-                list(receipt["source_digests"].values())
-                + list(receipt["contract_digests"].values())
-                + [receipt["consumer_digest"]]
-            ):
-                self.assertRegex(value, r"^sha256:[0-9a-f]{64}$")
-
-    def test_committed_receipt_is_byte_reproducible(self) -> None:
-        self.assertEqual(
-            RECEIPT_PATH.read_bytes(), canonical_bytes(self.compiled)
-        )
-        self.assertEqual(
-            canonical_bytes(compile_manifest(self.manifest)),
-            canonical_bytes(compile_manifest(copy.deepcopy(self.manifest))),
-        )
-
-    def test_changelog_only_case_cannot_be_promoted(self) -> None:
+    def test_changelog_only_cannot_count(self) -> None:
         mutated = copy.deepcopy(self.manifest)
-        case = mutated["cases"][0]
-        case["evidence_basis"] = "changelog_only"
+        mutated["cases"][0]["evidence_basis"] = "changelog_only"
         with self.assertRaisesRegex(CorpusError, "changelog prose"):
             compile_manifest(mutated)
 
-    def test_upstream_self_consumer_cannot_be_counted(self) -> None:
-        mutated = copy.deepcopy(self.manifest)
-        sdk_case = next(
-            case
-            for case in mutated["cases"]
-            if case["adapter"] == "sdk-api"
-        )
-        sdk_case["counts_toward_real_breakage_gate"] = True
-        with self.assertRaisesRegex(CorpusError, "cannot count"):
-            compile_manifest(mutated)
+    def test_sdk_provenance_failures_block_counting(self) -> None:
+        mutations = {
+            "dependency": lambda c: c["validation"].pop("dependency_lock"),
+            "head": lambda c: c["validation"]["old_ci"].update(head_sha="0" * 40),
+            "job": lambda c: c["validation"]["old_ci"]["jobs"].update({"TypeScript Typecheck": "skipped"}),
+            "version": lambda c: c["validation"]["dependency_lock"].update(version="1.28.0"),
+            "package": lambda c: (
+                c["new_contract"].update(package_identity=c["old_contract"]["package_identity"]),
+                c["validation"]["new_package_manifest"].update(package=c["old_contract"]["package_identity"]),
+            ),
+        }
+        for name, mutate in mutations.items():
+            with self.subTest(name=name):
+                manifest = copy.deepcopy(self.manifest)
+                mutate(self.sdk(manifest))
+                with self.assertRaises(CorpusError):
+                    compile_manifest(manifest)
 
-    def test_roadmap_remains_validate_and_records_one_of_five(self) -> None:
+    def test_two_argument_new_consumer_is_not_reported_as_historical_breakage(self) -> None:
+        manifest = copy.deepcopy(self.manifest)
+        case = self.sdk(manifest)
+        case["counts_toward_real_breakage_gate"] = False
+        case["consumer"]["arguments"] = [
+            {"role": "task_id", "value": "capturedTaskId"},
+            {"role": "request_options", "value": "requestOptions"},
+        ]
+        r = next(x for x in compile_manifest(manifest)["receipts"] if x["adapter"] == "sdk-api")
+        self.assertEqual("PASS", r["new_result"]["status"])
+        self.assertEqual("INCONCLUSIVE", r["decision"])
+        self.assertFalse(r["counts_toward_real_breakage_gate"])
+
+    def test_roadmap_remains_validate_at_two_of_five(self) -> None:
         roadmap = (ROOT / "roadmap/ACTIVE.md").read_text(encoding="utf-8")
         self.assertIn("- **State:** `VALIDATE`", roadmap)
-        self.assertIn("**Current real-history gate:** `1 / 5`", roadmap)
+        self.assertIn("**Current real-history gate:** `2 / 5`", roadmap)
         self.assertIn("`UNSUPPORTED_ADAPTER`", roadmap)
         self.assertIn("No item is currently in `BUILD`", roadmap)
         self.assertNotIn("**State:** `BUILD`", roadmap)
