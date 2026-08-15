@@ -38,8 +38,8 @@ market signal
 | Git Town shared Skill binding | `DOCUMENTED` | canonical method remains in `skills-shared` |
 | Exact Git Town executable admission | `ABSENT / BLOCKED_POLICY` | no version/checksum/SBOM admission |
 | Live `git town sync` | `NOT_EXERCISED` | branch documentation and API-created ancestry are not sync receipts |
-| Hosted CI for this stack | `NOT_EXERCISED` until an exact run is observed | workflow materialization is not a passing run |
-| Merge/ship/roadmap promotion | `HUMAN_ADMIT` | all three PRs are Draft and unmerged |
+| Hosted CI subject separation | `DRAFT_PUBLISHED / HOSTED_VERIFIED (stage)` | [PR #11](https://github.com/ed3c/ai-product-notes/pull/11), run `31878162441`: exact head and synthetic merge passed as separate subjects |
+| Merge/ship/roadmap promotion | `HUMAN_ADMIT` | all four PRs are Draft and unmerged |
 
 ## Repository topology
 
@@ -179,18 +179,35 @@ main@ab9596ff1df2b44785e28baad650f93f21b9786c
     Issue #4 · Draft PR #7 · base main
     └── agent/5-opportunity-compiler@849b50a011abdbe9940fa52d597a456902601e64
         Issue #5 · Draft PR #8 · base agent/4-market-control-plane
-        └── agent/6-portfolio-convergence@6d88ed1fc26c74d8e5ad0d0e0fdef09e38560d81
+        └── agent/6-portfolio-convergence@83243ba32729a75e953125370a8cb0b61cee197f
             Issue #6 · Draft PR #9 · base agent/5-opportunity-compiler
-            + shared-index reconciliation on the same convergence branch
+            └── agent/10-exact-head-ci@5b646ec6fe70dd2047734636b8dfd517ee2998b2
+                Issue #10 · Draft PR #11 · base agent/6-portfolio-convergence
+                + terminal shared-index reconciliation
 ```
 
 | Leaf | Issue | Draft PR | Exact PR base | Immutable stage head | Scope |
 |---|---|---|---|---|---|
 | Governance | [#4](https://github.com/ed3c/ai-product-notes/issues/4) | [#7](https://github.com/ed3c/ai-product-notes/pull/7) | `main@ab9596ff1df2b44785e28baad650f93f21b9786c` | `8ae076852bce7f1abe3344b8db0d6b2df42c61eb` | Agent/docs/git contracts |
 | Compiler | [#5](https://github.com/ed3c/ai-product-notes/issues/5) | [#8](https://github.com/ed3c/ai-product-notes/pull/8) | `agent/4-market-control-plane@8ae076852bce7f1abe3344b8db0d6b2df42c61eb` | `849b50a011abdbe9940fa52d597a456902601e64` | compiler/schemas/assets/tests |
-| Convergence | [#6](https://github.com/ed3c/ai-product-notes/issues/6) | [#9](https://github.com/ed3c/ai-product-notes/pull/9) | `agent/5-opportunity-compiler@849b50a011abdbe9940fa52d597a456902601e64` | `6d88ed1fc26c74d8e5ad0d0e0fdef09e38560d81` before index reconciliation | opportunity/experiment/roadmap/shared indexes |
+| Convergence | [#6](https://github.com/ed3c/ai-product-notes/issues/6) | [#9](https://github.com/ed3c/ai-product-notes/pull/9) | `agent/5-opportunity-compiler@849b50a011abdbe9940fa52d597a456902601e64` | `6d88ed1fc26c74d8e5ad0d0e0fdef09e38560d81`; reconciled parent head `83243ba32729a75e953125370a8cb0b61cee197f` | opportunity/experiment/roadmap/shared indexes |
+| CI evidence | [#10](https://github.com/ed3c/ai-product-notes/issues/10) | [#11](https://github.com/ed3c/ai-product-notes/pull/11) | `agent/6-portfolio-convergence@83243ba32729a75e953125370a8cb0b61cee197f` | `5b646ec6fe70dd2047734636b8dfd517ee2998b2` before terminal index reconciliation | exact-head + synthetic-merge evidence and final index |
 
-A commit cannot embed its own final SHA without a self-reference. Therefore this README records immutable stage heads; the current convergence head is read from PR #9 metadata and is also posted to Issue #6 after reconciliation. The graph is Git Town-compatible, but exact Git Town admission and live synchronization remain `ABSENT / NOT_EXERCISED`. See `docs/git/STACKED_PRS.md`.
+### Hosted subject receipt
+
+Run `31878162441` on the immutable CI stage head proved two different subjects:
+
+```text
+exact-head subject: 5b646ec6fe70dd2047734636b8dfd517ee2998b2
+result: PASS · repository contract · 23 tests · packet reproduction
+
+synthetic-merge subject: 3bb417881393b5faad2a91056c49c77eefeb3cc8
+base parent: 83243ba32729a75e953125370a8cb0b61cee197f
+head parent: 5b646ec6fe70dd2047734636b8dfd517ee2998b2
+result: PASS · repository contract · 23 tests · packet reproduction
+```
+
+The earlier PR #8/#9 runs checked GitHub synthetic merge subjects only; they remain valid integration receipts but are not re-labeled as exact-head evidence. A commit cannot embed its own final SHA without a self-reference, so the current terminal head and its post-reconciliation hosted run are authoritative in PR #11 metadata and the final Issue #10 receipt. The graph is Git Town-compatible, but exact Git Town admission and live synchronization remain `ABSENT / NOT_EXERCISED`. See `docs/git/STACKED_PRS.md`.
 
 ## Validation
 

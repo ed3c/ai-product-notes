@@ -9,17 +9,68 @@ permissions:
   contents: read
 
 jobs:
-  contracts:
+  exact-head-contracts:
+    name: Exact head contracts
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      EXPECTED_SUBJECT: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
     steps:
-      - name: Checkout exact subject
+      - name: Checkout exact head subject
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-      - name: Repository and compiler contracts
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+      - name: Assert exact head subject
+        run: |
+          actual="$(git rev-parse HEAD)"
+          test "$actual" = "$EXPECTED_SUBJECT"
+          printf 'subject_kind=exact-head\nsubject_sha=%s\n' "$actual"
+      - name: Repository and compiler contracts on exact head
         run: |
           python3 scripts/check_repository_contract.py
           python3 -m unittest discover -s tests -p 'test_*.py'
-      - name: Reproduce sample opportunity packet
+      - name: Reproduce sample opportunity packet on exact head
+        run: |
+          python3 scripts/compile_opportunity.py \
+            examples/signals/vendor-api-blast-radius.json \
+            --assets data/assets/registry.json \
+            --public-portfolio config/public-portfolio.json \
+            --output /tmp/vendor-api-opportunity.json
+          python3 scripts/compile_opportunity.py --check /tmp/vendor-api-opportunity.json
+
+  merge-compatibility:
+    name: Synthetic merge compatibility
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      EXPECTED_BASE: ${{ github.event.pull_request.base.sha }}
+      EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - name: Checkout synthetic merge subject
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 2
+      - name: Assert synthetic merge subject and parent lineage
+        run: |
+          actual="$(git rev-parse HEAD)"
+          test "$actual" != "$EXPECTED_HEAD"
+          read -r base_parent head_parent extra <<EOF
+          $(git show -s --format='%P' HEAD)
+          EOF
+          test -n "$base_parent"
+          test -n "$head_parent"
+          test -z "${extra:-}"
+          test "$base_parent" = "$EXPECTED_BASE"
+          test "$head_parent" = "$EXPECTED_HEAD"
+          printf 'subject_kind=synthetic-merge\nsubject_sha=%s\nbase_parent=%s\nhead_parent=%s\n' \
+            "$actual" "$base_parent" "$head_parent"
+      - name: Repository and compiler contracts on synthetic merge
+        run: |
+          python3 scripts/check_repository_contract.py
+          python3 -m unittest discover -s tests -p 'test_*.py'
+      - name: Reproduce sample opportunity packet on synthetic merge
         run: |
           python3 scripts/compile_opportunity.py \
             examples/signals/vendor-api-blast-radius.json \
