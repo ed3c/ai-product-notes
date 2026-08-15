@@ -1,0 +1,27 @@
+{
+  "$id": "https://github.com/ed3c/ai-product-notes/schemas/market-signal.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "market-signal.v1"
+    }
+  },
+  "required": [
+    "constraints",
+    "demand_evidence",
+    "freshness",
+    "id",
+    "metrics",
+    "mvp",
+    "observed_at",
+    "problem",
+    "required_capabilities",
+    "schema_version",
+    "target_segment",
+    "title",
+    "wedge"
+  ],
+  "title": "Market Signal v1",
+  "type": "object"
+}

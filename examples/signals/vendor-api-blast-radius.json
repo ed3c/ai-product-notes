@@ -1,0 +1,188 @@
+{
+  "constraints": {
+    "budget_usd": 1500,
+    "durable_owner_state": "UNSELECTED",
+    "hard_blockers": [],
+    "maximum_days": 14,
+    "public_output": true
+  },
+  "demand_evidence": [
+    {
+      "claim": "A new product positioned API breaking-change intelligence around mapping vendor changes to affected source code, which is evidence of active competition and problem legibility, not payment for this proposed product.",
+      "direct_paid_demand": false,
+      "id": "oxpecker-launch",
+      "independent_group": "competitor-oxpecker",
+      "kind": "competitor_launch",
+      "observed_at": "2026-08-14",
+      "source_class": "PRIMARY_MARKET",
+      "source_url": "https://oxpecker.dev/",
+      "strength": 3
+    },
+    {
+      "claim": "OpenAI maintains an official deprecations surface, supporting recurrence of provider-driven migration work; it does not prove buyer willingness to pay for this implementation.",
+      "direct_paid_demand": false,
+      "id": "openai-deprecation-surface",
+      "independent_group": "vendor-openai",
+      "kind": "vendor_changelog",
+      "observed_at": "2026-08-15",
+      "source_class": "PRIMARY_MARKET",
+      "source_url": "https://platform.openai.com/docs/deprecations",
+      "strength": 4
+    },
+    {
+      "claim": "Stripe maintains an official changelog and versioned upgrade workflow, supporting recurrence across another high-value API category; it is not customer-origin evidence.",
+      "direct_paid_demand": false,
+      "id": "stripe-changelog-surface",
+      "independent_group": "vendor-stripe",
+      "kind": "vendor_changelog",
+      "observed_at": "2026-08-15",
+      "source_class": "PRIMARY_MARKET",
+      "source_url": "https://docs.stripe.com/changelog",
+      "strength": 4
+    }
+  ],
+  "freshness": {
+    "event_date": "2026-08-14",
+    "source_date": "2026-08-14",
+    "status": "PASS",
+    "window_hours": 24
+  },
+  "id": "vendor-api-blast-radius-ci",
+  "metrics": {
+    "competition_pressure": 6,
+    "distribution_reach": 8,
+    "evidence_confidence": 7,
+    "market_timing": 8,
+    "pain_intensity": 9,
+    "recurrence": 8,
+    "wtp_evidence": 6
+  },
+  "mvp": {
+    "hypothesis": "API-heavy teams will pay US$99 per repository per month when a GitHub Check identifies relevant vendor breaking changes with exact call-site evidence and less than 10% false-positive rate.",
+    "non_goals": [
+      "No automatic code repair.",
+      "No universal language or vendor support.",
+      "No production write access beyond an explicitly authorized GitHub Check.",
+      "No claim of market validation before paid-pilot receipts exist."
+    ],
+    "price_test_usd_month": 99,
+    "stop_loss": [
+      "Stop after 10 interviews if fewer than 3 teams confirm the exact problem.",
+      "Stop or narrow the wedge if false-positive rate is 20% or higher after two bounded repair passes.",
+      "Stop if the historical replay contains fewer than 3 relevant changes.",
+      "Stop if required vendor specifications cannot be acquired under acceptable terms."
+    ],
+    "success_metrics": [
+      "Interview 10 qualified teams and obtain at least 3 strong pain confirmations.",
+      "Replay at least 12 months of changes across 10 repositories and find at least 5 relevant breakages.",
+      "Keep false-positive rate below 10% on the admitted replay set.",
+      "Produce an impact report in under 5 minutes for the first TypeScript/AI-API wedge.",
+      "Obtain two paid pilots or equivalent binding commitments at the declared price."
+    ]
+  },
+  "observed_at": "2026-08-15T09:00:00+08:00",
+  "problem": "Vendor changelogs and schema diffs are noisy; teams need to know which changed endpoint or field reaches the exact call-sites they actually use before a deployment fails.",
+  "required_capabilities": [
+    {
+      "accepted_asset_capabilities": [
+        "language-source-analysis",
+        "typescript-source-analysis"
+      ],
+      "asset_types": [
+        "code"
+      ],
+      "description": "Parse and navigate TypeScript source while retaining stable call-site anchors.",
+      "id": "language-source-analysis",
+      "importance": "must",
+      "portfolio_capabilities": []
+    },
+    {
+      "accepted_asset_capabilities": [
+        "openapi-semantic-diff"
+      ],
+      "asset_types": [
+        "code"
+      ],
+      "description": "Classify endpoint, parameter, request and response schema changes.",
+      "id": "openapi-semantic-diff",
+      "importance": "must",
+      "portfolio_capabilities": []
+    },
+    {
+      "accepted_asset_capabilities": [],
+      "asset_types": [
+        "code"
+      ],
+      "description": "Join actual repository usage to relevant vendor changes; this is the proposed proprietary value layer.",
+      "id": "callsite-impact-join",
+      "importance": "must",
+      "portfolio_capabilities": [
+        "callsite-impact-join"
+      ]
+    },
+    {
+      "accepted_asset_capabilities": [],
+      "asset_types": [
+        "code"
+      ],
+      "description": "Bind findings to exact source paths and stable evidence rather than generic advice.",
+      "id": "repository-source-anchoring",
+      "importance": "must",
+      "portfolio_capabilities": [
+        "repository-source-anchoring"
+      ]
+    },
+    {
+      "accepted_asset_capabilities": [],
+      "asset_types": [
+        "code"
+      ],
+      "description": "Re-fetch current vendor evidence and keep provenance separate from semantic relevance.",
+      "id": "current-claim-verification",
+      "importance": "must",
+      "portfolio_capabilities": [
+        "current-claim-verification"
+      ]
+    },
+    {
+      "accepted_asset_capabilities": [
+        "github-check-publisher"
+      ],
+      "asset_types": [
+        "code"
+      ],
+      "description": "Publish a bounded pull-request warning/check through an authorized GitHub App.",
+      "id": "github-check-publisher",
+      "importance": "must",
+      "portfolio_capabilities": []
+    },
+    {
+      "accepted_asset_capabilities": [
+        "python-source-analysis"
+      ],
+      "asset_types": [
+        "code"
+      ],
+      "description": "Later Python support after the first TypeScript wedge.",
+      "id": "python-source-analysis",
+      "importance": "could",
+      "portfolio_capabilities": []
+    },
+    {
+      "accepted_asset_capabilities": [],
+      "asset_types": [
+        "code"
+      ],
+      "description": "Evaluate reusable Agent/Skill wrappers separately from product-market evidence.",
+      "id": "skill-runtime-qualification",
+      "importance": "should",
+      "portfolio_capabilities": [
+        "skill-runtime-qualification"
+      ]
+    }
+  ],
+  "schema_version": "market-signal.v1",
+  "target_segment": "API-heavy B2B SaaS teams using fast-changing AI, payments, communications, or data-provider APIs",
+  "title": "Vendor API Blast-Radius CI",
+  "wedge": "One TypeScript repository plus one AI-model API family; emit an evidence-linked GitHub Check for used endpoint and field changes without automatic repair."
+}

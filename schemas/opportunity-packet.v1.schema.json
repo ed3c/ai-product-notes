@@ -1,0 +1,35 @@
+{
+  "$id": "https://github.com/ed3c/ai-product-notes/schemas/opportunity-packet.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "decision": {
+      "enum": [
+        "BUILD",
+        "VALIDATE",
+        "WATCH",
+        "REJECT",
+        "BLOCKED"
+      ]
+    },
+    "schema_version": {
+      "const": "opportunity-packet.v1"
+    }
+  },
+  "required": [
+    "schema_version",
+    "source_identity",
+    "decision",
+    "score",
+    "gates",
+    "opportunity",
+    "capability_analysis",
+    "gaps",
+    "mvp_experiment",
+    "handoff",
+    "non_claims",
+    "packet_digest"
+  ],
+  "title": "Opportunity Packet v1",
+  "type": "object"
+}
