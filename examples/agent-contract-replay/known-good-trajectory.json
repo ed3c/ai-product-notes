@@ -1,0 +1,22 @@
+{
+  "schema_version": "agent-trajectory.v1",
+  "trajectory_id": "synthetic-known-good-001",
+  "status": "completed",
+  "steps": [
+    {
+      "type": "tool_call",
+      "name": "search_skill",
+      "arguments": {"query": "git town stacked PR worker", "mode": "exact"}
+    },
+    {
+      "type": "tool_call",
+      "name": "run_assertion",
+      "arguments": {"command": "python3 -m unittest"}
+    },
+    {
+      "type": "tool_call",
+      "name": "legacy_fetch",
+      "arguments": {"url": "https://example.invalid/public-fixture"}
+    }
+  ]
+}
