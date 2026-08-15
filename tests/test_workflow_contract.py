@@ -72,6 +72,24 @@ class WorkflowContractTests(unittest.TestCase):
         mutated = self.text.replace("  exact-head-contracts:\n", "  contracts:\n", 1)
         self.assertTrue(any("legacy contracts" in error or "exact-head-contracts" in error for error in workflow_errors(mutated)))
 
+    def test_published_dual_subject_receipt_is_indexed(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        ledger = (ROOT / "docs/git/STACKED_PRS.md").read_text(encoding="utf-8")
+        combined = readme + "\n" + ledger
+        for marker in (
+            "https://github.com/ed3c/ai-product-notes/issues/10",
+            "https://github.com/ed3c/ai-product-notes/pull/11",
+            "31878162441",
+            "5b646ec6fe70dd2047734636b8dfd517ee2998b2",
+            "3bb417881393b5faad2a91056c49c77eefeb3cc8",
+            "83243ba32729a75e953125370a8cb0b61cee197f",
+            "HOSTED_VERIFIED",
+        ):
+            self.assertIn(marker, combined)
+        self.assertIn("exact-head", combined)
+        self.assertIn("synthetic-merge", combined)
+        self.assertIn("live Git Town sync: NOT_EXERCISED", ledger)
+
 
 if __name__ == "__main__":
     unittest.main()
