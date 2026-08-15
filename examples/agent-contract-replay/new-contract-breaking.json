@@ -1,0 +1,21 @@
+{
+  "schema_version": "agent-contract.v2",
+  "tools": [
+    {
+      "name": "search_skill",
+      "required": ["query", "registry"],
+      "properties": {
+        "query": {"type": "string"},
+        "registry": {"type": "string"},
+        "mode": {"type": "string", "enum": ["semantic"]}
+      }
+    },
+    {
+      "name": "run_assertion",
+      "required": ["command"],
+      "properties": {
+        "command": {"type": "string"}
+      }
+    }
+  ]
+}
