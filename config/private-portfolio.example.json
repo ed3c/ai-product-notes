@@ -1,0 +1,16 @@
+{
+  "capabilities": [
+    {
+      "capability_id": "callsite-impact-join",
+      "contract_version": "callsite-impact-join.v1",
+      "evidence_label": "candidate",
+      "exportable": true,
+      "limitations": [
+        "Example envelope only; replace with a subject-bound sanitized receipt."
+      ],
+      "receipt_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "state": "PLANNED"
+    }
+  ],
+  "schema_version": "private-capability-overlay.v1"
+}

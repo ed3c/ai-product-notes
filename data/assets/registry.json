@@ -1,0 +1,328 @@
+{
+  "assets": [
+    {
+      "capabilities": [
+        "language-source-analysis",
+        "incremental-syntax-tree"
+      ],
+      "id": "tree-sitter-core",
+      "limitations": [
+        "Grammar repositories may use different licenses.",
+        "Syntax trees do not by themselves resolve dynamic SDK calls or semantic data flow."
+      ],
+      "maturity": 9,
+      "name": "Tree-sitter",
+      "rights": {
+        "code": {
+          "commercial_use": true,
+          "evidence_url": "https://github.com/tree-sitter/tree-sitter/blob/dff1fd868c750dbbae179fcd5c43ce987e4e0528/LICENSE",
+          "license": "MIT",
+          "scope": "repository code only; language grammars and downstream packages require separate verification",
+          "source_disclosure_required": false,
+          "status": "PASS"
+        },
+        "datasets": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "hosted_service": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "model_weights": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "third_party_content": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "trajectories": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        }
+      },
+      "source_url": "https://github.com/tree-sitter/tree-sitter",
+      "verified_commit": "dff1fd868c750dbbae179fcd5c43ce987e4e0528"
+    },
+    {
+      "capabilities": [
+        "openapi-semantic-diff",
+        "breaking-change-classification"
+      ],
+      "id": "openapi-diff",
+      "limitations": [
+        "Vendor specifications may be incomplete or unavailable.",
+        "A breaking schema change is not automatically relevant to a repository that does not use it."
+      ],
+      "maturity": 8,
+      "name": "OpenAPI Diff",
+      "rights": {
+        "code": {
+          "commercial_use": true,
+          "evidence_url": "https://github.com/OpenAPITools/openapi-diff/blob/63850d8074452f5761ce7e7e460307f0f127647a/LICENSE",
+          "license": "Apache-2.0",
+          "scope": "repository code only",
+          "source_disclosure_required": false,
+          "status": "PASS"
+        },
+        "datasets": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "hosted_service": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "model_weights": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "third_party_content": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "trajectories": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        }
+      },
+      "source_url": "https://github.com/OpenAPITools/openapi-diff",
+      "verified_commit": "63850d8074452f5761ce7e7e460307f0f127647a"
+    },
+    {
+      "capabilities": [
+        "typescript-source-analysis",
+        "typescript-ast-navigation"
+      ],
+      "id": "ts-morph",
+      "limitations": [
+        "TypeScript-specific; dynamic runtime construction still needs evidence."
+      ],
+      "maturity": 8,
+      "name": "ts-morph",
+      "rights": {
+        "code": {
+          "commercial_use": true,
+          "evidence_url": "https://github.com/dsherret/ts-morph/blob/699815f54ae9b5c2a93f016ba1a9df1e8ac1c014/LICENSE",
+          "license": "MIT",
+          "scope": "repository code only",
+          "source_disclosure_required": false,
+          "status": "PASS"
+        },
+        "datasets": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "hosted_service": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "model_weights": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "third_party_content": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "trajectories": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        }
+      },
+      "source_url": "https://github.com/dsherret/ts-morph",
+      "verified_commit": "699815f54ae9b5c2a93f016ba1a9df1e8ac1c014"
+    },
+    {
+      "capabilities": [
+        "python-source-analysis",
+        "python-cst-navigation"
+      ],
+      "id": "libcst",
+      "limitations": [
+        "Python-specific.",
+        "The repository includes file-scoped permissive license variants that must retain their notices."
+      ],
+      "maturity": 8,
+      "name": "LibCST",
+      "rights": {
+        "code": {
+          "commercial_use": true,
+          "evidence_url": "https://github.com/Instagram/LibCST/blob/d9a255843b5cdbecc6834684d233bce1f2987f9d/LICENSE",
+          "license": "MIT + PSF + Apache-2.0 file-scoped",
+          "scope": "repository code under the file-scoped licenses described in LICENSE",
+          "source_disclosure_required": false,
+          "status": "PASS"
+        },
+        "datasets": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "hosted_service": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "model_weights": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "third_party_content": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "trajectories": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        }
+      },
+      "source_url": "https://github.com/Instagram/LibCST",
+      "verified_commit": "d9a255843b5cdbecc6834684d233bce1f2987f9d"
+    },
+    {
+      "capabilities": [
+        "github-api-client",
+        "github-check-publisher"
+      ],
+      "id": "octokit-rest",
+      "limitations": [
+        "GitHub App permissions, service terms, rate limits and customer authorization are separate from code licensing."
+      ],
+      "maturity": 9,
+      "name": "Octokit REST.js",
+      "rights": {
+        "code": {
+          "commercial_use": true,
+          "evidence_url": "https://github.com/octokit/rest.js/blob/cd9cb8cd4965d99c7dac8c87d249308956250be3/LICENSE",
+          "license": "MIT",
+          "scope": "repository code only; GitHub service terms and app permissions remain separate",
+          "source_disclosure_required": false,
+          "status": "PASS"
+        },
+        "datasets": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "hosted_service": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "model_weights": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "third_party_content": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "trajectories": {
+          "commercial_use": false,
+          "evidence_url": "",
+          "license": "",
+          "scope": "asset type not distributed by this repository component",
+          "source_disclosure_required": false,
+          "status": "NOT_APPLICABLE"
+        }
+      },
+      "source_url": "https://github.com/octokit/rest.js",
+      "verified_commit": "cd9cb8cd4965d99c7dac8c87d249308956250be3"
+    }
+  ],
+  "schema_version": "asset-registry.v1"
+}

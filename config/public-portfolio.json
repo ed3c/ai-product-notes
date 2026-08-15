@@ -1,0 +1,55 @@
+{
+  "capabilities": [
+    {
+      "contract_version": "product-signal-ranking.v1",
+      "evidence_label": "candidate",
+      "id": "product-signal-ranking",
+      "limitations": [
+        "Existing rankings are discovery inputs, not market-validation receipts."
+      ],
+      "source_url": "https://github.com/ed3c/ai-product-notes",
+      "state": "MATERIALIZED"
+    },
+    {
+      "contract_version": "openwiki-evaluation.v1",
+      "evidence_label": "technical_equivalent",
+      "id": "repository-source-anchoring",
+      "limitations": [
+        "Lexical source anchoring does not prove semantic support or product impact."
+      ],
+      "source_url": "https://github.com/ed3c/openwiki-source-anchoring",
+      "state": "TESTED"
+    },
+    {
+      "contract_version": "evidence-closure.v1",
+      "evidence_label": "technical_equivalent",
+      "id": "current-claim-verification",
+      "limitations": [
+        "Source capture proves provenance; semantic closure remains subject- and policy-bound."
+      ],
+      "source_url": "https://github.com/ed3c/truth-verify-loop",
+      "state": "TESTED"
+    },
+    {
+      "contract_version": "run-artifact.v1",
+      "evidence_label": "technical_equivalent",
+      "id": "skill-runtime-qualification",
+      "limitations": [
+        "Skill/runtime qualification does not validate a market or production deployment."
+      ],
+      "source_url": "https://github.com/ed3c/Skill.md-native",
+      "state": "TESTED"
+    },
+    {
+      "contract_version": "skill-qualification.v1",
+      "evidence_label": "candidate",
+      "id": "agent-skill-qualification",
+      "limitations": [
+        "Qualification evidence must remain separate from product-market evidence."
+      ],
+      "source_url": "https://github.com/ed3c/agent-skills-repo",
+      "state": "MATERIALIZED"
+    }
+  ],
+  "schema_version": "public-portfolio.v1"
+}
