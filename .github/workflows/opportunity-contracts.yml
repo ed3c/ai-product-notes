@@ -1,0 +1,29 @@
+name: Opportunity Contracts
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact subject
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Repository and compiler contracts
+        run: |
+          python3 scripts/check_repository_contract.py
+          python3 -m unittest discover -s tests -p 'test_*.py'
+      - name: Reproduce sample opportunity packet
+        run: |
+          python3 scripts/compile_opportunity.py \
+            examples/signals/vendor-api-blast-radius.json \
+            --assets data/assets/registry.json \
+            --public-portfolio config/public-portfolio.json \
+            --output /tmp/vendor-api-opportunity.json
+          python3 scripts/compile_opportunity.py --check /tmp/vendor-api-opportunity.json
