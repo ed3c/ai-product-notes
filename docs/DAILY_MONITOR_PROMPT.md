@@ -1,27 +1,33 @@
 # Daily Monitor Contract / 每日監控契約
 
-## 繁體中文
+## Objective
 
-每天執行一次 AI 產品與融資監控，最近 24 小時為硬性 freshness window。優先讀 Product Hunt、There's An AI For That、其他 launch platforms、公司官方來源與可靠融資媒體。發布日期無法確認、來源互相衝突、已被前一日收錄或只是舊產品被搜尋引擎重新索引者，一律不納入。
+Run one trailing-24-hour AI product and funding monitor, then convert only the strongest signals into versioned opportunity inputs. The output is not a list of exciting launches; it is a delta to the evidence base and, when justified, a falsifiable market-validation packet.
 
-執行順序：
+## Procedure
 
-1. 先讀 `README.md`、`docs/CONFIG.md`、`CONTEXT.md`、`RANK.md`、`data/products/index.json` 與兩份 current datasets。
-2. 搜尋候選，記錄 event date、source date、official URL 與 evidence quality。
-3. 僅保留最多 5–10 個最高品質候選；不足則回報實際數量，包含 0。
-4. 分析客群、痛點、business model、pricing/WTP、technical/operational barrier、margin、competition、gap、distribution、Solopreneur feasibility 與 MVP。
-5. 只對真正新項目新增資料；真正變更才更新 `Last Updated At`。
-6. 依 `docs/CONFIG.md` 公式重算排名；每榜最多 100。
-7. 深度筆記寫到 `notes/<category>/<slug>/<YYYY-MM-DD>.md`，繁體中文與 English 同檔。
-8. 每日簡報寫到 `daily/YYYY-MM-DD.md`。
-9. 若 `gemini-deep-research/inbox/` 有新 Markdown，保留 citations，產生 normalized report 與 product → `code | llm_models | data | trajectories` mapping。
-10. 每個 OSS/open-weight 候選必須驗證 primary license；commercial use 不清楚時不得標記可商用。
-11. 更新 `RANK.md`，維度為 Hackathon MVP、Business、Research、Production Use、Stack Compatibility。
-12. 所有例行變更直接寫 `main`，不建立 note branch；絕不提交 secret/API key/private customer data。
-13. 不再建立或更新 Google Sheet、Google Doc 或 Excel。
+1. Read `README.md`, `docs/CONFIG.md`, `docs/STATE_MACHINES.md`, `docs/MARKET_SIGNAL_CONTRACT.md`, `CONTEXT.md`, `RANK.md`, `data/products/index.json` and current datasets.
+2. Search primary launch pages, official company/docs/pricing/changelog sources and reputable funding reporting. Bind `event_date`, `source_date`, official identity and source class.
+3. Reject unverifiable dates, stale re-indexing, duplicates and conflicting launch histories. Zero qualified items is valid.
+4. Keep at most 5–10 highest-quality signals. Separate vendor claims, independent evidence, customer evidence, experiment evidence and inference.
+5. Analyze buyer, painful job, recurrence, budget owner, business model, price/WTP evidence, competition, distribution, operational barrier, margin and narrow wedge.
+6. For each high-value candidate, create a `market-signal.v1` input and decompose the workflow into required capabilities.
+7. Map candidates to `code | model_weights | datasets | trajectories | hosted_service | third_party_content`. Verify each right from primary evidence. Only direct `PASS` states count.
+8. Match required capabilities against `config/public-portfolio.json` and an optional Git-ignored private overlay. Never write private repo names, paths, URLs, code, raw traces, customer data or credentials to public output.
+9. Classify `market`, `evidence`, `stack`, `portfolio`, `delivery` and `rights_privacy` gaps. Record `not_found` rather than omitting missing evidence.
+10. Run the deterministic opportunity compiler. A high score cannot override a hard gate; missing paid demand caps the decision at `VALIDATE`.
+11. Write deep notes for Top-3/evidence-heavy cases, update only true dataset deltas, and preserve historical timestamps and dropped-item notes.
+12. Create or update `opportunities/<slug>/` only through the `PRODUCT_CHANGE_LANE`. Routine dated notes/data may use `DATA_INCREMENT_LANE` only when its exact automation is already admitted.
+13. Update `roadmap/` only after experiment receipts and Human Admit. Never call a generated packet `market validated`, `paid`, `done` or `shipped`.
+14. Never write canonical data to Google Sheets, Google Docs or Excel; never commit secrets or private data.
 
-## English
+## Required daily output
 
-Run a daily trailing-24-hour AI product and funding monitor. Freshness is a hard gate. Prefer primary launch pages, company announcements, and reputable funding sources. Exclude unverifiable dates, conflicting launch histories, duplicates from the previous run, and stale pages re-indexed as fresh.
-
-Read repository state first, qualify candidates, update only changed records, recompute rankings using `docs/CONFIG.md`, write bilingual notes, save the daily brief, process Gemini Deep Research inputs, verify primary licenses before commercial-use mapping, and update `RANK.md`. Routine writes go directly to `main`. Never write new canonical data to Google Sheets, Google Docs, or Excel.
+- monitor window and qualified count;
+- source/evidence table with event date;
+- product/ranking delta;
+- capability and permissive-asset mapping;
+- explicit gaps and `not_found` items;
+- opportunity decisions with score and hard gates;
+- roadmap impact, normally `none` unless evidence materially changed;
+- non-claims and remaining validation work.

@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# Local/private capability overlays and receipts
+.private/
+config/private-portfolio.json
+receipts/private/
+artifacts/private/
+
+# Editor/OS
+.DS_Store
+.idea/
+.vscode/

@@ -1,56 +1,91 @@
 # Configuration / 固定參數
 
-## 繁體中文
+## Repository and monitoring
 
 - Canonical repository: `ed3c/ai-product-notes`
 - Canonical branch: `main`
 - Timezone: `Asia/Taipei`
-- Monitor window: 最近 24 小時
-- Daily qualified items: 最多 5–10；品質不足不得補舊聞，允許 0 筆
-- Top lists: 每類最多 100 筆
-- Storage: GitHub Markdown + JSON only
+- Monitor window: trailing 24 hours
+- Daily qualified items: up to 5–10; zero is valid
+- Top lists: at most 100 active records per category
+- Storage: GitHub Markdown + canonical JSON
 - Google Sheet / Google Doc / Excel writes: **disabled**
-- Update strategy: incremental only
+- Update strategy: incremental, read-before-write
 - Product identity: normalized product/concept name + canonical official URL
-- Preserve `First Added At`; only true evidence/content changes modify `Last Updated At`
-- Deep note condition: daily Top 3、證據太長、或需要獨立決策文件
-- Note language: Traditional Chinese + English
-- Git policy: routine automation writes directly to `main`; no note branches
-- Secret policy: never commit API keys, credentials, private tokens, private customer data, or raw sensitive trajectories
+- Preserve `First Added At`; change `Last Updated At` only for real evidence/content changes
+- Notes: Traditional Chinese + English
+- Secret policy: never commit credentials, private tokens, private repository metadata, customer data or raw sensitive trajectories
 
-### Composite Score
+## Existing Top-100 scores
 
 `Top 100 Best AI Products`
 
-`0.35 * WTP + 0.25 * Funding Scale + 0.20 * User Traction + 0.20 * Market Gap Moat`
+```text
+0.35 * WTP + 0.25 * Funding Scale + 0.20 * User Traction + 0.20 * Market Gap Moat
+```
 
 `Top 100 Solopreneur Products`
 
-`0.35 * Tech Simplicity + 0.25 * Profit Margin + 0.25 * Gap Size + 0.15 * Distribution Ease`
+```text
+0.35 * Tech Simplicity + 0.25 * Profit Margin + 0.25 * Gap Size + 0.15 * Distribution Ease
+```
 
-### Ranking tie-break
+These rankings are discovery inputs. They do not authorize product implementation.
 
-1. Composite Score descending
-2. Stronger market validation
-3. Newer `Last Updated At` only when the item actually changed
-4. Stable prior order if evidence does not justify reordering
+## Opportunity compiler score
 
-## English
+The compiler uses versioned 1–10 inputs plus calculated portfolio/substitution coverage:
 
-- Canonical repository: `ed3c/ai-product-notes`
-- Canonical branch: `main`
-- Timezone: `Asia/Taipei`
-- Monitoring window: trailing 24 hours
-- Daily qualified items: up to 5–10; never backfill stale/low-quality items; zero is valid
-- Maximum active records per category: 100
-- Storage: repository-native Markdown + JSON
-- Google Sheet / Google Doc / Excel writes: **disabled**
-- Update strategy: incremental
-- Identity: normalized product/concept name + canonical official URL
-- Preserve `First Added At`; update `Last Updated At` only for real changes
-- Deep notes: Top-3 items, evidence-heavy cases, or decision-grade research
-- Notes: Traditional Chinese + English
-- Routine Git writes: directly to `main`, no note branches
-- Never commit secrets, credentials, private tokens, customer-private data, or sensitive raw trajectories.
+```text
+positive =
+  0.20 * pain_intensity
++ 0.18 * wtp_evidence
++ 0.12 * recurrence
++ 0.10 * distribution_reach
++ 0.10 * market_timing
++ 0.15 * evidence_confidence
++ 0.08 * portfolio_fit
++ 0.07 * substitution_coverage
 
-Score formulas and tie-break rules are identical to the Traditional Chinese section above.
+score_0_100 = clamp(10 * positive - 1.5 * competition_pressure, 0, 100)
+```
+
+Hard privacy, schema or required-right failures force `BLOCKED`. `BUILD` additionally requires direct paid demand and no uncovered must capability. Missing payment evidence caps the decision at `VALIDATE`.
+
+## Delivery policy
+
+### `DATA_INCREMENT_LANE`
+
+An already-admitted bounded automation may update only:
+
+```text
+reports/daily/**
+notes/**
+data/products/**
+RANK.md                 # evidence-backed asset/ranking delta only
+```
+
+The automation must prove exact workflow identity, allowed paths, incremental read-before-write behavior and validation for the exact subject. Interactive Agents do not use this lane to bypass review. When workflow admission is absent, use a PR.
+
+### `PRODUCT_CHANGE_LANE`
+
+Issue-first reviewable branches are mandatory for:
+
+```text
+AGENTS.md
+README.md and shared indexes
+docs architecture/policy/state/git contracts
+config and schemas
+src, scripts and tests
+workflows
+opportunities, experiments and roadmap semantics
+```
+
+Use the shared `git-town-stacked-pr-worker` method with repository-owned work packets, path leases, checks and receipts. Exact Git Town executable admission is currently `ABSENT`; live synchronization is `NOT_EXERCISED`; merge/ship remains Human Admit.
+
+## Ranking tie-break
+
+1. score descending;
+2. stronger independent market validation;
+3. newer `Last Updated At` only when evidence actually changed;
+4. stable prior order when evidence does not justify reordering.
