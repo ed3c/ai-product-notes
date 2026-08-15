@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ed3c/ai-product-notes/experiments/vendor-api-blast-radius/receipt.schema.json",
+  "title": "Vendor API Blast-Radius Experiment Receipt",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "experiment_version",
+    "receipt_id",
+    "receipt_type",
+    "subject_digest",
+    "observed_at",
+    "actor_role",
+    "reviewer_role",
+    "result",
+    "metrics",
+    "limitations",
+    "commercial_commitment",
+    "privacy_review"
+  ],
+  "properties": {
+    "schema_version": {"const": "vendor-api-experiment-receipt.v1"},
+    "experiment_version": {"type": "string"},
+    "receipt_id": {"type": "string"},
+    "receipt_type": {"enum": ["interview", "replay", "pilot"]},
+    "subject_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "observed_at": {"type": "string"},
+    "actor_role": {"type": "string"},
+    "reviewer_role": {"type": "string"},
+    "result": {"enum": ["PASS", "FAIL", "INCONCLUSIVE", "BLOCKED"]},
+    "metrics": {"type": "object"},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "commercial_commitment": {"enum": ["PAID", "SIGNED", "NONE", "NOT_APPLICABLE"]},
+    "privacy_review": {"enum": ["PASS", "FAIL", "NOT_EXERCISED"]}
+  },
+  "additionalProperties": false
+}
