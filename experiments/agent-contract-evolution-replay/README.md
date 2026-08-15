@@ -1,18 +1,19 @@
 # Agent Contract Evolution Replay CI
 
-State: `VALIDATE / PUBLIC_REAL_HISTORY_CORPUS_1_OF_5`
+State: `VALIDATE / PUBLIC_REAL_HISTORY_CORPUS_2_OF_5`
 
 ## Hypothesis
 
 A versioned tool, Skill, SDK, registry or protocol contract change can be replayed against previously accepted procedural consumers to identify compatibility breaks before a harness upgrade is admitted.
 
-The repository now has two evidence layers:
+The evidence loop is:
 
 ```text
-synthetic contract-rule fixtures
-+
-public immutable upstream history
-→ deterministic compatibility receipts
+immutable old contract
++ immutable new contract
++ historically accepted consumer
++ subject-bound validation evidence
+→ deterministic compatibility receipt
 ```
 
 Synthetic cases prove evaluator behavior only. They never count toward the five-case roadmap gate.
@@ -31,35 +32,61 @@ Current adjudication:
 | Case | Adapter | Old result | New result | Decision | Counts toward 5-case gate |
 |---|---|---:|---:|---|---:|
 | MCP Registry package field casing | `registry-schema` | `PASS` | `FAIL` | `HISTORICAL_BREAKAGE` | yes |
-| TypeScript SDK `getTaskResult` positional role | `sdk-api` | `PASS` | `FAIL` | `CONTRACT_BREAKAGE_NOT_COUNTED` | no |
+| TypeScript SDK `getTaskResult` 1.x → modular 2.x | `sdk-api` | `PASS` | `FAIL` | `HISTORICAL_BREAKAGE` | yes |
 | 2026-07-28 server identity envelope relocation | `protocol-envelope` | `NOT_EXERCISED` | `NOT_EXERCISED` | `UNSUPPORTED_ADAPTER` | no |
 
-### Why only one case counts
+## Counted case 1: MCP Registry field casing
 
-The MCP Registry case binds:
+This case binds:
 
 - exact old and new `pkg/model/types.go` blobs;
 - an old upstream passing test fixture;
 - a normalized unchanged JSON consumer;
 - old `snake_case` and new `camelCase` contracts.
 
-The unchanged historical consumer passes the old contract and fails the new one, so it is admitted as one public historical breakage.
+The unchanged historical consumer passes the old contract and fails the new one.
 
-The TypeScript SDK case proves the exported positional contract changed from:
+## Counted case 2: TypeScript SDK major package migration
 
-```text
-getTaskResult(taskId, resultSchema?, options?)
-```
-
-to:
+The independent downstream consumer is:
 
 ```text
-getTaskResult(taskId, options?)
+adcontextprotocol/adcp-client
+commit: ff88581e741c79cfbb5f6ddb827b90f39447be71
+path: src/lib/protocols/mcp-tasks.ts
+call: getTaskResult(capturedTaskId, undefined, requestOptions)
 ```
 
-The second historical argument role therefore fails against the new call contract. It is not counted because the current corpus binds an upstream self-consumer/call surface rather than an independent downstream failure fixture.
+The consumer is not counted from source text alone. Its admission binds all of the following:
 
-The protocol-envelope case is deliberately unsupported. Moving server identity from `DiscoverResult.serverInfo` into result `_meta`, while also changing request-envelope requirements, requires negotiated-era and cross-message semantics. Treating that as a plain object-field rename would create a false confidence signal.
+```text
+package-lock.json
+  @modelcontextprotocol/sdk@1.29.0
+  exact SHA-512 integrity
+
+legacy upstream tag
+  v1.29.0
+  @modelcontextprotocol/sdk
+  getTaskResult(taskId, resultSchema?, options?)
+
+modular target contract
+  @modelcontextprotocol/client@2.0.0-alpha.0
+  getTaskResult(taskId, options?)
+
+downstream CI/CD Pipeline run 31865385554
+  exact head == downstream consumer commit
+  TypeScript Typecheck: success
+  Typecheck & Build: success
+  Test & Build: success
+```
+
+The historical `undefined` second argument is an omitted optional `resultSchema` placeholder used to reach the third `requestOptions` position. Under the modular 2.x contract, that placeholder occupies the `options` position and the historical third argument becomes an extra positional argument.
+
+This proves a compile-time **SDK major package migration incompatibility**. It does not prove an observed production outage.
+
+## Unsupported case: protocol envelope relocation
+
+Moving server identity from `DiscoverResult.serverInfo` into result `_meta`, while changing request-envelope requirements, requires negotiated-era and cross-message semantics. Treating it as a plain field rename would create a false confidence signal, so it remains `UNSUPPORTED_ADAPTER`.
 
 ## Evidence contract
 
@@ -73,10 +100,20 @@ change source binding
 old normalized contract
 new normalized contract
 consumer payload
+optional validation bundle
 compiled corpus receipt
 ```
 
-An immutable source binding contains a repository, 40-character commit, path and Git blob SHA. Changelog prose may explain a change but cannot by itself produce `HISTORICAL_BREAKAGE`.
+For a countable `sdk-api` migration, the validation bundle must also bind:
+
+- exact downstream dependency lock;
+- exact downstream workflow blob;
+- exact old and new package manifests;
+- workflow run ID and head SHA;
+- successful typecheck, build and terminal aggregate jobs;
+- explicit `sdk-major-package-migration` identity.
+
+Missing or stale provenance blocks counting. Changelog prose may explain a change but cannot by itself produce `HISTORICAL_BREAKAGE`.
 
 ## Adapters
 
@@ -86,7 +123,7 @@ Validates required and allowed object fields against an exact historical consume
 
 ### `sdk-api`
 
-Validates positional argument roles against an exported API call contract. A positional slot changing from `result_schema` to `request_options` is reported explicitly.
+Validates positional argument roles and arity against exact package-version contracts. Countable downstream cases additionally require dependency-lock and subject-bound CI provenance.
 
 ### `protocol-envelope`
 
@@ -112,10 +149,11 @@ python3 -m unittest discover -s tests -p 'test_*.py'
 Technical admission requires exact-head and synthetic-merge hosted CI to prove:
 
 - committed receipts reproduce byte-for-byte;
-- old/new/consumer source lanes remain immutable;
-- Registry old PASS and new FAIL remain stable;
-- SDK positional-role drift remains visible but not counted;
-- the unsupported protocol case cannot be silently upgraded;
+- source and validation bindings remain immutable;
+- both counted cases remain old `PASS` and new `FAIL`;
+- missing locks, stale CI heads, skipped jobs and package-identity conflation fail closed;
+- a compatible two-argument consumer is not mislabeled as a historical breakage;
+- the protocol-envelope case cannot be silently upgraded;
 - the roadmap stays `VALIDATE`.
 
 Promotion to `BUILD` still requires:
@@ -128,4 +166,4 @@ Promotion to `BUILD` still requires:
 
 ## Evidence boundary
 
-This corpus does not prove production safety, universal MCP compatibility, customer demand, paid adoption or semantic equivalence. It currently proves one countable public historical breakage, one exact contract breakage that is intentionally not counted, and one adapter gap.
+This corpus currently proves two countable public compatibility breakages and one adapter gap. It does not prove production safety, universal MCP compatibility, customer demand, paid adoption, semantic equivalence or an observed production incident.
