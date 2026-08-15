@@ -30,15 +30,16 @@ market signal
 |---|---|---|
 | Top-100 product datasets and daily research | `MATERIALIZED` | `data/products/`, `notes/`, `reports/daily/` |
 | Commercially usable asset ranking | `MATERIALIZED` | `RANK.md`; code/model/data/trajectory rights remain separate |
-| Market Signal and MVP contracts | `MATERIALIZED` on planned Leaf 01 | documentation proves contract only |
-| Deterministic opportunity compiler | `PLANNED` on Leaf 02 | no executable claim from this branch |
-| First Vendor API opportunity packet | `PLANNED` on Leaf 03 | no customer validation claim |
-| Public/private portfolio bridge | `DOCUMENTED` | private implementation details must stay outside Git |
+| Market Signal, State Machine and Agent contracts | `DRAFT_PUBLISHED` | [PR #7](https://github.com/ed3c/ai-product-notes/pull/7); documentation proves contract only |
+| Deterministic opportunity compiler | `DRAFT_PUBLISHED / LOCALLY_TESTED` | [PR #8](https://github.com/ed3c/ai-product-notes/pull/8); deterministic fixture output is not market evidence |
+| First Vendor API opportunity packet | `DRAFT_PUBLISHED / VALIDATE` | [PR #9](https://github.com/ed3c/ai-product-notes/pull/9); no customer or paid-pilot claim |
+| Public/private portfolio bridge | `DRAFT_PUBLISHED` | sanitized envelope only; private implementation details stay outside Git |
+| Git Town-compatible branch/PR graph | `DRAFT_PUBLISHED` | exact ancestry and PR bases below; manual API publication is not live Git Town execution |
 | Git Town shared Skill binding | `DOCUMENTED` | canonical method remains in `skills-shared` |
 | Exact Git Town executable admission | `ABSENT / BLOCKED_POLICY` | no version/checksum/SBOM admission |
-| Live `git town sync` | `NOT_EXERCISED` | branch documentation is not a sync receipt |
-| Hosted CI for this stack | `NOT_EXERCISED` until a run exists | local/connector evidence cannot proxy GitHub Actions |
-| Merge/ship/roadmap promotion | `HUMAN_ADMIT` | Draft PR publication is not merge or market admission |
+| Live `git town sync` | `NOT_EXERCISED` | branch documentation and API-created ancestry are not sync receipts |
+| Hosted CI for this stack | `NOT_EXERCISED` until an exact run is observed | workflow materialization is not a passing run |
+| Merge/ship/roadmap promotion | `HUMAN_ADMIT` | all three PRs are Draft and unmerged |
 
 ## Repository topology
 
@@ -168,16 +169,28 @@ Allowed only for an already-admitted automation whose write scope is limited to 
 
 Required for `AGENTS.md`, README/shared indexes, architecture, policies, schemas, compiler/runtime code, tests, workflows and roadmap semantics. Use Issue-first molecular branches, disjoint path leases and bottom-up Draft PR review.
 
-## Planned molecular Stack PR graph
+## Published molecular Stack PR graph
+
+Epic: [Issue #3](https://github.com/ed3c/ai-product-notes/issues/3)
 
 ```text
 main@ab9596ff1df2b44785e28baad650f93f21b9786c
-└── agent/4-market-control-plane        Issue #4 / Draft PR TBD
-    └── agent/5-opportunity-compiler    Issue #5 / Draft PR TBD
-        └── agent/6-portfolio-convergence Issue #6 / Draft PR TBD
+└── agent/4-market-control-plane@8ae076852bce7f1abe3344b8db0d6b2df42c61eb
+    Issue #4 · Draft PR #7 · base main
+    └── agent/5-opportunity-compiler@849b50a011abdbe9940fa52d597a456902601e64
+        Issue #5 · Draft PR #8 · base agent/4-market-control-plane
+        └── agent/6-portfolio-convergence@6d88ed1fc26c74d8e5ad0d0e0fdef09e38560d81
+            Issue #6 · Draft PR #9 · base agent/5-opportunity-compiler
+            + shared-index reconciliation on the same convergence branch
 ```
 
-The graph is Git Town-compatible, but exact Git Town admission and live synchronization remain `ABSENT / NOT_EXERCISED`. See `docs/git/STACKED_PRS.md`.
+| Leaf | Issue | Draft PR | Exact PR base | Immutable stage head | Scope |
+|---|---|---|---|---|---|
+| Governance | [#4](https://github.com/ed3c/ai-product-notes/issues/4) | [#7](https://github.com/ed3c/ai-product-notes/pull/7) | `main@ab9596ff1df2b44785e28baad650f93f21b9786c` | `8ae076852bce7f1abe3344b8db0d6b2df42c61eb` | Agent/docs/git contracts |
+| Compiler | [#5](https://github.com/ed3c/ai-product-notes/issues/5) | [#8](https://github.com/ed3c/ai-product-notes/pull/8) | `agent/4-market-control-plane@8ae076852bce7f1abe3344b8db0d6b2df42c61eb` | `849b50a011abdbe9940fa52d597a456902601e64` | compiler/schemas/assets/tests |
+| Convergence | [#6](https://github.com/ed3c/ai-product-notes/issues/6) | [#9](https://github.com/ed3c/ai-product-notes/pull/9) | `agent/5-opportunity-compiler@849b50a011abdbe9940fa52d597a456902601e64` | `6d88ed1fc26c74d8e5ad0d0e0fdef09e38560d81` before index reconciliation | opportunity/experiment/roadmap/shared indexes |
+
+A commit cannot embed its own final SHA without a self-reference. Therefore this README records immutable stage heads; the current convergence head is read from PR #9 metadata and is also posted to Issue #6 after reconciliation. The graph is Git Town-compatible, but exact Git Town admission and live synchronization remain `ABSENT / NOT_EXERCISED`. See `docs/git/STACKED_PRS.md`.
 
 ## Validation
 

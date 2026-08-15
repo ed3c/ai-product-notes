@@ -40,6 +40,25 @@ class ConvergenceTests(unittest.TestCase):
         for unsupported in ("**State:** `BUILD`", "**State:** `PAID`", "**State:** `MARKET_VALIDATED`", "**State:** `DONE`"):
             self.assertNotIn(unsupported, active)
 
+    def test_published_stack_trace_has_actual_refs(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        ledger = (ROOT / "docs/git/STACKED_PRS.md").read_text(encoding="utf-8")
+        combined = readme + "\n" + ledger
+        self.assertNotIn("TBD", combined)
+        for value in (
+            "https://github.com/ed3c/ai-product-notes/pull/7",
+            "https://github.com/ed3c/ai-product-notes/pull/8",
+            "https://github.com/ed3c/ai-product-notes/pull/9",
+            "8ae076852bce7f1abe3344b8db0d6b2df42c61eb",
+            "849b50a011abdbe9940fa52d597a456902601e64",
+            "6d88ed1fc26c74d8e5ad0d0e0fdef09e38560d81",
+            "DRAFT_PUBLISHED",
+        ):
+            self.assertIn(value, combined)
+        self.assertIn("base agent/4-market-control-plane", combined)
+        self.assertIn("base agent/5-opportunity-compiler", combined)
+        self.assertIn("live Git Town sync: NOT_EXERCISED", ledger)
+
     def test_public_convergence_surfaces_have_no_local_private_identifiers(self) -> None:
         paths = [
             ROOT / "opportunities/vendor-api-blast-radius/opportunity.json",
