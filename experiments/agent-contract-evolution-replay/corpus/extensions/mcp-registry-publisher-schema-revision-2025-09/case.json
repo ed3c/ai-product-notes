@@ -1,0 +1,135 @@
+{
+  "schema_version": "publisher-schema-revision-case.v1",
+  "case_id": "mcp-registry-publisher-schema-revision-2025-09",
+  "change_event_id": "modelcontextprotocol/registry#562",
+  "adapter": "registry-publisher-schema-revision",
+  "history_class": "public_real_history",
+  "evidence_basis": "exact_upstream_test_and_ci_bound_contract",
+  "counts_toward_real_breakage_gate": true,
+  "sources": {
+    "old_publisher": {
+      "repository": "modelcontextprotocol/registry",
+      "commit": "4962609697de34ee8fcccdc6f9166f5b4cdbad99",
+      "path": "cmd/publisher/commands/publish.go",
+      "blob_sha": "a72671c43f58120a22682b32e8e0e598c1759e3d",
+      "locus": "publisher admits schema revision 2025-09-16"
+    },
+    "new_publisher": {
+      "repository": "modelcontextprotocol/registry",
+      "commit": "b21c6f564d9197f14006a87928181539f57b28ab",
+      "path": "cmd/publisher/commands/publish.go",
+      "blob_sha": "0f6b959e4d623f00bb0c926e9d8dd61b6eef88f4",
+      "locus": "publisher admits schema revision 2025-09-29"
+    },
+    "old_test": {
+      "repository": "modelcontextprotocol/registry",
+      "commit": "4962609697de34ee8fcccdc6f9166f5b4cdbad99",
+      "path": "cmd/publisher/commands/publish_test.go",
+      "blob_sha": "0dd3f62dfb4643377973fee093528c5fba7b029f",
+      "locus": "current 2025-09-16 schema should pass validation"
+    },
+    "new_test": {
+      "repository": "modelcontextprotocol/registry",
+      "commit": "b21c6f564d9197f14006a87928181539f57b28ab",
+      "path": "cmd/publisher/commands/publish_test.go",
+      "blob_sha": "67a7022791477b8a5ac98e797edb10140d3b7fb4",
+      "locus": "current 2025-09-29 schema should pass validation"
+    },
+    "old_schema": {
+      "repository": "modelcontextprotocol/static",
+      "commit": "98bb594fa4641a3bfe2b81d1f1f5ec88ba1ed503",
+      "path": "schemas/2025-09-16/server.schema.json",
+      "blob_sha": "8766b2a49d545eb6d11b5344ded1f1008462f680",
+      "locus": "released 2025-09-16 server schema"
+    },
+    "new_schema": {
+      "repository": "modelcontextprotocol/static",
+      "commit": "3ec7efd76902cf1a02e35a5afc77b39623aa7d08",
+      "path": "schemas/2025-09-29/server.schema.json",
+      "blob_sha": "bcf5ba5af6a33ac2de5344d24eb3db48860e4e73",
+      "locus": "released 2025-09-29 server schema"
+    },
+    "workflow": {
+      "repository": "modelcontextprotocol/registry",
+      "commit": "4962609697de34ee8fcccdc6f9166f5b4cdbad99",
+      "path": ".github/workflows/ci.yml",
+      "blob_sha": "be7ccf9ebdd818be100fd3bd9e0bcb3c5bb11786",
+      "locus": "CI Pipeline workflow shared by old and new subjects"
+    },
+    "change": {
+      "repository": "modelcontextprotocol/registry",
+      "commit": "b21c6f564d9197f14006a87928181539f57b28ab",
+      "path": "cmd/publisher/commands/publish.go",
+      "blob_sha": "0f6b959e4d623f00bb0c926e9d8dd61b6eef88f4",
+      "pull_request": 562,
+      "locus": "publisher schema admission revision changed"
+    }
+  },
+  "old_contract": {
+    "schema_kind": "publisher-schema-revision-admission",
+    "admitted_revision": "2025-09-16",
+    "schema_uri": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+    "empty_schema_is_admitted": true
+  },
+  "new_contract": {
+    "schema_kind": "publisher-schema-revision-admission",
+    "admitted_revision": "2025-09-29",
+    "schema_uri": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+    "empty_schema_is_admitted": true
+  },
+  "consumer": {
+    "schema_version": "publisher-schema-consumer.v1",
+    "schema_uri": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+    "origin": "old upstream passing publish_test.go fixture"
+  },
+  "validation": {
+    "old_ci": {
+      "run_id": 18078458326,
+      "head_sha": "4962609697de34ee8fcccdc6f9166f5b4cdbad99",
+      "workflow_path": ".github/workflows/ci.yml",
+      "workflow_blob_sha": "be7ccf9ebdd818be100fd3bd9e0bcb3c5bb11786",
+      "event": "push",
+      "conclusion": "success",
+      "jobs": {
+        "Build, Lint, and Validate": "success",
+        "Tests": "success"
+      },
+      "job_ids": {
+        "Build, Lint, and Validate": 51438329295,
+        "Tests": 51438329341
+      }
+    },
+    "new_ci": {
+      "run_id": 18109863200,
+      "head_sha": "b21c6f564d9197f14006a87928181539f57b28ab",
+      "workflow_path": ".github/workflows/ci.yml",
+      "workflow_blob_sha": "be7ccf9ebdd818be100fd3bd9e0bcb3c5bb11786",
+      "event": "push",
+      "conclusion": "success",
+      "jobs": {
+        "Build, Lint, and Validate": "success",
+        "Tests": "success"
+      },
+      "job_ids": {
+        "Build, Lint, and Validate": 51533373676,
+        "Tests": 51533373630
+      }
+    }
+  },
+  "negative_findings": [
+    {
+      "finding_id": "publisher-status-removal",
+      "disposition": "NOT_COUNTED",
+      "reason": "go_json_unmarshal_does_not_prove_unknown_field_rejection",
+      "notes": "The same upstream change removed publisher-controlled status, but the old decoder and validation path do not establish deterministic unknown-field rejection."
+    }
+  ],
+  "adjudication": {
+    "consumer_class": "upstream_test_fixture",
+    "adjudicator": "deterministic-publisher-schema-revision-adapter.v1",
+    "expected_old": "PASS",
+    "expected_new": "FAIL",
+    "counted_reason": "schema_revision_not_admitted",
+    "notes": "The exact historical 2025-09-16 schema fixture is admitted by the old publisher and rejected by the new publisher before authentication or network publication."
+  }
+}
