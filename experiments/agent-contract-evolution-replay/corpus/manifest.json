@@ -1,0 +1,241 @@
+{
+  "schema_version": "contract-history-corpus.v1",
+  "corpus_id": "mcp-contract-evolution-public-history-2026-08-15",
+  "generated_policy": {
+    "minimum_cases": 3,
+    "historical_breakage_gate_target": 5,
+    "market_state": "VALIDATE",
+    "changelog_prose_is_not_breakage_proof": true
+  },
+  "cases": [
+    {
+      "case_id": "mcp-registry-package-json-casing-2025-09",
+      "adapter": "registry-schema",
+      "history_class": "public_real_history",
+      "evidence_basis": "upstream_test_and_exact_contract",
+      "counts_toward_real_breakage_gate": true,
+      "sources": {
+        "old_contract": {
+          "repository": "modelcontextprotocol/registry",
+          "commit": "63cf08efad6ec056cf7c174221db25572a429385",
+          "path": "pkg/model/types.go",
+          "blob_sha": "bcb3baf1a5f295aabb86c782e9a0559da22369e4",
+          "locus": "Package JSON tags use snake_case"
+        },
+        "new_contract": {
+          "repository": "modelcontextprotocol/registry",
+          "commit": "e5cc182ff69306dc088869d532a836d5383b3c46",
+          "path": "pkg/model/types.go",
+          "blob_sha": "b30d0ff87bd5ef9a6c7ed3bf11bd91289bb73bc9",
+          "locus": "Package JSON tags use camelCase"
+        },
+        "consumer": {
+          "repository": "modelcontextprotocol/registry",
+          "commit": "63cf08efad6ec056cf7c174221db25572a429385",
+          "path": "internal/validators/validators_test.go",
+          "blob_sha": "0413352450bcb1197d0b9e25e7e2821f08d1f8eb",
+          "locus": "valid server detail with all fields"
+        },
+        "change": {
+          "repository": "modelcontextprotocol/registry",
+          "commit": "e5cc182ff69306dc088869d532a836d5383b3c46",
+          "path": "pkg/model/types.go",
+          "blob_sha": "b30d0ff87bd5ef9a6c7ed3bf11bd91289bb73bc9",
+          "pull_request": 488,
+          "locus": "registry field casing migration"
+        }
+      },
+      "old_contract": {
+        "schema_kind": "object-field-contract",
+        "target_path": ["packages", 0],
+        "required": ["registry_type", "identifier", "version"],
+        "allowed": [
+          "registry_type",
+          "registry_base_url",
+          "identifier",
+          "version",
+          "file_sha256",
+          "runtime_hint",
+          "transport",
+          "runtime_arguments",
+          "package_arguments",
+          "environment_variables"
+        ],
+        "additional_properties": false
+      },
+      "new_contract": {
+        "schema_kind": "object-field-contract",
+        "target_path": ["packages", 0],
+        "required": ["registryType", "identifier", "version"],
+        "allowed": [
+          "registryType",
+          "registryBaseUrl",
+          "identifier",
+          "version",
+          "fileSha256",
+          "runtimeHint",
+          "transport",
+          "runtimeArguments",
+          "packageArguments",
+          "environmentVariables"
+        ],
+        "additional_properties": false
+      },
+      "consumer": {
+        "schema_version": "registry-server-consumer.v1",
+        "packages": [
+          {
+            "registry_type": "npm",
+            "registry_base_url": "https://registry.npmjs.org",
+            "identifier": "test-package",
+            "version": "1.0.0",
+            "transport": {"type": "stdio"}
+          }
+        ]
+      },
+      "adjudication": {
+        "consumer_class": "upstream_test_fixture",
+        "adjudicator": "deterministic-registry-schema-adapter.v1",
+        "expected_old": "PASS",
+        "expected_new": "FAIL",
+        "notes": "The old upstream test fixture serialized through the old snake_case tags; the unchanged JSON object is rejected by the camelCase contract."
+      }
+    },
+    {
+      "case_id": "mcp-typescript-sdk-get-task-result-2026-03",
+      "adapter": "sdk-api",
+      "history_class": "public_real_history",
+      "evidence_basis": "upstream_self_consumer_and_exact_contract",
+      "counts_toward_real_breakage_gate": false,
+      "sources": {
+        "old_contract": {
+          "repository": "modelcontextprotocol/typescript-sdk",
+          "commit": "ccb78f20438a853f0205b8ed7f642af7780208e6",
+          "path": "packages/client/src/experimental/tasks/client.ts",
+          "blob_sha": "696862c9cef34f96ad507ec529aee0f869f40397",
+          "locus": "getTaskResult(taskId, resultSchema?, options?)"
+        },
+        "new_contract": {
+          "repository": "modelcontextprotocol/typescript-sdk",
+          "commit": "0784be1a67fb3cc2aba0182d88151264f4ea73c8",
+          "path": "packages/client/src/experimental/tasks/client.ts",
+          "blob_sha": "96e1613e705173ef430aa1071f07a0558818254b",
+          "locus": "getTaskResult(taskId, options?)"
+        },
+        "consumer": {
+          "repository": "modelcontextprotocol/typescript-sdk",
+          "commit": "ccb78f20438a853f0205b8ed7f642af7780208e6",
+          "path": "packages/client/src/experimental/tasks/client.ts",
+          "blob_sha": "696862c9cef34f96ad507ec529aee0f869f40397",
+          "locus": "upstream wrapper forwards resultSchema as the second semantic argument"
+        },
+        "change": {
+          "repository": "modelcontextprotocol/typescript-sdk",
+          "commit": "0784be1a67fb3cc2aba0182d88151264f4ea73c8",
+          "path": ".changeset/support-standard-json-schema.md",
+          "blob_sha": "1ceff358448970a4efd2d314cbdca0c6f98fa5d9",
+          "pull_request": 1689,
+          "locus": "resultSchema parameter removal"
+        }
+      },
+      "old_contract": {
+        "schema_kind": "positional-call-contract",
+        "symbol": "client.experimental.tasks.getTaskResult",
+        "parameters": [
+          {"name": "taskId", "roles": ["task_id"], "optional": false},
+          {"name": "resultSchema", "roles": ["result_schema"], "optional": true},
+          {"name": "options", "roles": ["request_options"], "optional": true}
+        ]
+      },
+      "new_contract": {
+        "schema_kind": "positional-call-contract",
+        "symbol": "client.experimental.tasks.getTaskResult",
+        "parameters": [
+          {"name": "taskId", "roles": ["task_id"], "optional": false},
+          {"name": "options", "roles": ["request_options"], "optional": true}
+        ]
+      },
+      "consumer": {
+        "schema_version": "sdk-call-consumer.v1",
+        "symbol": "client.experimental.tasks.getTaskResult",
+        "arguments": [
+          {"role": "task_id", "value": "task-123"},
+          {"role": "result_schema", "value": "CallToolResultSchema"}
+        ]
+      },
+      "adjudication": {
+        "consumer_class": "upstream_self_consumer",
+        "adjudicator": "deterministic-sdk-api-adapter.v1",
+        "expected_old": "PASS",
+        "expected_new": "FAIL",
+        "notes": "The exact exported call contract changed, but no independent downstream public failure fixture is bound; this case must not count toward the five-case market gate."
+      }
+    },
+    {
+      "case_id": "mcp-2026-discover-server-info-envelope-relocation",
+      "adapter": "protocol-envelope",
+      "history_class": "public_real_history",
+      "evidence_basis": "exact_contract_and_public_gateway_example",
+      "counts_toward_real_breakage_gate": false,
+      "sources": {
+        "old_contract": {
+          "repository": "modelcontextprotocol/typescript-sdk",
+          "commit": "f60dff0674954ab516739f21ad9905349c8e9249",
+          "path": "docs/advanced/gateway.md",
+          "blob_sha": "f567c69847e36eceae4a7324e4a62a05291b7fcc",
+          "locus": "DiscoverResult body contains serverInfo"
+        },
+        "new_contract": {
+          "repository": "modelcontextprotocol/typescript-sdk",
+          "commit": "f4137630c05dc9a4fb14d4d3777f5cb167bd6313",
+          "path": "docs/advanced/gateway.md",
+          "blob_sha": "708b7278dceca75749cd7645452b8499d455c1d1",
+          "locus": "server identity moves to result _meta"
+        },
+        "consumer": {
+          "repository": "modelcontextprotocol/typescript-sdk",
+          "commit": "f60dff0674954ab516739f21ad9905349c8e9249",
+          "path": "docs/advanced/gateway.md",
+          "blob_sha": "f567c69847e36eceae4a7324e4a62a05291b7fcc",
+          "locus": "gateway example reads DiscoverResult.serverInfo"
+        },
+        "change": {
+          "repository": "modelcontextprotocol/typescript-sdk",
+          "commit": "f4137630c05dc9a4fb14d4d3777f5cb167bd6313",
+          "path": ".changeset/spec-3002-servinfo-meta.md",
+          "blob_sha": "b4eba489b4cf31472ad7f491a5f3182b884f244d",
+          "pull_request": 2513,
+          "locus": "spec PR #3002 wire alignment"
+        }
+      },
+      "old_contract": {
+        "schema_kind": "protocol-envelope-contract",
+        "discover_server_identity_location": "body.serverInfo",
+        "request_client_info": "required"
+      },
+      "new_contract": {
+        "schema_kind": "protocol-envelope-contract",
+        "discover_server_identity_location": "_meta.io.modelcontextprotocol/serverInfo",
+        "request_client_info": "optional"
+      },
+      "consumer": {
+        "schema_version": "protocol-envelope-consumer.v1",
+        "discover_result": {
+          "supportedVersions": ["2026-07-28"],
+          "capabilities": {"tools": {"listChanged": true}},
+          "serverInfo": {"name": "gateway-target", "version": "1.0.0"},
+          "resultType": "complete"
+        },
+        "read_path": "serverInfo"
+      },
+      "unsupported_reason": "The current evaluator validates isolated object fields and positional API roles. It cannot yet model identity relocation across a result envelope, negotiated protocol era, response metadata stamping, and client read-path semantics without risking a false historical claim.",
+      "adjudication": {
+        "consumer_class": "upstream_documented_example",
+        "adjudicator": "unsupported-adapter-policy.v1",
+        "expected_old": "NOT_EXERCISED",
+        "expected_new": "NOT_EXERCISED",
+        "notes": "Kept unsupported to prevent benchmark cherry-picking and false equivalence with plain object-schema validation."
+      }
+    }
+  ]
+}

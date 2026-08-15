@@ -17,14 +17,25 @@
 - **State:** `VALIDATE`
 - **Market relock:** `docs/MARKET_SATURATION_RELOCK_2026-08-15.md`
 - **Experiment:** `experiments/agent-contract-evolution-replay/README.md`
-- **Thin slice:** old contract + new contract + known-good trajectory → deterministic compatibility receipt.
-- **First checks:** removed tool, newly-required argument, enum narrowing, historical undeclared tool.
-- **Current evidence:** public synthetic fixtures only.
-- **Runtime evidence:** `PENDING_HOSTED_CI` until exact branch and synthetic-merge runs pass.
+- **Public corpus:** `experiments/agent-contract-evolution-replay/corpus/manifest.json`
+- **Canonical receipt:** `experiments/agent-contract-evolution-replay/corpus/receipts.json`
+- **Current real-history gate:** `1 / 5`.
+- **Counted evidence:** MCP Registry package JSON casing migration — old upstream fixture `PASS`, unchanged fixture against new contract `FAIL`.
+- **Not counted:** TypeScript SDK `getTaskResult` positional contract break — exact old/new source is bound, but no independent downstream public failure fixture is admitted.
+- **Unsupported:** 2026-07-28 server identity relocation requires a `protocol-envelope` adapter; it remains `UNSUPPORTED_ADAPTER`.
+- **Synthetic evidence:** evaluator tests only; never counts toward the real-history gate.
+- **Runtime evidence:** `PENDING_HOSTED_CI` for the public-history corpus branch.
 - **Customer-origin evidence:** `ABSENT`.
 - **Paid demand:** `ABSENT`.
-- **Promotion gate:** at least 3 qualified teams with recurring pain plus at least 5 independently adjudicated real historical breakages, acceptable false-positive/unknown rates, and paid/binding adoption evidence.
+- **Promotion gate:** at least 3 qualified teams with recurring pain plus at least 5 independently adjudicated real historical breakages, acceptable false-positive/unsupported/inconclusive rates, and paid or binding adoption evidence.
 - **Durable owner:** `UNSELECTED`.
-- **Non-goal:** generic trace viewer, automatic repair, LLM judge, universal MCP/Agent Skills compatibility.
+- **Non-goal:** generic trace viewer, automatic repair, LLM judge, or a false universal MCP/Agent Skills compatibility claim.
+
+## Next evidence work
+
+1. Find a public downstream repository that called `experimental.tasks.getTaskResult(taskId, resultSchema)` before PR #1689 and prove old compile PASS/new compile FAIL.
+2. Implement a narrowly scoped `protocol-envelope` adapter only after defining exact negotiated-era, response metadata and consumer read-path semantics.
+3. Add at least four more independently adjudicated breakages without cherry-picking only cases supported by existing adapters.
+4. Run qualified buyer interviews and request a paid-pilot commitment only after the false-positive and unsupported rates are visible.
 
 No item is currently in `BUILD`.
