@@ -13,7 +13,7 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 
 只對 `PASS` 進正式排行。Code、model weights、dataset、trajectory 必須分別驗證授權。
 
-### Verified ranking — 2026-08-15
+### Verified ranking — 2026-08-16
 
 | Rank | Asset | Type | License gate | Hackathon MVP | Business | Research | Production | Stack compatibility | Avg |
 |---:|---|---|---|---:|---:|---:|---:|---:|---:|
@@ -33,9 +33,23 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 | 14 | DeepSeek Harness | composable agent harness / plugin runtime | PASS / MIT code | 9 | 8 | 10 | 6 | 10 | 8.6 |
 | 15 | AgentConnect | multi-agent collaboration/control plane | PASS / Apache-2.0 | 9 | 8 | 8 | 7 | 10 | 8.4 |
 | 16 | NVIDIA-NeMo/Switchyard | LLM protocol translation & routing proxy | PASS / Apache-2.0 code | 9 | 9 | 9 | 5 | 10 | 8.4 |
-| 17 | MemoryCustodian | repo-native agent memory | PASS / MIT | 9 | 7 | 8 | 6 | 9 | 7.8 |
-| 18 | Soup CLI | local LLM fine-tuning/post-training CLI | PASS / Apache-2.0 | 8 | 6 | 9 | 7 | 9 | 7.8 |
-| 19 | Aureka OpenDDE | biomolecular foundation model / drug-discovery engine | PASS / Apache-2.0 code + released checkpoints; datasets/search DB scope separate | 7 | 8 | 10 | 5 | 8 | 7.6 |
+| 17 | @inferock/measure | LLM billing-integrity measurement library | PASS / Apache-2.0 code | 9 | 8 | 9 | 7 | 8 | 8.2 |
+| 18 | MemoryCustodian | repo-native agent memory | PASS / MIT | 9 | 7 | 8 | 6 | 9 | 7.8 |
+| 19 | Soup CLI | local LLM fine-tuning/post-training CLI | PASS / Apache-2.0 | 8 | 6 | 9 | 7 | 9 | 7.8 |
+| 20 | Aureka OpenDDE | biomolecular foundation model / drug-discovery engine | PASS / Apache-2.0 code + released checkpoints; datasets/search DB scope separate | 7 | 8 | 10 | 5 | 8 | 7.6 |
+
+### 2026-08-16 新增驗證
+
+**@inferock/measure**
+- Primary repo: https://github.com/inferock/inferock-bench
+- Immutable verification commit: `e170a84e8aa55e062b646452474d45e3fcb45f9f`
+- Component path: https://github.com/inferock/inferock-bench/tree/e170a84e8aa55e062b646452474d45e3fcb45f9f/packages/measure
+- Primary code license: https://github.com/inferock/inferock-bench/blob/e170a84e8aa55e062b646452474d45e3fcb45f9f/packages/measure/LICENSE
+- License gate: `PASS / Apache-2.0` **for the `packages/measure` component only**.
+- 技術價值：提供 canonical provider event types、OpenAI / Anthropic / Gemini / OpenRouter usage normalization、broken-output / billed-empty / refusal / latency / token-count / billing-integrity detectors、pricing helpers，以及 receipt-ready spent/loss/recovery/exposure fields。適合 LLM FinOps、billing reconciliation、provider-independent receipts 與 regression measurement。
+- Evidence boundary：repository root 明確是 multi-license。完整 `apps/inferock-bench` CLI 使用 `FSL-1.1-ALv2`（之後轉 Apache-2.0），`spec` 使用 CC-BY-4.0；因此不能把 `@inferock/measure` 的 Apache-2.0 自動外推到完整產品。Full CLI 目前只列 `CONDITIONAL`，不進正式排行。
+- Production caution：Anthropic output-token recount 仍依 provider-assisted `count_tokens` + pinned local estimator calibration；upstream 自己把該 evidence 限制在 grade B。Maker 在 2026-08-15 Product Hunt launch 也明確表示尚無可公開的 provider-credit recovery 成功案例，因此 Business / Production 分數不因 launch headline 高估。
+- Asset boundary：本次沒有驗證任何 reusable model weights、training dataset 或 trajectory corpus；只將 Apache-2.0 measurement library 列為 PASS。
 
 ### 2026-08-15 新增驗證
 
@@ -122,6 +136,7 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 
 ### Conditional / excluded from formal rank
 
+- `inferock-bench` CLI: `CONDITIONAL`。Repository root 明確標示 `apps/inferock-bench` 為 `FSL-1.1-ALv2`、之後轉 Apache-2.0；目前不是本 policy 下的即時 permissive PASS。只有 `packages/measure` 被獨立驗證為 Apache-2.0 並正式入榜。
 - `Spine-AI/medley`: `CONDITIONAL`。Repository plugin shim 是 MIT，但 LICENSE 明確指出 Medley engine 是 proprietary/closed source，且產品本身不是 open source，因此不能視為完整可替代產品的 OSS implementation asset。
 
 ## English
@@ -130,26 +145,34 @@ Only `PASS` entries receive a formal rank. Code, model weights, datasets, and tr
 
 Evaluation dimensions: Hackathon MVP speed, Business monetization leverage, Research/reproducibility value, Production maturity, and compatibility with common production AI stacks.
 
+### New verified asset — 2026-08-16
+
+**@inferock/measure** enters at rank 17 with an internal 8.2 average. The component was verified at commit `e170a84e8aa55e062b646452474d45e3fcb45f9f` under Apache-2.0. It provides canonical provider-event types, token/cost checks, billing-integrity detectors, pricing helpers and receipt-ready loss/recovery fields useful for AI FinOps and provider-independent billing reconciliation.
+
+The license decision is intentionally component-scoped. The repository root is multi-license: `apps/inferock-bench` uses FSL-1.1-ALv2 and the `spec` directory uses CC-BY-4.0, so the full CLI is `CONDITIONAL`, not a formal PASS asset. No model, dataset or trajectory rights are inferred. Production and business scores remain conservative because the project documents provider-assisted evidence limits for some token checks and the maker stated during the August 15 Product Hunt launch that there is not yet a provider-credit recovery case to cite.
+
 ### New verified assets — 2026-08-15
 
-**BrowserAct Skills** enters at rank 13 with an internal 8.6 average. Repository code was verified at commit `8f287271faa0c1df79a44578cb059102ff004da2` under MIT. It is a high-leverage browser automation and agent-Skill reference with local browser reuse, session isolation, human handoff, compact agent-oriented state, and broad coding-agent compatibility. The MIT decision covers repository code only; BrowserAct Cloud, managed proxy/browser services, third-party site terms, and collected-data rights remain separate.
+**BrowserAct Skills** remains rank 13 with an internal 8.6 average. Repository code was verified at commit `8f287271faa0c1df79a44578cb059102ff004da2` under MIT. It is a high-leverage browser automation and agent-Skill reference with local browser reuse, session isolation, human handoff, compact agent-oriented state, and broad coding-agent compatibility. The MIT decision covers repository code only; BrowserAct Cloud, managed proxy/browser services, third-party site terms, and collected-data rights remain separate.
 
-**DeepSeek Harness** enters at rank 14 with an internal 8.6 average. Repository code was verified at commit `47f943859bef60e4160492346772ded9b24f765a` under MIT. Its Cordis architecture makes the model adapter, tool registry, session log, agent loop, policy/sandbox layer, and UI replaceable plugins. The durable session event log and model-visible logging invariant make it a strong harness, replay, audit, and compatibility research asset. Production maturity is deliberately scored lower because upstream labels the project a developer preview and warns of compatibility-breaking changes. No model-weight, dataset, plugin, or trajectory license is inferred from the runtime code license.
+**DeepSeek Harness** remains rank 14 with an internal 8.6 average. Repository code was verified at commit `47f943859bef60e4160492346772ded9b24f765a` under MIT. Its Cordis architecture makes the model adapter, tool registry, session log, agent loop, policy/sandbox layer, and UI replaceable plugins. The durable session event log and model-visible logging invariant make it a strong harness, replay, audit, and compatibility research asset. Production maturity is deliberately scored lower because upstream labels the project a developer preview and warns of compatibility-breaking changes. No model-weight, dataset, plugin, or trajectory license is inferred from the runtime code license.
 
 ### New verified asset — 2026-08-14
 
-**Aureka OpenDDE** is now rank 19 after new 2026-08-15 entries, while retaining an internal 7.6 average. Repository code was verified at commit `d42760d264637a4518c0ab56d021451b9888d1f9` under Apache-2.0. Aureka's release statement and the Hugging Face model repository also identify the released OpenDDE checkpoints as Apache-2.0. This decision does not extend to training datasets, external search databases, or third-party biological data. OpenDDE is a strong research and reproduction asset for all-atom co-folding and drug-discovery workflows, but its production score is intentionally low because upstream labels it a preview release and explicitly says it is not yet intended for production pipelines.
+**Aureka OpenDDE** is now rank 20 after newer entries, while retaining an internal 7.6 average. Repository code was verified at commit `d42760d264637a4518c0ab56d021451b9888d1f9` under Apache-2.0. Aureka's release statement and the Hugging Face model repository also identify the released OpenDDE checkpoints as Apache-2.0. This decision does not extend to training datasets, external search databases, or third-party biological data. OpenDDE is a strong research and reproduction asset for all-atom co-folding and drug-discovery workflows, but its production score is intentionally low because upstream labels it a preview release and explicitly says it is not yet intended for production pipelines.
 
 ### Previous verified assets
 
-**NVIDIA-NeMo/Switchyard** is now rank 16 at 8.4 after the new entries. Its repository code remains Apache-2.0 and useful for protocol translation and model routing, but upstream still labels it pre-alpha and not for production.
+**NVIDIA-NeMo/Switchyard** remains rank 16 at 8.4. Its repository code remains Apache-2.0 and useful for protocol translation and model routing, but upstream still labels it pre-alpha and not for production.
 
 **Paritok gateway + Paritok-4B-v1** remains rank 11 at 8.6. Repository code/gateway and the adapter are Apache-2.0; the training trajectories remain excluded as a reusable data asset until a separate license is verified.
 
 **Prime Agent** remains rank 12 at 8.6 under MIT. It is useful for persistent and self-improving agent patterns but requires mutation governance and rollback.
 
-**AgentConnect** is now rank 15 at 8.4 under Apache-2.0 and remains a strong reference for heterogeneous multi-agent collaboration and permission-aware control planes.
+**AgentConnect** remains rank 15 at 8.4 under Apache-2.0 and remains a strong reference for heterogeneous multi-agent collaboration and permission-aware control planes.
 
-**Soup CLI** remains useful for local post-training, with layer streaming explicitly treated as BETA rather than production-proven.
+**MemoryCustodian** is now rank 18 and remains attractive for repository-native project memory and cross-agent interoperability but has lower production evidence.
 
-`MemoryCustodian` remains attractive for repository-native project memory and cross-agent interoperability but has lower production evidence. `Spine-AI/medley` remains conditional because only its plugin shim is MIT while the engine is proprietary.
+**Soup CLI** is now rank 19 and remains useful for local post-training, with layer streaming explicitly treated as BETA rather than production-proven.
+
+`Spine-AI/medley` remains conditional because only its plugin shim is MIT while the engine is proprietary.
