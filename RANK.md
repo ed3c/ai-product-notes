@@ -13,7 +13,7 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 
 只對 `PASS` 進正式排行。Code、model weights、dataset、trajectory 必須分別驗證授權。
 
-### Verified ranking — 2026-08-16
+### Verified ranking — 2026-08-17
 
 | Rank | Asset | Type | License gate | Hackathon MVP | Business | Research | Production | Stack compatibility | Avg |
 |---:|---|---|---|---:|---:|---:|---:|---:|---:|
@@ -31,12 +31,36 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 | 12 | Prime Agent | self-improving coding/research agent | PASS / MIT | 9 | 8 | 10 | 7 | 9 | 8.6 |
 | 13 | BrowserAct Skills | browser automation / agent Skill runtime | PASS / MIT code; managed cloud/proxy scope separate | 10 | 8 | 7 | 8 | 10 | 8.6 |
 | 14 | DeepSeek Harness | composable agent harness / plugin runtime | PASS / MIT code | 9 | 8 | 10 | 6 | 10 | 8.6 |
-| 15 | AgentConnect | multi-agent collaboration/control plane | PASS / Apache-2.0 | 9 | 8 | 8 | 7 | 10 | 8.4 |
-| 16 | NVIDIA-NeMo/Switchyard | LLM protocol translation & routing proxy | PASS / Apache-2.0 code | 9 | 9 | 9 | 5 | 10 | 8.4 |
-| 17 | @inferock/measure | LLM billing-integrity measurement library | PASS / Apache-2.0 code | 9 | 8 | 9 | 7 | 8 | 8.2 |
-| 18 | MemoryCustodian | repo-native agent memory | PASS / MIT | 9 | 7 | 8 | 6 | 9 | 7.8 |
-| 19 | Soup CLI | local LLM fine-tuning/post-training CLI | PASS / Apache-2.0 | 8 | 6 | 9 | 7 | 9 | 7.8 |
-| 20 | Aureka OpenDDE | biomolecular foundation model / drug-discovery engine | PASS / Apache-2.0 code + released checkpoints; datasets/search DB scope separate | 7 | 8 | 10 | 5 | 8 | 7.6 |
+| 15 | HarnessRouter Community Edition | unified agent-harness runtime / protocol | PASS / Apache-2.0 repository code | 9 | 9 | 8 | 7 | 10 | 8.6 |
+| 16 | AgentConnect | multi-agent collaboration/control plane | PASS / Apache-2.0 | 9 | 8 | 8 | 7 | 10 | 8.4 |
+| 17 | NVIDIA-NeMo/Switchyard | LLM protocol translation & routing proxy | PASS / Apache-2.0 code | 9 | 9 | 9 | 5 | 10 | 8.4 |
+| 18 | Blume | AI-ready Markdown documentation framework | PASS / MIT | 10 | 7 | 8 | 8 | 9 | 8.4 |
+| 19 | @inferock/measure | LLM billing-integrity measurement library | PASS / Apache-2.0 code | 9 | 8 | 9 | 7 | 8 | 8.2 |
+| 20 | MemoryCustodian | repo-native agent memory | PASS / MIT | 9 | 7 | 8 | 6 | 9 | 7.8 |
+| 21 | Soup CLI | local LLM fine-tuning/post-training CLI | PASS / Apache-2.0 | 8 | 6 | 9 | 7 | 9 | 7.8 |
+| 22 | Aureka OpenDDE | biomolecular foundation model / drug-discovery engine | PASS / Apache-2.0 code + released checkpoints; datasets/search DB scope separate | 7 | 8 | 10 | 5 | 8 | 7.6 |
+
+### 2026-08-17 新增驗證
+
+**HarnessRouter Community Edition**
+- Primary repo: https://github.com/HarnessRouter/harnessrouter
+- Immutable verification commit: `902c2c2146fb4e4ce5f2c666836a0c203ed706a1`
+- Primary code license: https://github.com/HarnessRouter/harnessrouter/blob/902c2c2146fb4e4ce5f2c666836a0c203ed706a1/LICENSE
+- License gate: `PASS / Apache-2.0` **for repository code**.
+- 技術價值：以 Unified Harness Protocol（UHP）把 Codex、Claude Code、Hermes 等 harness 放在共同 Agent API 後面；提供 session、streaming、files、artifacts、cancellation、failure handling，以及 versioned HTTP contract、OpenAPI 3.1、JSON Schema 2020-12 與 52 runnable conformance checks。Community Edition 將 Gateway、Runner、Console、SQLite state 與 workspace volume 放在 self-hosted container，適合 harness portability、protocol interoperability、cross-harness evaluation 與 self-hosted agent runtime reference。
+- Business evidence：Community Edition 免費；managed Cloud 公開方案為 US$20 / US$100 / US$200 monthly tiers 加 Enterprise，提供 direct monetization evidence，但不是 Community Edition 本身的 license proof。
+- Production / license boundary：repository README 明確區分第三方 harness CLI 的授權。Codex 為 Apache-2.0；Claude Code 受 Anthropic terms 約束；Hermes 的 upstream licensing 需另行確認。Apache-2.0 **不可外推**到這些外部 agent CLIs、model provider terms、production kits 或 user trajectories。Self-host deployment 仍需處理 auth、network exposure、provider secrets 與 sandbox boundary。
+- Asset boundary：本次沒有把任何 model weights、dataset 或 trajectory corpus 列為 PASS；只驗證 HarnessRouter repository code。
+
+**Blume**
+- Primary repo: https://github.com/haydenbleasel/blume
+- Immutable verification commit: `5d0c14e638a333c9f8bcf6184726493d78858cc3`
+- Primary code license: https://github.com/haydenbleasel/blume/blob/5d0c14e638a333c9f8bcf6184726493d78858cc3/LICENSE
+- License gate: `PASS / MIT`.
+- 技術價值：Markdown-first docs framework，內建 raw Markdown、`llms.txt`、read-only MCP docs tools、AI skills、OpenAPI / AsyncAPI、search、versioning、validation/audit、translation checks 與 `blume eval` agent-facing docs evaluation。適合作為 agent-readable documentation、MCP documentation surface 與 docs-eval reference implementation。
+- Business boundary：Blume 官方定位 free/open source、sponsor-supported；Business score 反映 implementation leverage 與 developer adoption potential，而不是 subscription WTP。
+- Production gap：machine-readable docs 與 agent eval 不代表 docs 一定和 code/API behavior 同步；launch discussion 也直接暴露 staleness/drift 仍是上層 CI 問題。因此它強化 `Agent-Readable Docs Drift Monitor` 的需求，而不是取代 drift verification layer。
+- Asset boundary：本次沒有發現可獨立再利用的 model weights、training dataset 或 trajectory corpus；只將 MIT repository code 列為 PASS。
 
 ### 2026-08-16 新增驗證
 
@@ -145,9 +169,15 @@ Only `PASS` entries receive a formal rank. Code, model weights, datasets, and tr
 
 Evaluation dimensions: Hackathon MVP speed, Business monetization leverage, Research/reproducibility value, Production maturity, and compatibility with common production AI stacks.
 
+### New verified assets — 2026-08-17
+
+**HarnessRouter Community Edition** enters at rank 15 with an internal 8.6 average. Repository code was verified at commit `902c2c2146fb4e4ce5f2c666836a0c203ed706a1` under Apache-2.0. UHP provides a versioned agent-harness contract, OpenAPI 3.1, JSON Schema 2020-12 and 52 runnable conformance checks, while Community Edition packages Gateway, Runner and Console in a self-hosted container. The license decision covers repository code only. Claude Code, Hermes, provider/model terms, production kits and generated trajectories require separate rights review. Protocol conformance also does not prove task-level behavioral parity.
+
+**Blume** enters at rank 18 with an internal 8.4 average. Repository code was verified at commit `5d0c14e638a333c9f8bcf6184726493d78858cc3` under MIT. It is a strong implementation reference for Markdown-first agent-readable documentation with raw Markdown, `llms.txt`, read-only MCP tools, AI skills, OpenAPI/AsyncAPI and agent-facing docs evals. Its business score is lower because the project is free/open source rather than a paid SaaS. The key unresolved production problem is docs drift: machine-readable delivery does not prove that documentation still matches live code/API behavior.
+
 ### New verified asset — 2026-08-16
 
-**@inferock/measure** enters at rank 17 with an internal 8.2 average. The component was verified at commit `e170a84e8aa55e062b646452474d45e3fcb45f9f` under Apache-2.0. It provides canonical provider-event types, token/cost checks, billing-integrity detectors, pricing helpers and receipt-ready loss/recovery fields useful for AI FinOps and provider-independent billing reconciliation.
+**@inferock/measure** is now rank 19 after newer entries, retaining an internal 8.2 average. The component was verified at commit `e170a84e8aa55e062b646452474d45e3fcb45f9f` under Apache-2.0. It provides canonical provider-event types, token/cost checks, billing-integrity detectors, pricing helpers and receipt-ready loss/recovery fields useful for AI FinOps and provider-independent billing reconciliation.
 
 The license decision is intentionally component-scoped. The repository root is multi-license: `apps/inferock-bench` uses FSL-1.1-ALv2 and the `spec` directory uses CC-BY-4.0, so the full CLI is `CONDITIONAL`, not a formal PASS asset. No model, dataset or trajectory rights are inferred. Production and business scores remain conservative because the project documents provider-assisted evidence limits for some token checks and the maker stated during the August 15 Product Hunt launch that there is not yet a provider-credit recovery case to cite.
 
@@ -159,20 +189,20 @@ The license decision is intentionally component-scoped. The repository root is m
 
 ### New verified asset — 2026-08-14
 
-**Aureka OpenDDE** is now rank 20 after newer entries, while retaining an internal 7.6 average. Repository code was verified at commit `d42760d264637a4518c0ab56d021451b9888d1f9` under Apache-2.0. Aureka's release statement and the Hugging Face model repository also identify the released OpenDDE checkpoints as Apache-2.0. This decision does not extend to training datasets, external search databases, or third-party biological data. OpenDDE is a strong research and reproduction asset for all-atom co-folding and drug-discovery workflows, but its production score is intentionally low because upstream labels it a preview release and explicitly says it is not yet intended for production pipelines.
+**Aureka OpenDDE** is now rank 22 after newer entries, while retaining an internal 7.6 average. Repository code was verified at commit `d42760d264637a4518c0ab56d021451b9888d1f9` under Apache-2.0. Aureka's release statement and the Hugging Face model repository also identify the released OpenDDE checkpoints as Apache-2.0. This decision does not extend to training datasets, external search databases, or third-party biological data. OpenDDE is a strong research and reproduction asset for all-atom co-folding and drug-discovery workflows, but its production score is intentionally low because upstream labels it a preview release and explicitly says it is not yet intended for production pipelines.
 
 ### Previous verified assets
 
-**NVIDIA-NeMo/Switchyard** remains rank 16 at 8.4. Its repository code remains Apache-2.0 and useful for protocol translation and model routing, but upstream still labels it pre-alpha and not for production.
+**NVIDIA-NeMo/Switchyard** is now rank 17 at 8.4. Its repository code remains Apache-2.0 and useful for protocol translation and model routing, but upstream still labels it pre-alpha and not for production.
 
 **Paritok gateway + Paritok-4B-v1** remains rank 11 at 8.6. Repository code/gateway and the adapter are Apache-2.0; the training trajectories remain excluded as a reusable data asset until a separate license is verified.
 
 **Prime Agent** remains rank 12 at 8.6 under MIT. It is useful for persistent and self-improving agent patterns but requires mutation governance and rollback.
 
-**AgentConnect** remains rank 15 at 8.4 under Apache-2.0 and remains a strong reference for heterogeneous multi-agent collaboration and permission-aware control planes.
+**AgentConnect** is now rank 16 at 8.4 under Apache-2.0 and remains a strong reference for heterogeneous multi-agent collaboration and permission-aware control planes.
 
-**MemoryCustodian** is now rank 18 and remains attractive for repository-native project memory and cross-agent interoperability but has lower production evidence.
+**MemoryCustodian** is now rank 20 and remains attractive for repository-native project memory and cross-agent interoperability but has lower production evidence.
 
-**Soup CLI** is now rank 19 and remains useful for local post-training, with layer streaming explicitly treated as BETA rather than production-proven.
+**Soup CLI** is now rank 21 and remains useful for local post-training, with layer streaming explicitly treated as BETA rather than production-proven.
 
 `Spine-AI/medley` remains conditional because only its plugin shim is MIT while the engine is proprietary.
