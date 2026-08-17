@@ -1,0 +1,48 @@
+{
+  "schema": "prel-source-pointer-registry@0",
+  "run_id": "prel-2026-08-18-control-binding",
+  "sources": [
+    {
+      "source_id": "SRC-PDF-WEB-ARCH-2026-08-18",
+      "kind": "PDF",
+      "title": "現代網頁設計架構擴充建議.pdf",
+      "canonical_url": "https://drive.google.com/file/d/1G35AxLrIa95YIUAvncH6BiWkUVAeX9A9/view",
+      "external_id": "1G35AxLrIa95YIUAvncH6BiWkUVAeX9A9",
+      "source_locator": "page 1, architecture statement; page 2 onward, product-specific reverse mappings",
+      "observed_claim": "The source frames the common architecture as DSL/structured AST + Constraint Solver + Bidirectional Canvas + deterministic rendering/validation.",
+      "claim_class": "SOURCE_STATEMENT",
+      "rights_basis": "USER_PROVIDED_FOR_ANALYSIS",
+      "retention_policy": "POINTER_ONLY_UNTIL_EVIDENCE_PLANE_ADMISSION",
+      "content_digest": null,
+      "digest_state": "ABSENT_REQUIRES_AI_CONTENT_NOTES_51",
+      "completeness_state": "READABLE_IN_CONVERSATION_NOT_YET_RETAINED_BY_REPOSITORY",
+      "authority_ceiling": "SOURCE_INPUT_ONLY"
+    },
+    {
+      "source_id": "SRC-DOC-PREL-TRACE-2026-08-18",
+      "kind": "GOOGLE_DOC",
+      "title": "Product Reverse-Engineering Closure Loop — Original Context & Traceability — 2026-08-18",
+      "canonical_url": "https://docs.google.com/document/d/1PMLo7I6ze0CFepwmiPbHzfH2HU_GmGMqgLjjZn-1-jo/edit",
+      "external_id": "1PMLo7I6ze0CFepwmiPbHzfH2HU_GmGMqgLjjZn-1-jo",
+      "observed_revision": "AIroW37gkmO4rY-bdSwftUSmwbWWrKSE1J5mF0sjsOpEWmffBt9Dov1dCAm5BYGDf33zgZg49xWZaybrBMUZYUvEpMdPZ5aUzh44Vu7CMqw",
+      "content_digest": null,
+      "digest_state": "REVISION_BOUND_EXPORT_DIGEST_NOT_MATERIALIZED",
+      "authority_ceiling": "HUMAN_PROJECTION_ONLY"
+    },
+    {
+      "source_id": "SRC-GH-EPIC-44",
+      "kind": "GITHUB_ISSUE",
+      "canonical_url": "https://github.com/ed3c/ai-product-notes/issues/44",
+      "repository_subject": "dcef8e57a4ec74be3ff843defa82d53e213719af",
+      "authority_ceiling": "ROUTING_AND_REQUIREMENT_INPUT"
+    },
+    {
+      "source_id": "SRC-GH-CONTROL-52",
+      "kind": "GITHUB_ISSUE",
+      "canonical_url": "https://github.com/ed3c/ai-product-notes/issues/52",
+      "repository_subject": "dcef8e57a4ec74be3ff843defa82d53e213719af",
+      "authority_ceiling": "TASK_CONTRACT_INPUT"
+    }
+  ],
+  "admission_rule": "A source pointer may enter Stage 1 context, but Stage 2 completion requires rights/completeness, retained bytes or an immutable authorized pointer, locators, digest and read-back in ai-content-notes."
+}
