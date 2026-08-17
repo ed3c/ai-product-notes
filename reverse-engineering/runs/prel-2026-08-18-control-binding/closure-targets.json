@@ -1,0 +1,72 @@
+{
+  "schema": "prel-closure-targets@0",
+  "run_id": "prel-2026-08-18-control-binding",
+  "targets": [
+    {
+      "claim_id": "PREL-CL-001",
+      "claim": "A nine-stage, five-plane Product Reverse-Engineering Closure Loop has a traceable architecture and work index.",
+      "current_level": "SOURCE_ANCHORED",
+      "target_level": "IMPLEMENTED",
+      "current_evidence": ["Google Doc revision", "GitHub Epic #44 and child issues"],
+      "missing_lanes": ["repository contracts", "deterministic validators", "admitted implementation receipts"]
+    },
+    {
+      "claim_id": "PREL-CL-002",
+      "claim": "The PDF's named YC products use the proposed internal libraries and architecture.",
+      "current_level": "SOURCE_STATEMENT",
+      "target_level": "MECHANISM_BOUND",
+      "current_evidence": ["PDF product mapping prose and examples"],
+      "missing_lanes": ["independent product/internal evidence", "exact artifact identities", "runtime receipts"],
+      "hard_rule": "Never promote source-proposed internals to observed facts."
+    },
+    {
+      "claim_id": "PREL-CL-003",
+      "claim": "Stage 1 exact-subject control binding is materialized.",
+      "current_level": "PLANNED",
+      "target_level": "IMPLEMENTED",
+      "expected_milestone": "DRAFT_PUBLISHED_WITH_CONNECTOR_READBACK",
+      "missing_lanes": ["local schema validation", "repository-native tests", "Human admission"]
+    },
+    {
+      "claim_id": "PREL-CL-004",
+      "claim": "Source intake and product-signal export work end to end.",
+      "current_level": "NOT_IMPLEMENTED",
+      "target_level": "TECH_VERIFIED",
+      "owners": ["ai-content-notes#51", "ai-content-notes#50"],
+      "missing_lanes": ["contracts", "compiler", "negative controls", "retained source canary"]
+    },
+    {
+      "claim_id": "PREL-CL-005",
+      "claim": "The portable reverse-engineering Skill and independent product Shadow monitor are implemented.",
+      "current_level": "NOT_IMPLEMENTED",
+      "target_level": "TECH_VERIFIED",
+      "owners": ["skills-shared#357", "skills-shared#358"],
+      "missing_lanes": ["current-main implementation", "tests", "independent Shadow canary", "hosted checks"]
+    },
+    {
+      "claim_id": "PREL-CL-006",
+      "claim": "Bettor executes a real product-closure canary.",
+      "current_level": "NOT_EXERCISED",
+      "target_level": "LIVE_WORKFLOW_VERIFIED",
+      "owners": ["bettor-arena#181", "bettor-arena#173"],
+      "missing_lanes": ["admitted upstream Skill", "product packet", "local runtime", "leased Worker", "cleanup receipt"]
+    },
+    {
+      "claim_id": "PREL-CL-007",
+      "claim": "The product hypothesis is validated by users and paid adoption.",
+      "current_level": "ABSENT",
+      "target_level": "PAID_VALIDATED",
+      "owners": ["ai-product-notes#33", "ai-product-notes#34"],
+      "missing_lanes": ["qualified user evidence", "recurring pain", "paid or binding adoption"]
+    }
+  ],
+  "lane_order": [
+    "SOURCE_ANCHORED",
+    "MECHANISM_BOUND",
+    "IMPLEMENTED",
+    "TECH_VERIFIED",
+    "LIVE_WORKFLOW_VERIFIED",
+    "USER_VALIDATED",
+    "PAID_VALIDATED"
+  ]
+}
