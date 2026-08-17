@@ -1,0 +1,73 @@
+{
+  "schema": "prel-run-contract@0",
+  "run_id": "prel-2026-08-18-control-binding",
+  "observed_date": "2026-08-18",
+  "state": "CONTEXT_ADMISSION_READY_WITH_DECLARED_GAPS",
+  "artifact_status": "DRAFT_PREPARATION",
+  "control_issue": "https://github.com/ed3c/ai-product-notes/issues/52",
+  "parent_epic": "https://github.com/ed3c/ai-product-notes/issues/44",
+  "canonical_authority": "GITHUB_EXACT_SUBJECTS_AND_RECEIPTS",
+  "persistence_mode": "GITHUB_CANONICAL_GOOGLE_PROJECTION",
+  "runtime": {
+    "class": "CHATGPT_GITHUB_CONNECTOR",
+    "observed_capabilities": [
+      "read GitHub exact commits, trees, files, issues and pull requests",
+      "create GitHub branches, commits and Draft pull requests",
+      "read Google Docs exact revision identifiers",
+      "read the user-provided PDF through the conversation and Drive pointer"
+    ],
+    "unavailable_or_unexercised": [
+      "local checkout and shell",
+      "repository-native test execution",
+      "Git Town and linked worktrees",
+      "Forgejo",
+      "provider credentials and physical devices",
+      "customer and paid-adoption evidence",
+      "merge, release and production promotion"
+    ],
+    "authority_ceiling": "DRAFT_PUBLICATION_AND_TYPED_HANDOFF"
+  },
+  "preparation_subject": {
+    "repository": "ed3c/ai-product-notes",
+    "parent_commit": "dcef8e57a4ec74be3ff843defa82d53e213719af",
+    "parent_tree": "ef43f7a7a35f14ede0e56edefc05a6e0ff6e5d36",
+    "branch": "prel/52-control-plane-binding",
+    "publication_binding": "The exact branch head and tree are authoritative in the Draft PR and Issue #52 handoff comment; they are deliberately not self-embedded here."
+  },
+  "required_outputs": [
+    "run-contract.json",
+    "repo-role-map.json",
+    "source-pointer-registry.json",
+    "closure-targets.json",
+    "capability-plan.json",
+    "execution-dag.json",
+    "path-leases.json",
+    "shadow-baseline.json",
+    "current-gap-report.md",
+    "prompt-packets/stage-2-source-intake.md",
+    "prompt-packets/stage-3-evidence-compiler.md"
+  ],
+  "state_machine": [
+    "REQUEST_BOUND",
+    "REPOSITORIES_OBSERVED",
+    "REALITY_AND_DOCS_RECONCILED",
+    "ROLE_OWNERS_BOUND",
+    "CLAIM_CLOSURE_TARGETS_BOUND",
+    "CAPABILITY_PLAN_COMPILED",
+    "RUN_CONTRACT_DRAFT_PUBLISHED",
+    "LOCAL_ASSERTION_HANDOFF_REQUIRED",
+    "CONTEXT_ADMISSION_READY"
+  ],
+  "completion_lanes": {
+    "connector_readback": "REQUIRED_AND_EXERCISED",
+    "draft_publication": "REQUIRED_FOR_THIS_MILESTONE",
+    "local_schema_and_repository_tests": "REQUIRED_FOR_IMPLEMENTATION_ADMISSION_NOT_EXERCISED",
+    "independent_shadow": "REQUIRED_FOR_SHADOW_COMPLETION_NOT_EXERCISED",
+    "merge": "HUMAN_ADMIT_REQUIRED"
+  },
+  "non_claims": [
+    "This packet does not prove source completeness or rights admission.",
+    "This packet does not implement product-signal, dossier, Shadow or execution compilers.",
+    "This packet does not prove local tests, Git Town, provider runtime, user value, paid demand, merge or release."
+  ]
+}
