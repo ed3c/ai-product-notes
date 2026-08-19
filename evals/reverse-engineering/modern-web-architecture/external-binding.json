@@ -1,0 +1,11 @@
+{
+  "authority_ceiling": "SOURCE_EVIDENCE_ONLY",
+  "blob_sha": "88ea1d9a76ebda28182682b67808e45291639582",
+  "head_sha": "406d981965843e094b1457dfc285d0a58e238c24",
+  "path": "evals/product-signal/modern-web-architecture/product-signal.json",
+  "product_signal_digest": "sha256:c756bbb8e5413892356b8c675f78a17837b3ac067fff064070e318548dbb1d0f",
+  "pull_request": 73,
+  "repository": "ed3c/ai-content-notes",
+  "schema_version": "external-product-signal-binding@1",
+  "source_digest": "sha256:7350f0e3d29ace70a6c92343e5501b34763f452e057d9b8acef3829f57230ef6"
+}

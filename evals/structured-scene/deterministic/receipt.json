@@ -1,0 +1,69 @@
+{
+  "atom": "PREL-E02",
+  "authority_ceiling": "DETERMINISTIC_EVAL_ONLY",
+  "case_denominator": {
+    "mutation": 1,
+    "negative": 3,
+    "positive": 3,
+    "total": 7
+  },
+  "evidence_state": {
+    "deterministic_eval": "PASS",
+    "local_runtime": "NOT_EXERCISED",
+    "paid": "ABSENT",
+    "rights": "HUMAN_ADMIT_REQUIRED",
+    "user": "ABSENT"
+  },
+  "non_claims": [
+    "This receipt proves only the deterministic SceneSpec and constraint-validator eval denominator on its exact Git subject.",
+    "Hosted test success does not prove a local runtime workflow, rendering backend, model/provider quality, user value or paid demand.",
+    "Rights admission, merge, release and production promotion remain externally owned."
+  ],
+  "parent_subjects": {
+    "c02_head": "b0f59c7afad5b9acdbffbe9c87c1d86507237ea0",
+    "k03_head": "dd185109378a34109313b3a6fa150af9de0b76cf"
+  },
+  "results": [
+    {
+      "case_id": "POS-001",
+      "kind": "POSITIVE",
+      "state": "PASS"
+    },
+    {
+      "case_id": "POS-002",
+      "kind": "POSITIVE",
+      "state": "PASS"
+    },
+    {
+      "case_id": "POS-003",
+      "kind": "POSITIVE",
+      "state": "PASS"
+    },
+    {
+      "case_id": "NEG-001",
+      "kind": "NEGATIVE",
+      "state": "FAIL_AS_EXPECTED"
+    },
+    {
+      "case_id": "NEG-002",
+      "kind": "NEGATIVE",
+      "state": "FAIL_AS_EXPECTED"
+    },
+    {
+      "case_id": "NEG-003",
+      "kind": "NEGATIVE",
+      "state": "FAIL_AS_EXPECTED"
+    },
+    {
+      "case_id": "MUT-001",
+      "kind": "MUTATION",
+      "state": "STALE_AS_EXPECTED"
+    }
+  ],
+  "schema_version": "structured-scene-eval-receipt@1",
+  "summary": {
+    "mutation_stale": "1/1",
+    "negative_refused": "3/3",
+    "positive_pass": "3/3"
+  }
+}

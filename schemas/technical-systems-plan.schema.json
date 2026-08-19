@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ed3c/ai-product-notes/schemas/technical-systems-plan.schema.json",
+  "title": "Technical systems plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "packet_id", "dossier_digest", "authority_ceiling",
+    "decision_ceiling", "boundaries", "capabilities", "substitutions", "evals",
+    "mvp_slice", "nonfunctional_evidence", "non_claims"
+  ],
+  "properties": {
+    "schema_version": {"const": "technical-systems-plan@1"},
+    "packet_id": {"type": "string", "minLength": 3},
+    "dossier_digest": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "authority_ceiling": {"const": "TECHNICAL_DESIGN_ONLY"},
+    "decision_ceiling": {"const": "VALIDATE"},
+    "boundaries": {"type": "object"},
+    "capabilities": {"type": "array", "minItems": 1},
+    "substitutions": {"type": "array"},
+    "evals": {"type": "array", "minItems": 5},
+    "mvp_slice": {"type": "object"},
+    "nonfunctional_evidence": {"type": "object"},
+    "non_claims": {"type": "array", "minItems": 1}
+  }
+}

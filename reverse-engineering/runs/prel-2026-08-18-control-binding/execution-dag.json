@@ -1,0 +1,34 @@
+{
+  "schema": "prel-issue-dual-dag@0",
+  "run_id": "prel-2026-08-18-control-binding",
+  "edge_semantics": {
+    "start_dependency": "The prerequisite is readable and the needed paths/resources are free.",
+    "completion_dependency": "The prerequisite has an exact admitted receipt in its own evidence lane."
+  },
+  "nodes": [
+    {"id":"S1","repo":"ed3c/ai-product-notes","issue":52,"atom":"C","state":"ACTIVE_PREPARATION","owner":"CONTROL_BINDER"},
+    {"id":"S2","repo":"ed3c/ai-content-notes","issue":51,"atom":"A","state":"READY_AFTER_S1_DRAFT","owner":"SOURCE_INTAKE"},
+    {"id":"S3","repo":"ed3c/ai-content-notes","issue":50,"atom":"K","state":"BLOCKED_BY_S2_COMPLETION","owner":"EVIDENCE_COMPILER"},
+    {"id":"S4","repo":"ed3c/skills-shared","issue":357,"atom":"C_K_E_D","state":"BLOCKED_BY_PATH_RECONCILIATION","owner":"PORTABLE_SKILL"},
+    {"id":"S5","repo":"ed3c/skills-shared","issue":358,"atom":"E","state":"BLOCKED_BY_S4_COMPLETION","owner":"SHADOW_METHOD"},
+    {"id":"S6","repo":"ed3c/ai-product-notes","issue":45,"atom":"K","state":"BLOCKED_BY_S3_AND_S4","owner":"DOSSIER_COMPILER"},
+    {"id":"S7","repo":"ed3c/ai-product-notes","issue":51,"atom":"K","state":"BLOCKED_BY_S6_COMPLETION","owner":"SYSTEMS_ARCHITECT"},
+    {"id":"S8","repo":"ed3c/ai-product-notes","issue":46,"atom":"E","state":"BLOCKED_BY_S5_S6_S7","owner":"PRODUCT_SHADOW_INSTANCE"},
+    {"id":"S9","repo":"ed3c/ai-product-notes","issue":47,"atom":"K","state":"BLOCKED_BY_S8_COMPLETION","owner":"TECH_LEAD_PLANNER"},
+    {"id":"S10","repo":"ed3c/ai-product-notes","issue":49,"atom":"X","state":"BLOCKED_BY_S2_S3_S6_S7_S8_S9","owner":"PDF_CANARY_CONVERGENCE"},
+    {"id":"S11","repo":"ed3c/bettor-arena","issue":181,"atom":"A_X","state":"BLOCKED_BY_S4_S5_S9_S10_AND_173","owner":"EXECUTION_CONSUMER"},
+    {"id":"S12","repo":"ed3c/ai-product-notes","issue":50,"atom":"D","state":"BLOCKED_BY_ALL_ADMITTED_LEAVES","owner":"SINGLE_SHARED_INDEX_CONVERGENCE"}
+  ],
+  "start_edges": [["S1","S2"],["S1","S4"],["S1","S6"]],
+  "completion_edges": [
+    ["S2","S3"],["S3","S6"],["S4","S5"],["S3","S7"],["S6","S7"],
+    ["S5","S8"],["S6","S8"],["S7","S8"],["S8","S9"],
+    ["S2","S10"],["S3","S10"],["S6","S10"],["S7","S10"],["S8","S10"],["S9","S10"],
+    ["S4","S11"],["S5","S11"],["S9","S11"],["S10","S11"],["S11","S12"]
+  ],
+  "external_completion_dependencies": [
+    {"consumer":"S11","dependency":"bettor-arena#173","reason":"canonical closure and Local Handoff authority"},
+    {"consumer":"S12","dependency":"Google projection read-back","reason":"projection pointer must reconcile without becoming authority"}
+  ],
+  "rule": "GitHub blocked-by should represent completion edges; this artifact preserves both edge classes."
+}

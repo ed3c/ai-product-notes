@@ -1,0 +1,43 @@
+{
+  "human_admit_required": true,
+  "items": [
+    {
+      "action": "PROPOSE_UPDATE",
+      "id": "DLT-001",
+      "problem_id": "PRB-001",
+      "statement": "Keep the existing recurring-pain/customer gate open and bind qualified workflow interviews before promoting the pain hypothesis.",
+      "write_authority": "NO_WRITE_AUTHORITY"
+    },
+    {
+      "action": "PROPOSE_OPEN",
+      "id": "DLT-002",
+      "problem_id": "PRB-003",
+      "statement": "Stage 7 may propose a separate deterministic implementation atom for scene IR plus constraint validation; Stage 5 design CI is not implementation evidence.",
+      "write_authority": "NO_WRITE_AUTHORITY"
+    },
+    {
+      "action": "PROPOSE_UPDATE",
+      "id": "DLT-003",
+      "problem_id": "PRB-004",
+      "statement": "Keep rendering/backend selection blocked until an exact dependency graph and six-lane rights review exist; do not convert the source license summary into PASS.",
+      "write_authority": "NO_WRITE_AUTHORITY"
+    },
+    {
+      "action": "PROPOSE_UPDATE",
+      "id": "DLT-004",
+      "problem_id": "PRB-005",
+      "statement": "Keep user and paid validation gates independent from technical progress; no public launch, price page, source claim, or green CI may satisfy them.",
+      "write_authority": "NO_WRITE_AUTHORITY"
+    },
+    {
+      "action": "PROPOSE_BLOCKED_NOTE",
+      "id": "DLT-005",
+      "problem_id": "PRB-006",
+      "statement": "Preserve named-product internals as UNKNOWN or HYPOTHESIS until official technical evidence or independently observed runtime behavior is bound.",
+      "write_authority": "NO_WRITE_AUTHORITY"
+    }
+  ],
+  "schema_version": "problem-closure-issue-delta@1",
+  "source_audit_digest": "d221ec2b1b4dee513352571fd10572ce54f5e72e6f081f4491db98498f175b1a",
+  "write_authority": "NO_WRITE_AUTHORITY"
+}

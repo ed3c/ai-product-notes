@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ed3c/ai-product-notes/schemas/problem-closure-instance.schema.json",
+  "title": "Product closure instance bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "skills_binding", "stage5_binding", "outputs", "authority_ceiling"],
+  "properties": {
+    "schema_version": {"const": "problem-closure-instance@1"},
+    "skills_binding": {
+      "type": "object",
+      "required": ["repository", "commit", "tree_sha"],
+      "properties": {
+        "repository": {"const": "ed3c/skills-shared"},
+        "commit": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+        "tree_sha": {"type": "string", "pattern": "^[a-f0-9]{40}$"}
+      }
+    },
+    "stage5_binding": {
+      "type": "object",
+      "required": ["repository", "pull_request", "head_sha", "blob_sha", "packet_digest"],
+      "properties": {
+        "repository": {"const": "ed3c/ai-product-notes"},
+        "pull_request": {"const": 55},
+        "head_sha": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+        "blob_sha": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+        "packet_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {"enum": ["problem-closure-matrix.json", "product-closure-audit.json", "issue-delta.json"]}
+    },
+    "authority_ceiling": {"const": "FINDINGS_ONLY"}
+  }
+}
