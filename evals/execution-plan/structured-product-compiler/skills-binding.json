@@ -1,0 +1,19 @@
+{
+  "authority_ceiling": "PORTABLE_METHOD_ONLY",
+  "commit": "4ca9417b1da5ff32f1d4d3e7af64a15908749024",
+  "molecular_stack_schema": {
+    "blob_sha": "2fb9eb4ecf5d641dd96189f581296b6c6541a734",
+    "path": "skills/git-town-stacked-pr-worker/references/molecular-stack-index.schema.json"
+  },
+  "prompt_catalogue": {
+    "blob_sha": "95eaa6a2d69ee53aa4c3d34a84b180cb0b619f2d",
+    "path": "skills/product-reverse-engineering-loop/references/prompt-catalogue.md"
+  },
+  "prompt_packet_schema": {
+    "blob_sha": "34a53c57d7f8bebb5add25e97e87e27be1436c25",
+    "path": "skills/product-reverse-engineering-loop/references/prompt-packet.schema.json"
+  },
+  "repository": "ed3c/skills-shared",
+  "schema_version": "stage7-skills-binding@1",
+  "tree_sha": "58545c4807b774a364be9ac7cd20a97ae0b1d669"
+}
