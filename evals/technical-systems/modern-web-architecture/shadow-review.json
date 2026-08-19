@@ -1,0 +1,20 @@
+{
+  "authority_ceiling": "TECHNICAL_DESIGN_ONLY",
+  "findings": [
+    "Stage 5 consumes the exact current Stage 4 dossier subject and is a true child branch rather than a sibling.",
+    "The first MVP slice includes only deterministic must capabilities and explicitly excludes the probabilistic rendering backend.",
+    "All six rights lanes remain separate; the unselected rendering/backend substitution keeps unresolved rights UNKNOWN.",
+    "Positive, negative, mutation, fault and runtime probes are all declared, while runtime remains NOT_EXERCISED.",
+    "The upstream named-product UNKNOWN and permissive-vs-LGPL contradiction remain visible in the technical packet.",
+    "Two attempted Stage 5 writes accidentally targeted the Stage 4 parent branch; both were compensating-deleted before child implementation and the parent hosted gate was re-run. This repeated failure signature is recorded and no further parent mutation is admitted from this session."
+  ],
+  "independent_shadow": "NOT_EXERCISED",
+  "mode": "SAME_CONTEXT_READ_ONLY_SHADOW",
+  "parent_compensation": {
+    "parent_head_after_compensation": "736454e7ae49e351d146f3e9bb5c2ef67c846ecd",
+    "parent_hosted_run": 32269266312,
+    "state": "PASS"
+  },
+  "schema_version": "technical-systems-shadow-review@1",
+  "verdict": "STAGE5_TECHNICAL_DESIGN_CANARY_ALLOWED_WITH_VALIDATE_CEILING"
+}
