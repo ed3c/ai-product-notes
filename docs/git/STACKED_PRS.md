@@ -178,3 +178,29 @@ The Stage 7 machine queue remains a stale planning snapshot and is not promoted
 by this documentation convergence. No automatic semantic conflict resolution,
 Git Town execution, merge, release, market validation, or production admission
 is asserted.
+
+### D02 local convergence receipt
+
+The first convergence commit is an immutable, non-self-referential local
+read-back subject:
+
+```text
+issue                 #47 PREL-D02 admission comment
+parent                7225ca1b23d749f79ed1a98426dbcfd5302385be
+convergence subject   288c1f9b843742821a9f328ee2505e28ad9d9136
+convergence tree      e26ffb6c730664a6749a283c281c8fc6389177cf
+changed paths         docs/architecture/STRUCTURED_PRODUCT_COMPILER.md
+                      docs/git/STACKED_PRS.md
+X02 receipt blob      919303fce89e5247a34d0d0b03836eff358f2dd6 (unchanged)
+```
+
+On a clean checkout of that subject, repository contract, 131 repository tests,
+9 runtime-canary tests, 12 execution-plan tests, execution-plan reproduction,
+runtime selftest, and both knowledge-continuity checks returned PASS. The final
+commit containing this pointer must be identified through Git/PR metadata and
+must repeat the same local checks; this paragraph does not try to embed its own
+commit SHA.
+
+This receipt upgrades D02 only to `MATERIALIZED / TESTED / LOCAL_CONVERGED`.
+Publication, hosted CI, Human Admit, merge, and exact-main verification remain
+`NOT_EXERCISED` or `REQUIRED` as applicable.
