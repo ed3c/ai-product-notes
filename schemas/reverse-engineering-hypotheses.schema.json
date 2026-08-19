@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ed3c/ai-product-notes/schemas/reverse-engineering-hypotheses.schema.json",
+  "title": "Reverse-engineering hypothesis packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "hypothesis_set_id", "target", "user_context", "workflow", "mechanisms", "capabilities", "business", "riskiest_assumptions", "mvp"],
+  "properties": {
+    "schema_version": {"const": "reverse-engineering-hypotheses@1"},
+    "hypothesis_set_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._:-]{1,191}$"},
+    "target": {"type": "object"},
+    "user_context": {"type": "object"},
+    "workflow": {"type": "array", "minItems": 3},
+    "mechanisms": {"type": "array", "minItems": 1},
+    "capabilities": {"type": "array", "minItems": 1},
+    "business": {"type": "object"},
+    "riskiest_assumptions": {"type": "array", "minItems": 1},
+    "mvp": {"type": "object"}
+  }
+}

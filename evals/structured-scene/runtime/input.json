@@ -1,0 +1,76 @@
+{
+  "assets": [
+    {
+      "asset_id": "asset:image",
+      "content_ref": "sha256:image",
+      "kind": "IMAGE"
+    },
+    {
+      "asset_id": "asset:shape",
+      "content_ref": "shape:rect",
+      "kind": "SHAPE"
+    }
+  ],
+  "canvas": {
+    "height": 480,
+    "unit": "px",
+    "width": 640
+  },
+  "constraints": [
+    {
+      "constraint_id": "constraint:bounds",
+      "kind": "WITHIN_CANVAS",
+      "parameters": {
+        "margin": 20
+      },
+      "subject_ids": [
+        "node:image",
+        "node:shape"
+      ]
+    },
+    {
+      "constraint_id": "constraint:separate",
+      "kind": "NON_OVERLAP",
+      "parameters": {},
+      "subject_ids": [
+        "node:image",
+        "node:shape"
+      ]
+    },
+    {
+      "constraint_id": "constraint:anchor",
+      "kind": "ANCHOR",
+      "parameters": {
+        "axis": "x",
+        "target_x": 40
+      },
+      "subject_ids": [
+        "node:image"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "asset_id": "asset:image",
+      "height": 120,
+      "node_id": "node:image",
+      "rotation_mdeg": 0,
+      "width": 200,
+      "x": 40,
+      "y": 40,
+      "z_index": 1
+    },
+    {
+      "asset_id": "asset:shape",
+      "height": 100,
+      "node_id": "node:shape",
+      "rotation_mdeg": 0,
+      "width": 100,
+      "x": 360,
+      "y": 200,
+      "z_index": 2
+    }
+  ],
+  "scene_id": "scene:x02-local",
+  "schema_version": "scene-spec@1"
+}

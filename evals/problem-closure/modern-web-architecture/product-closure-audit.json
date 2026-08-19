@@ -1,0 +1,848 @@
+{
+  "audit_subject": {
+    "captured_at": "2026-08-19T16:05:08Z",
+    "compared_surfaces": [
+      "evals/technical-systems/modern-web-architecture/technical-systems-packet.json",
+      "evals/reverse-engineering/modern-web-architecture/dossier.json",
+      "skills/product-reverse-engineering-loop/references/problem-closure-matrix.schema.json",
+      "skills/product-reverse-engineering-loop/references/product-closure-audit.schema.json",
+      "skills/product-reverse-engineering-loop/modules/shadow-closure-audit.md",
+      "GitHub Actions run 32271087668"
+    ],
+    "subject_id": "structured-product-compiler",
+    "subject_revision": "72e89c89f1961db3735231a32efc5f4ac852d670",
+    "surface": "public Product Reverse-Engineering Stage 4 dossier plus Stage 5 technical-systems packet"
+  },
+  "evidence_ceiling": {
+    "deterministic_contract": "PASS",
+    "live_provider_execution": "NOT_EXERCISED",
+    "portable_procedure": "PASS",
+    "product_market_fit": "ABSENT",
+    "production_readiness": "NOT_EXERCISED"
+  },
+  "external_authority": {
+    "commercial": "HUMAN_ADMIT_REQUIRED",
+    "customer_truth": "HUMAN_ADMIT_REQUIRED",
+    "merge": "HUMAN_ADMIT_REQUIRED",
+    "release": "HUMAN_ADMIT_REQUIRED",
+    "rights": "HUMAN_ADMIT_REQUIRED"
+  },
+  "issue_delta": [
+    {
+      "action": "PROPOSE_UPDATE",
+      "id": "DLT-001",
+      "problem_id": "PRB-001",
+      "statement": "Keep the existing recurring-pain/customer gate open and bind qualified workflow interviews before promoting the pain hypothesis.",
+      "write_authority": "NO_WRITE_AUTHORITY"
+    },
+    {
+      "action": "PROPOSE_OPEN",
+      "id": "DLT-002",
+      "problem_id": "PRB-003",
+      "statement": "Stage 7 may propose a separate deterministic implementation atom for scene IR plus constraint validation; Stage 5 design CI is not implementation evidence.",
+      "write_authority": "NO_WRITE_AUTHORITY"
+    },
+    {
+      "action": "PROPOSE_UPDATE",
+      "id": "DLT-003",
+      "problem_id": "PRB-004",
+      "statement": "Keep rendering/backend selection blocked until an exact dependency graph and six-lane rights review exist; do not convert the source license summary into PASS.",
+      "write_authority": "NO_WRITE_AUTHORITY"
+    },
+    {
+      "action": "PROPOSE_UPDATE",
+      "id": "DLT-004",
+      "problem_id": "PRB-005",
+      "statement": "Keep user and paid validation gates independent from technical progress; no public launch, price page, source claim, or green CI may satisfy them.",
+      "write_authority": "NO_WRITE_AUTHORITY"
+    },
+    {
+      "action": "PROPOSE_BLOCKED_NOTE",
+      "id": "DLT-005",
+      "problem_id": "PRB-006",
+      "statement": "Preserve named-product internals as UNKNOWN or HYPOTHESIS until official technical evidence or independently observed runtime behavior is bound.",
+      "write_authority": "NO_WRITE_AUTHORITY"
+    }
+  ],
+  "problems": [
+    {
+      "declared_status": {
+        "anchor": {
+          "exact_subject": {
+            "artifact": "dossier:structured-product-compiler",
+            "digest": "1a2e39bd06da3d14069573ecc67f7e94e1d95eef9d9e7e8b4d223d2645c9cded"
+          },
+          "kind": "SOURCE_DOCUMENT",
+          "locator": "user_context.pain and mvp success metrics",
+          "observed": "the dossier labels repeated setup and correction as a HYPOTHESIS and requires qualified workflow interviews before promotion"
+        },
+        "claimed_level": "SOURCE_ANCHORED",
+        "statement": "A recurring setup, correction, or state-loss pain is explicitly represented as a hypothesis, not as validated customer truth."
+      },
+      "findings": [
+        {
+          "anchors": [
+            {
+              "exact_subject": {
+                "artifact": "dossier:structured-product-compiler",
+                "digest": "1a2e39bd06da3d14069573ecc67f7e94e1d95eef9d9e7e8b4d223d2645c9cded"
+              },
+              "kind": "SOURCE_DOCUMENT",
+              "locator": "gates.user_evidence and user_context.pain",
+              "observed": "user evidence is ABSENT while the pain statement remains HYPOTHESIS"
+            }
+          ],
+          "authority": "FINDINGS_ONLY",
+          "code": "EVIDENCE_ABSENT",
+          "id": "FND-001",
+          "proposed_repair": "Run qualified workflow interviews and preserve the denominator, negative answers, task frequency, correction time, and current workaround as user-lane evidence.",
+          "statement": "The user problem is source-anchored only; no direct user report currently closes the user lane."
+        }
+      ],
+      "highest_earned_level": "SOURCE_ANCHORED",
+      "id": "PRB-001",
+      "levels": [
+        {
+          "anchors": [
+            {
+              "exact_subject": {
+                "artifact": "dossier:structured-product-compiler",
+                "digest": "1a2e39bd06da3d14069573ecc67f7e94e1d95eef9d9e7e8b4d223d2645c9cded"
+              },
+              "kind": "SOURCE_DOCUMENT",
+              "locator": "user_context.pain",
+              "observed": "the dossier binds the pain statement and the direct evidence required to test it"
+            }
+          ],
+          "lane": "SOURCE",
+          "level": "SOURCE_ANCHORED",
+          "note": "the problem exists as an explicit falsifiable hypothesis",
+          "state": "PASS"
+        },
+        {
+          "anchors": [],
+          "lane": "MECHANISM",
+          "level": "MECHANISM_BOUND",
+          "note": "no direct observation shows the pain mechanism in a real user workflow",
+          "state": "ABSENT"
+        },
+        {
+          "anchors": [],
+          "lane": "IMPLEMENTATION",
+          "level": "IMPLEMENTED",
+          "note": "no product implementation is materialized for this user problem",
+          "state": "NOT_IMPLEMENTED"
+        },
+        {
+          "anchors": [],
+          "lane": "IMPLEMENTATION",
+          "level": "TECH_VERIFIED",
+          "note": "technical verification cannot precede implementation",
+          "state": "NOT_EXERCISED"
+        },
+        {
+          "anchors": [],
+          "lane": "RUNTIME",
+          "level": "LIVE_WORKFLOW_VERIFIED",
+          "note": "no live user workflow has been exercised",
+          "state": "NOT_EXERCISED"
+        },
+        {
+          "anchors": [],
+          "lane": "USER",
+          "level": "USER_VALIDATED",
+          "note": "qualified user reports are absent",
+          "state": "ABSENT"
+        },
+        {
+          "anchors": [],
+          "lane": "COMMERCIAL",
+          "level": "PAID_VALIDATED",
+          "note": "paid evidence is absent",
+          "state": "ABSENT"
+        }
+      ],
+      "missing_lanes": [
+        "MECHANISM",
+        "IMPLEMENTATION",
+        "RUNTIME",
+        "USER",
+        "COMMERCIAL"
+      ],
+      "statement": "Repeated product-scene setup, correction, or state loss is a material recurring user problem."
+    },
+    {
+      "declared_status": {
+        "anchor": {
+          "exact_subject": {
+            "artifact": "technical-systems:structured-product-compiler",
+            "digest": "a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7"
+          },
+          "kind": "MECHANISM_OBSERVATION",
+          "locator": "capabilities structured-scene-ir and constraint-validation",
+          "observed": "the technical packet binds deterministic interfaces, transitions, oracles, failure states, rollback, and a dependency edge between the two must capabilities"
+        },
+        "claimed_level": "MECHANISM_BOUND",
+        "statement": "The deterministic structured-state plus constraint-validation mechanism is bound as a technical design with observable falsifiers."
+      },
+      "findings": [
+        {
+          "anchors": [
+            {
+              "exact_subject": {
+                "artifact": "technical-systems:structured-product-compiler",
+                "digest": "a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7"
+              },
+              "kind": "MECHANISM_OBSERVATION",
+              "locator": "mvp_slice and evals",
+              "observed": "positive, negative and mutation oracles are declared but their product implementation is not present"
+            }
+          ],
+          "authority": "FINDINGS_ONLY",
+          "code": "OBLIGATION_SKIPPED_AT_FIRST_GREEN",
+          "id": "FND-002",
+          "proposed_repair": "Materialize the deterministic scene-state and constraint-validator implementation, then run the declared exact-subject oracles before claiming implementation or technical verification.",
+          "statement": "Hosted green design/compiler checks do not close the separate owned-implementation and implementation-verification obligations."
+        }
+      ],
+      "highest_earned_level": "MECHANISM_BOUND",
+      "id": "PRB-002",
+      "levels": [
+        {
+          "anchors": [
+            {
+              "exact_subject": {
+                "artifact": "dossier:structured-product-compiler",
+                "digest": "1a2e39bd06da3d14069573ecc67f7e94e1d95eef9d9e7e8b4d223d2645c9cded"
+              },
+              "kind": "SOURCE_DOCUMENT",
+              "locator": "mechanisms structured-compiler and mvp wedge",
+              "observed": "the dossier records the structured compiler mechanism as a source-backed statement and a falsifiable validation wedge"
+            }
+          ],
+          "lane": "SOURCE",
+          "level": "SOURCE_ANCHORED",
+          "note": "source and dossier lineage are bound",
+          "state": "PASS"
+        },
+        {
+          "anchors": [
+            {
+              "exact_subject": {
+                "artifact": "technical-systems:structured-product-compiler",
+                "digest": "a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7"
+              },
+              "kind": "MECHANISM_OBSERVATION",
+              "locator": "capability DAG, interfaces and oracles",
+              "observed": "the mechanism is decomposed into deterministic capabilities with explicit state transitions and falsifiers"
+            }
+          ],
+          "lane": "MECHANISM",
+          "level": "MECHANISM_BOUND",
+          "note": "the mechanism contract is explicit and falsifiable",
+          "state": "PASS"
+        },
+        {
+          "anchors": [],
+          "lane": "IMPLEMENTATION",
+          "level": "IMPLEMENTED",
+          "note": "the owned deterministic product slice is not materialized",
+          "state": "NOT_IMPLEMENTED"
+        },
+        {
+          "anchors": [],
+          "lane": "IMPLEMENTATION",
+          "level": "TECH_VERIFIED",
+          "note": "the product implementation suite has not run because implementation is absent",
+          "state": "NOT_EXERCISED"
+        },
+        {
+          "anchors": [],
+          "lane": "RUNTIME",
+          "level": "LIVE_WORKFLOW_VERIFIED",
+          "note": "runtime is not exercised",
+          "state": "NOT_EXERCISED"
+        },
+        {
+          "anchors": [],
+          "lane": "USER",
+          "level": "USER_VALIDATED",
+          "note": "user outcome evidence is absent",
+          "state": "ABSENT"
+        },
+        {
+          "anchors": [],
+          "lane": "COMMERCIAL",
+          "level": "PAID_VALIDATED",
+          "note": "commercial evidence is absent",
+          "state": "ABSENT"
+        }
+      ],
+      "missing_lanes": [
+        "IMPLEMENTATION",
+        "RUNTIME",
+        "USER",
+        "COMMERCIAL"
+      ],
+      "statement": "A structured scene IR plus deterministic constraint validation can create measurable workflow value independent of a rendering model."
+    },
+    {
+      "declared_status": {
+        "anchor": {
+          "exact_subject": {
+            "artifact": "technical-systems:structured-product-compiler",
+            "digest": "a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7"
+          },
+          "kind": "MECHANISM_OBSERVATION",
+          "locator": "mvp_slice capability_ids, success_oracles and evidence_state",
+          "observed": "the packet selects a seven-day deterministic MVP slice while recording implementation ABSENT and runtime ABSENT"
+        },
+        "claimed_level": "MECHANISM_BOUND",
+        "statement": "The smallest deterministic implementation slice is designed and bounded, but it is not implemented."
+      },
+      "findings": [
+        {
+          "anchors": [
+            {
+              "exact_subject": {
+                "artifact": "technical-systems:structured-product-compiler",
+                "digest": "a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7"
+              },
+              "kind": "MECHANISM_OBSERVATION",
+              "locator": "evidence_state.implementation and mvp_slice",
+              "observed": "design is PASS while implementation is ABSENT; the current GitHub Actions run verifies repository contracts rather than an owned product implementation"
+            }
+          ],
+          "authority": "FINDINGS_ONLY",
+          "code": "EVIDENCE_ABSENT",
+          "id": "FND-003",
+          "proposed_repair": "Create a separate implementation issue and branch for the deterministic MVP, bind the exact code subject, and run the round-trip, negative and mutation oracles on that subject.",
+          "statement": "The product implementation rung remains unearned even though the Stage 5 design branch is hosted-verified."
+        }
+      ],
+      "highest_earned_level": "MECHANISM_BOUND",
+      "id": "PRB-003",
+      "levels": [
+        {
+          "anchors": [
+            {
+              "exact_subject": {
+                "artifact": "technical-systems:structured-product-compiler",
+                "digest": "a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7"
+              },
+              "kind": "SOURCE_DOCUMENT",
+              "locator": "mvp_slice",
+              "observed": "the technical packet names the exact intended MVP capabilities, stop-loss rules and success oracles"
+            }
+          ],
+          "lane": "SOURCE",
+          "level": "SOURCE_ANCHORED",
+          "note": "the intended implementation problem is explicitly bound",
+          "state": "PASS"
+        },
+        {
+          "anchors": [
+            {
+              "exact_subject": {
+                "artifact": "technical-systems:structured-product-compiler",
+                "digest": "a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7"
+              },
+              "kind": "MECHANISM_OBSERVATION",
+              "locator": "capability DAG and mvp_slice",
+              "observed": "the implementation boundary, dependency order and falsifiers are explicitly designed"
+            }
+          ],
+          "lane": "MECHANISM",
+          "level": "MECHANISM_BOUND",
+          "note": "implementation mechanism and oracle are bound",
+          "state": "PASS"
+        },
+        {
+          "anchors": [],
+          "lane": "IMPLEMENTATION",
+          "level": "IMPLEMENTED",
+          "note": "owned scene-state and validator code do not yet exist in the product slice",
+          "state": "NOT_IMPLEMENTED"
+        },
+        {
+          "anchors": [],
+          "lane": "IMPLEMENTATION",
+          "level": "TECH_VERIFIED",
+          "note": "no exact implementation subject exists for deterministic verification",
+          "state": "NOT_EXERCISED"
+        },
+        {
+          "anchors": [],
+          "lane": "RUNTIME",
+          "level": "LIVE_WORKFLOW_VERIFIED",
+          "note": "runtime backend and live workflow are not exercised",
+          "state": "NOT_EXERCISED"
+        },
+        {
+          "anchors": [],
+          "lane": "USER",
+          "level": "USER_VALIDATED",
+          "note": "user value remains unmeasured",
+          "state": "ABSENT"
+        },
+        {
+          "anchors": [],
+          "lane": "COMMERCIAL",
+          "level": "PAID_VALIDATED",
+          "note": "paid demand remains unmeasured",
+          "state": "ABSENT"
+        }
+      ],
+      "missing_lanes": [
+        "IMPLEMENTATION",
+        "RUNTIME",
+        "USER",
+        "COMMERCIAL"
+      ],
+      "statement": "The bounded deterministic MVP slice has been implemented and technically verified on an exact code subject."
+    },
+    {
+      "declared_status": {
+        "anchor": {
+          "exact_subject": {
+            "artifact": "technical-systems:structured-product-compiler",
+            "digest": "a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7"
+          },
+          "kind": "SOURCE_DOCUMENT",
+          "locator": "substitutions substitution:rendering-backend and six rights lanes",
+          "observed": "no rendering package, model or service is selected and every rights lane remains UNKNOWN"
+        },
+        "claimed_level": "SOURCE_ANCHORED",
+        "statement": "Rendering/backend rights are explicitly unresolved rather than admitted."
+      },
+      "findings": [
+        {
+          "anchors": [
+            {
+              "exact_subject": {
+                "artifact": "technical-systems:structured-product-compiler",
+                "digest": "a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7"
+              },
+              "kind": "SOURCE_DOCUMENT",
+              "locator": "substitutions[rendering-backend].rights",
+              "observed": "code, model weights, datasets, trajectories, hosted service, and third-party content are all UNKNOWN for the unselected candidate"
+            }
+          ],
+          "authority": "FINDINGS_ONLY",
+          "code": "RIGHTS_UNADMITTED",
+          "id": "FND-004",
+          "proposed_repair": "Select an exact candidate only after the deterministic wedge succeeds, then review all six rights lanes against exact package, model, data, service and content subjects.",
+          "statement": "No commercially admissible rendering dependency set has been established; the source's permissive-stack language cannot close the rights lane."
+        }
+      ],
+      "highest_earned_level": "SOURCE_ANCHORED",
+      "id": "PRB-004",
+      "levels": [
+        {
+          "anchors": [
+            {
+              "exact_subject": {
+                "artifact": "technical-systems:structured-product-compiler",
+                "digest": "a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7"
+              },
+              "kind": "SOURCE_DOCUMENT",
+              "locator": "substitutions and upstream_unresolved_contradictions",
+              "observed": "the rights gap and permissive-vs-LGPL contradiction are both retained"
+            }
+          ],
+          "lane": "SOURCE",
+          "level": "SOURCE_ANCHORED",
+          "note": "the rights problem is explicitly bound",
+          "state": "PASS"
+        },
+        {
+          "anchors": [],
+          "lane": "MECHANISM",
+          "level": "MECHANISM_BOUND",
+          "note": "no exact rendering candidate exists to observe or falsify",
+          "state": "ABSENT"
+        },
+        {
+          "anchors": [],
+          "lane": "IMPLEMENTATION",
+          "level": "IMPLEMENTED",
+          "note": "no selected rendering implementation exists",
+          "state": "NOT_IMPLEMENTED"
+        },
+        {
+          "anchors": [],
+          "lane": "IMPLEMENTATION",
+          "level": "TECH_VERIFIED",
+          "note": "there is no selected subject to verify",
+          "state": "NOT_EXERCISED"
+        },
+        {
+          "anchors": [],
+          "lane": "RUNTIME",
+          "level": "LIVE_WORKFLOW_VERIFIED",
+          "note": "no rendering runtime is exercised",
+          "state": "NOT_EXERCISED"
+        },
+        {
+          "anchors": [],
+          "lane": "USER",
+          "level": "USER_VALIDATED",
+          "note": "user evidence cannot settle legal rights",
+          "state": "ABSENT"
+        },
+        {
+          "anchors": [],
+          "lane": "COMMERCIAL",
+          "level": "PAID_VALIDATED",
+          "note": "payment cannot substitute for rights admission",
+          "state": "ABSENT"
+        }
+      ],
+      "missing_lanes": [
+        "MECHANISM",
+        "IMPLEMENTATION",
+        "RUNTIME",
+        "USER",
+        "COMMERCIAL"
+      ],
+      "statement": "A selected rendering or generation backend has commercially admissible rights for all required asset and service lanes."
+    },
+    {
+      "declared_status": {
+        "anchor": {
+          "exact_subject": {
+            "artifact": "dossier:structured-product-compiler",
+            "digest": "1a2e39bd06da3d14069573ecc67f7e94e1d95eef9d9e7e8b4d223d2645c9cded"
+          },
+          "kind": "MECHANISM_OBSERVATION",
+          "locator": "mvp success metrics, stop loss, business monetization and gates",
+          "observed": "the dossier defines interview and workflow success thresholds while user, paid and legal evidence remain ABSENT"
+        },
+        "claimed_level": "MECHANISM_BOUND",
+        "statement": "A bounded validation mechanism exists for user and commercial hypotheses, but it has not been exercised."
+      },
+      "findings": [
+        {
+          "anchors": [
+            {
+              "exact_subject": {
+                "artifact": "dossier:structured-product-compiler",
+                "digest": "1a2e39bd06da3d14069573ecc67f7e94e1d95eef9d9e7e8b4d223d2645c9cded"
+              },
+              "kind": "SOURCE_DOCUMENT",
+              "locator": "gates.user_evidence, gates.paid_evidence and business.monetization",
+              "observed": "user and paid evidence are ABSENT and the viable pricing unit is UNKNOWN"
+            }
+          ],
+          "authority": "FINDINGS_ONLY",
+          "code": "EVIDENCE_ABSENT",
+          "id": "FND-005",
+          "proposed_repair": "Run the qualified workflow validation first, then only if the user gate passes run a bounded willingness-to-pay or paid-pilot test with explicit numerator and denominator.",
+          "statement": "No user outcome or paid adoption evidence exists; technical progress cannot close either lane."
+        }
+      ],
+      "highest_earned_level": "MECHANISM_BOUND",
+      "id": "PRB-005",
+      "levels": [
+        {
+          "anchors": [
+            {
+              "exact_subject": {
+                "artifact": "dossier:structured-product-compiler",
+                "digest": "1a2e39bd06da3d14069573ecc67f7e94e1d95eef9d9e7e8b4d223d2645c9cded"
+              },
+              "kind": "SOURCE_DOCUMENT",
+              "locator": "mvp and business hypotheses",
+              "observed": "the user, value and monetization questions are explicit and falsifiable"
+            }
+          ],
+          "lane": "SOURCE",
+          "level": "SOURCE_ANCHORED",
+          "note": "the validation questions are explicit",
+          "state": "PASS"
+        },
+        {
+          "anchors": [
+            {
+              "exact_subject": {
+                "artifact": "dossier:structured-product-compiler",
+                "digest": "1a2e39bd06da3d14069573ecc67f7e94e1d95eef9d9e7e8b4d223d2645c9cded"
+              },
+              "kind": "MECHANISM_OBSERVATION",
+              "locator": "mvp success metrics and stop-loss",
+              "observed": "the dossier binds a measurable interview and workflow validation mechanism with explicit stopping conditions"
+            }
+          ],
+          "lane": "MECHANISM",
+          "level": "MECHANISM_BOUND",
+          "note": "a falsifiable validation mechanism is defined",
+          "state": "PASS"
+        },
+        {
+          "anchors": [],
+          "lane": "IMPLEMENTATION",
+          "level": "IMPLEMENTED",
+          "note": "the market/user experiment runner is not implemented as product execution",
+          "state": "NOT_IMPLEMENTED"
+        },
+        {
+          "anchors": [],
+          "lane": "IMPLEMENTATION",
+          "level": "TECH_VERIFIED",
+          "note": "no experiment implementation subject exists to verify",
+          "state": "NOT_EXERCISED"
+        },
+        {
+          "anchors": [],
+          "lane": "RUNTIME",
+          "level": "LIVE_WORKFLOW_VERIFIED",
+          "note": "the end-to-end user workflow has not run",
+          "state": "NOT_EXERCISED"
+        },
+        {
+          "anchors": [],
+          "lane": "USER",
+          "level": "USER_VALIDATED",
+          "note": "qualified user evidence is absent",
+          "state": "ABSENT"
+        },
+        {
+          "anchors": [],
+          "lane": "COMMERCIAL",
+          "level": "PAID_VALIDATED",
+          "note": "paid pilot or equivalent evidence is absent",
+          "state": "ABSENT"
+        }
+      ],
+      "missing_lanes": [
+        "IMPLEMENTATION",
+        "RUNTIME",
+        "USER",
+        "COMMERCIAL"
+      ],
+      "statement": "The structured product workflow has demonstrated user value and paid adoption."
+    },
+    {
+      "declared_status": {
+        "anchor": {
+          "exact_subject": {
+            "artifact": "technical-systems:structured-product-compiler",
+            "digest": "a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7"
+          },
+          "kind": "SOURCE_DOCUMENT",
+          "locator": "upstream_unknown_claims and non_claims",
+          "observed": "claim:actual-company-internals-unknown remains explicit and no named-product equivalence is asserted"
+        },
+        "claimed_level": "SOURCE_ANCHORED",
+        "statement": "Named-product internal architecture remains UNKNOWN or HYPOTHESIS rather than observed fact."
+      },
+      "findings": [
+        {
+          "anchors": [
+            {
+              "exact_subject": {
+                "artifact": "technical-systems:structured-product-compiler",
+                "digest": "a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7"
+              },
+              "kind": "SOURCE_DOCUMENT",
+              "locator": "upstream_unknown_claims",
+              "observed": "the exact upstream claim says the actual company internals are unknown"
+            }
+          ],
+          "authority": "FINDINGS_ONLY",
+          "code": "EVIDENCE_ABSENT",
+          "id": "FND-006",
+          "proposed_repair": "Bind official technical documentation, source code, or independently observed runtime behavior before raising any named-product internal mechanism above HYPOTHESIS or UNKNOWN.",
+          "statement": "No independent primary or runtime evidence establishes the named company's actual internal implementation."
+        }
+      ],
+      "highest_earned_level": "SOURCE_ANCHORED",
+      "id": "PRB-006",
+      "levels": [
+        {
+          "anchors": [
+            {
+              "exact_subject": {
+                "artifact": "technical-systems:structured-product-compiler",
+                "digest": "a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7"
+              },
+              "kind": "SOURCE_DOCUMENT",
+              "locator": "upstream_unknown_claims and upstream_unresolved_contradictions",
+              "observed": "the Stage 5 packet preserves both the unknown internal-architecture claim and the unresolved source contradiction"
+            }
+          ],
+          "lane": "SOURCE",
+          "level": "SOURCE_ANCHORED",
+          "note": "the uncertainty itself is explicitly anchored",
+          "state": "PASS"
+        },
+        {
+          "anchors": [],
+          "lane": "MECHANISM",
+          "level": "MECHANISM_BOUND",
+          "note": "no independent mechanism observation exists for the named product",
+          "state": "ABSENT"
+        },
+        {
+          "anchors": [],
+          "lane": "IMPLEMENTATION",
+          "level": "IMPLEMENTED",
+          "note": "no claim is made about the named product's code subject",
+          "state": "ABSENT"
+        },
+        {
+          "anchors": [],
+          "lane": "IMPLEMENTATION",
+          "level": "TECH_VERIFIED",
+          "note": "no named-product implementation subject is available for verification",
+          "state": "ABSENT"
+        },
+        {
+          "anchors": [],
+          "lane": "RUNTIME",
+          "level": "LIVE_WORKFLOW_VERIFIED",
+          "note": "no independently observed named-product runtime receipt is bound",
+          "state": "ABSENT"
+        },
+        {
+          "anchors": [],
+          "lane": "USER",
+          "level": "USER_VALIDATED",
+          "note": "user reports cannot establish private implementation internals",
+          "state": "ABSENT"
+        },
+        {
+          "anchors": [],
+          "lane": "COMMERCIAL",
+          "level": "PAID_VALIDATED",
+          "note": "commercial outcomes cannot establish private implementation internals",
+          "state": "ABSENT"
+        }
+      ],
+      "missing_lanes": [
+        "MECHANISM",
+        "IMPLEMENTATION",
+        "RUNTIME",
+        "USER",
+        "COMMERCIAL"
+      ],
+      "statement": "The PDF-derived mapping accurately describes a named product's internal architecture."
+    }
+  ],
+  "public_snapshot": {
+    "completion_meaning": "REVIEW_ONLY_NOT_MERGE_OR_RELEASE",
+    "consumable_without_prior_conversation": true,
+    "contains_private_reasoning": false,
+    "excluded_from_snapshot": [
+      "private chain of thought",
+      "credentials and secrets",
+      "private repository metadata",
+      "customer data"
+    ]
+  },
+  "reopened_obligations": [
+    {
+      "level": "IMPLEMENTED",
+      "problem_id": "PRB-001",
+      "reason": "no product implementation is materialized for this user problem",
+      "state": "NOT_IMPLEMENTED"
+    },
+    {
+      "level": "TECH_VERIFIED",
+      "problem_id": "PRB-001",
+      "reason": "technical verification cannot precede implementation",
+      "state": "NOT_EXERCISED"
+    },
+    {
+      "level": "LIVE_WORKFLOW_VERIFIED",
+      "problem_id": "PRB-001",
+      "reason": "no live user workflow has been exercised",
+      "state": "NOT_EXERCISED"
+    },
+    {
+      "level": "IMPLEMENTED",
+      "problem_id": "PRB-002",
+      "reason": "the owned deterministic product slice is not materialized",
+      "state": "NOT_IMPLEMENTED"
+    },
+    {
+      "level": "TECH_VERIFIED",
+      "problem_id": "PRB-002",
+      "reason": "the product implementation suite has not run because implementation is absent",
+      "state": "NOT_EXERCISED"
+    },
+    {
+      "level": "LIVE_WORKFLOW_VERIFIED",
+      "problem_id": "PRB-002",
+      "reason": "runtime is not exercised",
+      "state": "NOT_EXERCISED"
+    },
+    {
+      "level": "IMPLEMENTED",
+      "problem_id": "PRB-003",
+      "reason": "owned scene-state and validator code do not yet exist in the product slice",
+      "state": "NOT_IMPLEMENTED"
+    },
+    {
+      "level": "TECH_VERIFIED",
+      "problem_id": "PRB-003",
+      "reason": "no exact implementation subject exists for deterministic verification",
+      "state": "NOT_EXERCISED"
+    },
+    {
+      "level": "LIVE_WORKFLOW_VERIFIED",
+      "problem_id": "PRB-003",
+      "reason": "runtime backend and live workflow are not exercised",
+      "state": "NOT_EXERCISED"
+    },
+    {
+      "level": "IMPLEMENTED",
+      "problem_id": "PRB-004",
+      "reason": "no selected rendering implementation exists",
+      "state": "NOT_IMPLEMENTED"
+    },
+    {
+      "level": "TECH_VERIFIED",
+      "problem_id": "PRB-004",
+      "reason": "there is no selected subject to verify",
+      "state": "NOT_EXERCISED"
+    },
+    {
+      "level": "LIVE_WORKFLOW_VERIFIED",
+      "problem_id": "PRB-004",
+      "reason": "no rendering runtime is exercised",
+      "state": "NOT_EXERCISED"
+    },
+    {
+      "level": "IMPLEMENTED",
+      "problem_id": "PRB-005",
+      "reason": "the market/user experiment runner is not implemented as product execution",
+      "state": "NOT_IMPLEMENTED"
+    },
+    {
+      "level": "TECH_VERIFIED",
+      "problem_id": "PRB-005",
+      "reason": "no experiment implementation subject exists to verify",
+      "state": "NOT_EXERCISED"
+    },
+    {
+      "level": "LIVE_WORKFLOW_VERIFIED",
+      "problem_id": "PRB-005",
+      "reason": "the end-to-end user workflow has not run",
+      "state": "NOT_EXERCISED"
+    }
+  ],
+  "review_denominator": {
+    "findings_raised": 6,
+    "findings_reported": 6,
+    "findings_withdrawn": []
+  },
+  "reviewer": {
+    "identity": "shadow-product-closure-ai-product-notes-stage6",
+    "mode": "READ_ONLY_FINDINGS_ONLY",
+    "requests_private_reasoning": false,
+    "requires_prior_conversation": false,
+    "writes_implementation": false
+  },
+  "schema": "prel/product-closure-audit/v1"
+}

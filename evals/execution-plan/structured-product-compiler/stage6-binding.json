@@ -1,0 +1,25 @@
+{
+  "audit": {
+    "blob_sha": "2df084ca9d6e4afdecad392a0918636810d004cc",
+    "canonical_digest": "d221ec2b1b4dee513352571fd10572ce54f5e72e6f081f4491db98498f175b1a",
+    "path": "evals/problem-closure/modern-web-architecture/product-closure-audit.json"
+  },
+  "authority_ceiling": "FINDINGS_ONLY",
+  "delta": {
+    "blob_sha": "2ce7a4723282fa1f9e552a4b0597d32942696cfc",
+    "path": "evals/problem-closure/modern-web-architecture/issue-delta.json"
+  },
+  "head_sha": "34f77140968799c0c2669610609848beadf96646",
+  "hosted_run": 32276039761,
+  "matrix": {
+    "blob_sha": "f33e4c41d85086ef307f8507a02ae39657b8bd3d",
+    "path": "evals/problem-closure/modern-web-architecture/problem-closure-matrix.json"
+  },
+  "pull_request": 57,
+  "repository": "ed3c/ai-product-notes",
+  "schema_version": "stage6-closure-binding@1",
+  "shadow": {
+    "blob_sha": "9646bc10015d21d5256ef866a2627b7e62f71f45",
+    "path": "evals/problem-closure/modern-web-architecture/shadow-review.json"
+  }
+}

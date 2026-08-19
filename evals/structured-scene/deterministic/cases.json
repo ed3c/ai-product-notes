@@ -1,0 +1,63 @@
+{
+  "authority_ceiling": "DETERMINISTIC_EVAL_ONLY",
+  "cases": [
+    {
+      "case_id": "POS-001",
+      "expected_state": "PASS",
+      "kind": "POSITIVE",
+      "transform": "BASE"
+    },
+    {
+      "case_id": "POS-002",
+      "expected_state": "PASS",
+      "kind": "POSITIVE",
+      "transform": "MOVE_NODE_B_RIGHT"
+    },
+    {
+      "case_id": "POS-003",
+      "expected_state": "PASS",
+      "kind": "POSITIVE",
+      "transform": "ANCHOR_NODE_A_Y"
+    },
+    {
+      "case_id": "NEG-001",
+      "expected_state": "FAIL_AS_EXPECTED",
+      "expected_violation": "ASSET_REF_MISSING:node:a:asset:missing",
+      "kind": "NEGATIVE",
+      "transform": "MISSING_ASSET"
+    },
+    {
+      "case_id": "NEG-002",
+      "expected_state": "FAIL_AS_EXPECTED",
+      "expected_violation": "WITHIN_CANVAS:constraint:bounds:node:a",
+      "kind": "NEGATIVE",
+      "transform": "OUT_OF_BOUNDS"
+    },
+    {
+      "case_id": "NEG-003",
+      "expected_state": "FAIL_AS_EXPECTED",
+      "expected_violation": "NON_OVERLAP:constraint:no-overlap:node:a:node:b",
+      "kind": "NEGATIVE",
+      "transform": "OVERLAP"
+    },
+    {
+      "case_id": "MUT-001",
+      "expected_state": "STALE_AS_EXPECTED",
+      "kind": "MUTATION",
+      "transform": "MOVE_NODE_A_ONE_PX_AFTER_PASS"
+    }
+  ],
+  "denominator": {
+    "mutation": 1,
+    "negative": 3,
+    "positive": 3,
+    "total": 7
+  },
+  "parent_subjects": {
+    "constraint_validator_blob": "c287ea98dc0aabcd665078d0af7c7c857656b268",
+    "k03_head": "dd185109378a34109313b3a6fa150af9de0b76cf",
+    "scene_spec_blob": "f3239353515562829224a7fc4c1eabcd1b0f1389"
+  },
+  "runtime_state": "NOT_EXERCISED",
+  "schema_version": "structured-scene-eval-cases@1"
+}

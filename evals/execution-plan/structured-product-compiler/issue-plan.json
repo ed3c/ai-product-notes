@@ -1,0 +1,90 @@
+{
+  "duplicate_safe": true,
+  "existing_gate_reconciliation": [
+    {
+      "issue": 33,
+      "relation": "EXISTING_GATE_DIFFERENT_PRODUCT_TARGET",
+      "required_action": "DO_NOT_DUPLICATE_OR_SUBSTITUTE",
+      "state": "OPEN",
+      "target": "Agent Contract Evolution Replay CI",
+      "title": "Validate recurring pain with 3 qualified teams"
+    },
+    {
+      "issue": 34,
+      "relation": "EXISTING_GATE_DIFFERENT_PRODUCT_TARGET",
+      "required_action": "DO_NOT_DUPLICATE_OR_SUBSTITUTE",
+      "state": "OPEN",
+      "target": "Agent Contract Evolution Replay CI",
+      "title": "Obtain paid pilot or binding adoption evidence"
+    },
+    {
+      "issue": 35,
+      "relation": "GLOBAL_HOSTED_OWNER_POLICY_REFERENCE",
+      "required_action": "KEEP_SEPARATE",
+      "state": "OPEN",
+      "target": "hosted Agent Contract Evolution Replay CI",
+      "title": "Select and prove a durable hosted owner"
+    },
+    {
+      "issue": 38,
+      "relation": "GLOBAL_RUNTIME_POLICY_REFERENCE",
+      "required_action": "KEEP_SEPARATE",
+      "state": "OPEN",
+      "target": "existing market experiment",
+      "title": "Exercise real market experiment and executable delivery path"
+    },
+    {
+      "issue": 43,
+      "relation": "META_INDEX_REFERENCE",
+      "required_action": "RECONCILE_NOT_DUPLICATE",
+      "state": "OPEN",
+      "target": "repository-wide existing program",
+      "title": "Close all remaining AI Product Notes session work"
+    }
+  ],
+  "planned_issues": [
+    {
+      "action": "CREATE_PROPOSAL",
+      "atom_id": "PREL-C02",
+      "existing_issue": null,
+      "plan_id": "IP-001",
+      "title": "[PREL C02] Materialize deterministic SceneSpec contract and canonical digest",
+      "write_authority": "PROPOSAL_ONLY"
+    },
+    {
+      "action": "CHILD_OF_IP-001",
+      "atom_id": "PREL-K03",
+      "existing_issue": null,
+      "plan_id": "IP-002",
+      "title": "[PREL K03] Implement deterministic constraint validator",
+      "write_authority": "PROPOSAL_ONLY"
+    },
+    {
+      "action": "CHILD_OF_IP-002",
+      "atom_id": "PREL-E02",
+      "existing_issue": null,
+      "plan_id": "IP-003",
+      "title": "[PREL E02] Execute deterministic SceneSpec/constraint mutation controls",
+      "write_authority": "PROPOSAL_ONLY"
+    },
+    {
+      "action": "CHILD_OF_IP-003",
+      "atom_id": "PREL-X02",
+      "existing_issue": null,
+      "plan_id": "IP-004",
+      "title": "[PREL X02] Exercise bounded local structured-scene runtime canary",
+      "write_authority": "PROPOSAL_ONLY"
+    },
+    {
+      "action": "CONVERGENCE_AFTER_LEAVES",
+      "atom_id": "PREL-D02",
+      "existing_issue": null,
+      "plan_id": "IP-005",
+      "title": "[PREL D02] Converge structured product compiler State Machine and Stack indexes",
+      "write_authority": "PROPOSAL_ONLY"
+    }
+  ],
+  "run_id": "prel-stage7-structured-product-compiler-2026-08-20",
+  "schema_version": "execution-issue-plan@1",
+  "write_authority": "PROPOSAL_ONLY"
+}

@@ -1,0 +1,10 @@
+{
+  "authority_ceiling": "VALIDATION_DESIGN_ONLY",
+  "blob_sha": "8729b102429a5370baf78b84f424fa60db7e96a5",
+  "dossier_digest": "sha256:1a2e39bd06da3d14069573ecc67f7e94e1d95eef9d9e7e8b4d223d2645c9cded",
+  "head_sha": "736454e7ae49e351d146f3e9bb5c2ef67c846ecd",
+  "path": "evals/reverse-engineering/modern-web-architecture/dossier.json",
+  "pull_request": 54,
+  "repository": "ed3c/ai-product-notes",
+  "schema_version": "stage4-dossier-binding@1"
+}

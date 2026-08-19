@@ -1,0 +1,21 @@
+{
+  "authority_ceiling": "FINDINGS_ONLY",
+  "outputs": [
+    "problem-closure-matrix.json",
+    "product-closure-audit.json",
+    "issue-delta.json"
+  ],
+  "schema_version": "problem-closure-instance@1",
+  "skills_binding": {
+    "commit": "4ca9417b1da5ff32f1d4d3e7af64a15908749024",
+    "repository": "ed3c/skills-shared",
+    "tree_sha": "58545c4807b774a364be9ac7cd20a97ae0b1d669"
+  },
+  "stage5_binding": {
+    "blob_sha": "2d102fee6123be9aefabd1471a3d1d386f2fe912",
+    "head_sha": "72e89c89f1961db3735231a32efc5f4ac852d670",
+    "packet_digest": "a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7",
+    "pull_request": 55,
+    "repository": "ed3c/ai-product-notes"
+  }
+}

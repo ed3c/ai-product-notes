@@ -1,0 +1,85 @@
+{
+  "atom": "PREL-X02",
+  "authority_ceiling": "LOCAL_RUNTIME_ATOM_ONLY",
+  "cleanup": {
+    "allowed_dirty_paths": [
+      "evals/structured-scene/runtime/receipt.json"
+    ],
+    "out_of_lease_writes": [],
+    "post_run": "RECEIPT_ONLY_PENDING_COMMIT",
+    "pre_run": "CLEAN"
+  },
+  "command_receipt": {
+    "bounded": true,
+    "command": [
+      "python3",
+      "scripts/run_structured_scene_canary.py",
+      "--execute-worker",
+      "--repo-root",
+      ".",
+      "--input",
+      "evals/structured-scene/runtime/input.json"
+    ],
+    "exit_code": 0,
+    "stderr_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "sha256:2ab66d28ba9f6266a75fcf911a56fdf4f2ce8728fe2ee8961478356b6255438a",
+    "timeout_seconds": 30
+  },
+  "evidence_state": {
+    "deterministic_eval": "PASS",
+    "local_runtime": "PASS",
+    "paid": "ABSENT",
+    "rendering_provider": "NOT_EXERCISED",
+    "rights": "HUMAN_ADMIT_REQUIRED",
+    "user": "ABSENT"
+  },
+  "non_claims": [
+    "This receipt proves one local deterministic SceneSpec-to-validation workflow only.",
+    "It does not prove rendering, model/provider quality, user value, paid demand or rights.",
+    "It does not advance the Stage 7 machine queue or authorize merge, release or production."
+  ],
+  "queue_reconciliation": {
+    "machine_queue_advanced": false,
+    "stage7_predecessor_receipt": "ABSENT",
+    "state": "RECONCILIATION_REQUIRED_BY_PREL_D02"
+  },
+  "receipt_digest": "sha256:0c817066f8e85babab07e096128488b8b8c04595b7c0528bca16734b597465b2",
+  "repository": "ed3c/ai-product-notes",
+  "runtime": {
+    "command": [
+      "python3",
+      "scripts/run_structured_scene_canary.py",
+      "--check"
+    ],
+    "hosted_ci": false,
+    "identity": "CODEX_CLI_LOCAL"
+  },
+  "schema_version": "structured-scene-runtime-receipt@1",
+  "subject": {
+    "base_sha": "f840f37582e925759bdf89290d7a5da1122d21d1",
+    "branch": "prel/62-structured-scene-runtime-canary",
+    "changed_paths": [
+      "evals/structured-scene/runtime/contract.json",
+      "evals/structured-scene/runtime/input.json",
+      "evals/structured-scene/runtime/test_runtime_canary.py",
+      "scripts/run_structured_scene_canary.py"
+    ],
+    "contract_sha256": "sha256:245e8dec50d191b27a561c836919e1a5f907cfadf6812872aca34161df2ae158",
+    "head_sha": "4a61e14d3f0892efeb3d1a251ff0a1fa24f48021",
+    "subject_files": {
+      "evals/structured-scene/runtime/contract.json": "sha256:245e8dec50d191b27a561c836919e1a5f907cfadf6812872aca34161df2ae158",
+      "evals/structured-scene/runtime/input.json": "sha256:63084a3602ae520ec4ed342fd617865fb6901704cccd72abd89c587cc3a3744d",
+      "scripts/run_structured_scene_canary.py": "sha256:bd46296f2159c449c15da71f6c0dfe19b8d3282fda21a4455352dabfe2e57ce7",
+      "src/ai_product_notes/constraint_validator.py": "sha256:606d8b4cb4617ebff628ab6f3c881b154bfaf9530544a5abade363e211cea45a",
+      "src/ai_product_notes/scene_spec.py": "sha256:b8014f10815821fcafc86c3187f6fb1d4c51f3bfc737bad7b8f0c14ff21a8ca3"
+    },
+    "tree_sha": "2e6a5decb11ec73c5334bfe5c206910d4f7bbaa0"
+  },
+  "workflow": {
+    "input_file_sha256": "sha256:63084a3602ae520ec4ed342fd617865fb6901704cccd72abd89c587cc3a3744d",
+    "scene_digest": "sha256:6040b0ad8cd1b16edb539288e8a7bff8db150740287a27685d9d09af61683653",
+    "validation_receipt_digest": "sha256:46a15398c70a4117e76cd0b0fd8f7c7869ee55f39db7c6a2c492e491f7bb4f35",
+    "validation_receipt_sha256": "sha256:923ecc4d48a6f6a454e68af417b98102b71b0c662b60c4e0a2974cf63f62fd78",
+    "validation_status": "PASS"
+  }
+}

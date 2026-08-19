@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ed3c/ai-product-notes/schemas/scene-spec.schema.json",
+  "title": "SceneSpec v1",
+  "description": "Deterministic structured scene intermediate representation. Rendering/model/provider selection is outside this contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "scene_id", "canvas", "assets", "nodes", "constraints"],
+  "properties": {
+    "schema_version": {"const": "scene-spec@1"},
+    "scene_id": {"$ref": "#/$defs/id"},
+    "canvas": {"$ref": "#/$defs/canvas"},
+    "assets": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/asset"}
+    },
+    "nodes": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/node"}
+    },
+    "constraints": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/constraint"}
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._:-]{1,127}$"
+    },
+    "canvas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["width", "height", "unit"],
+      "properties": {
+        "width": {"type": "integer", "minimum": 1, "maximum": 100000},
+        "height": {"type": "integer", "minimum": 1, "maximum": 100000},
+        "unit": {"const": "px"}
+      }
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["asset_id", "kind", "content_ref"],
+      "properties": {
+        "asset_id": {"$ref": "#/$defs/id"},
+        "kind": {"enum": ["IMAGE", "TEXT", "SHAPE"]},
+        "content_ref": {"type": "string", "minLength": 1, "maxLength": 500}
+      }
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node_id", "asset_id", "x", "y", "width", "height", "z_index", "rotation_mdeg"],
+      "properties": {
+        "node_id": {"$ref": "#/$defs/id"},
+        "asset_id": {"$ref": "#/$defs/id"},
+        "x": {"type": "integer", "minimum": -1000000, "maximum": 1000000},
+        "y": {"type": "integer", "minimum": -1000000, "maximum": 1000000},
+        "width": {"type": "integer", "minimum": 1, "maximum": 1000000},
+        "height": {"type": "integer", "minimum": 1, "maximum": 1000000},
+        "z_index": {"type": "integer", "minimum": -1000000, "maximum": 1000000},
+        "rotation_mdeg": {"type": "integer", "minimum": -360000, "maximum": 360000}
+      }
+    },
+    "constraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["constraint_id", "kind", "subject_ids", "parameters"],
+      "properties": {
+        "constraint_id": {"$ref": "#/$defs/id"},
+        "kind": {"enum": ["WITHIN_CANVAS", "NON_OVERLAP", "LOCK_ASPECT", "ANCHOR"]},
+        "subject_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/id"}
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "margin": {"type": "integer", "minimum": 0, "maximum": 1000000},
+            "axis": {"enum": ["x", "y"]},
+            "target_x": {"type": "integer", "minimum": -1000000, "maximum": 1000000},
+            "target_y": {"type": "integer", "minimum": -1000000, "maximum": 1000000},
+            "ratio_num": {"type": "integer", "minimum": 1, "maximum": 1000000},
+            "ratio_den": {"type": "integer", "minimum": 1, "maximum": 1000000}
+          }
+        }
+      }
+    }
+  }
+}

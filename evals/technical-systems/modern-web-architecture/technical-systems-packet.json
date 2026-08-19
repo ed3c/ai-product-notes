@@ -1,0 +1,449 @@
+{
+  "authority_ceiling": "TECHNICAL_DESIGN_ONLY",
+  "boundaries": {
+    "adapter": [
+      "provider or rendering integration remains replaceable and outside the deterministic core"
+    ],
+    "deterministic": [
+      "structured scene intermediate representation",
+      "schema and constraint validation",
+      "canonical digest and validation receipt"
+    ],
+    "probabilistic": [
+      "optional image or scene generation backend; excluded from the first MVP slice"
+    ]
+  },
+  "capabilities": [
+    {
+      "boundary": "DETERMINISTIC",
+      "capability_id": "structured-scene-ir",
+      "dependencies": [],
+      "dossier_capability_id": "structured-scene-ir",
+      "failure_state": "INVALID_SCENE_SPEC",
+      "importance": "must",
+      "inputs": [
+        "product assets",
+        "scene intent",
+        "declared constraints"
+      ],
+      "interfaces": [
+        "SceneSpec.from_inputs",
+        "SceneSpec.canonical_json",
+        "SceneSpec.digest"
+      ],
+      "oracle": "Three canonical edit cases serialize to stable canonical scene-spec bytes and reproduce the same digest after round-trip parsing.",
+      "outputs": [
+        "canonical scene specification",
+        "scene-spec digest"
+      ],
+      "owner": "core.scene-state",
+      "required_evidence": [
+        "prototype round-trip and schema mutation tests"
+      ],
+      "rights": {
+        "code": {
+          "evidence": [],
+          "scope": "owned implementation planned; no third-party package selected",
+          "status": "NOT_APPLICABLE"
+        },
+        "datasets": {
+          "evidence": [],
+          "scope": "no dataset required for deterministic scene representation",
+          "status": "NOT_APPLICABLE"
+        },
+        "hosted_service": {
+          "evidence": [],
+          "scope": "no hosted service required",
+          "status": "NOT_APPLICABLE"
+        },
+        "model_weights": {
+          "evidence": [],
+          "scope": "no model weights required",
+          "status": "NOT_APPLICABLE"
+        },
+        "third_party_content": {
+          "evidence": [],
+          "scope": "no third-party content required by the core contract",
+          "status": "NOT_APPLICABLE"
+        },
+        "trajectories": {
+          "evidence": [],
+          "scope": "no trajectory asset required",
+          "status": "NOT_APPLICABLE"
+        }
+      },
+      "rollback": "Restore the previously admitted scene-spec bytes and digest; discard the candidate mutation.",
+      "transitions": [
+        {
+          "event": "bind inputs",
+          "from": "EMPTY",
+          "to": "BOUND"
+        },
+        {
+          "event": "canonicalize",
+          "from": "BOUND",
+          "to": "CANONICAL"
+        },
+        {
+          "event": "apply edit",
+          "from": "CANONICAL",
+          "to": "EDITED"
+        },
+        {
+          "event": "round-trip",
+          "from": "EDITED",
+          "to": "CANONICAL"
+        }
+      ]
+    },
+    {
+      "boundary": "DETERMINISTIC",
+      "capability_id": "constraint-validation",
+      "dependencies": [
+        "structured-scene-ir"
+      ],
+      "dossier_capability_id": "constraint-validation",
+      "failure_state": "CONSTRAINT_VIOLATION",
+      "importance": "must",
+      "inputs": [
+        "canonical scene specification",
+        "constraint rule set"
+      ],
+      "interfaces": [
+        "ConstraintSet.validate",
+        "ValidationReceipt.canonical_json"
+      ],
+      "oracle": "Planted invalid scenes deterministically fail with stable rule identifiers while valid canonical scenes produce a PASS receipt bound to the scene-spec digest.",
+      "outputs": [
+        "validation receipt",
+        "violated rule identifiers"
+      ],
+      "owner": "core.constraint-validation",
+      "required_evidence": [
+        "owned implementation canary with planted invalid scenes"
+      ],
+      "rights": {
+        "code": {
+          "evidence": [],
+          "scope": "owned deterministic validator planned",
+          "status": "NOT_APPLICABLE"
+        },
+        "datasets": {
+          "evidence": [],
+          "scope": "no dataset required",
+          "status": "NOT_APPLICABLE"
+        },
+        "hosted_service": {
+          "evidence": [],
+          "scope": "no hosted service required",
+          "status": "NOT_APPLICABLE"
+        },
+        "model_weights": {
+          "evidence": [],
+          "scope": "no model weights required",
+          "status": "NOT_APPLICABLE"
+        },
+        "third_party_content": {
+          "evidence": [],
+          "scope": "no third-party content required",
+          "status": "NOT_APPLICABLE"
+        },
+        "trajectories": {
+          "evidence": [],
+          "scope": "no trajectory asset required",
+          "status": "NOT_APPLICABLE"
+        }
+      },
+      "rollback": "Reject the candidate transition and retain the last scene specification with a PASS validation receipt.",
+      "transitions": [
+        {
+          "event": "validate",
+          "from": "UNVALIDATED",
+          "to": "PASS"
+        },
+        {
+          "event": "detect violation",
+          "from": "UNVALIDATED",
+          "to": "FAIL"
+        },
+        {
+          "event": "scene digest changes",
+          "from": "PASS",
+          "to": "STALE"
+        },
+        {
+          "event": "revalidate",
+          "from": "STALE",
+          "to": "PASS"
+        }
+      ]
+    },
+    {
+      "boundary": "PROBABILISTIC",
+      "capability_id": "candidate-rendering-stack",
+      "dependencies": [
+        "constraint-validation",
+        "structured-scene-ir"
+      ],
+      "dossier_capability_id": "candidate-rendering-stack",
+      "failure_state": "BACKEND_UNAVAILABLE_OR_UNBOUND",
+      "importance": "should",
+      "inputs": [
+        "validated scene specification",
+        "explicit backend binding"
+      ],
+      "interfaces": [
+        "RenderBackend.render",
+        "RenderReceipt.subject"
+      ],
+      "oracle": "A future owned canary must bind one exact backend subject and produce a runtime receipt; no such runtime evidence exists in Stage 5.",
+      "outputs": [
+        "candidate rendered output",
+        "runtime render receipt"
+      ],
+      "owner": "adapter.rendering",
+      "required_evidence": [
+        "exact selected dependency graph and transitive license review"
+      ],
+      "rights": {
+        "code": {
+          "evidence": [],
+          "scope": "backend package not selected",
+          "status": "UNKNOWN"
+        },
+        "datasets": {
+          "evidence": [],
+          "scope": "backend data requirements not selected",
+          "status": "UNKNOWN"
+        },
+        "hosted_service": {
+          "evidence": [],
+          "scope": "hosted backend terms not selected",
+          "status": "UNKNOWN"
+        },
+        "model_weights": {
+          "evidence": [],
+          "scope": "model or rendering weights not selected",
+          "status": "UNKNOWN"
+        },
+        "third_party_content": {
+          "evidence": [],
+          "scope": "content rights depend on future input/output policy",
+          "status": "UNKNOWN"
+        },
+        "trajectories": {
+          "evidence": [],
+          "scope": "trajectory reuse requirements unknown",
+          "status": "UNKNOWN"
+        }
+      },
+      "rollback": "Disable the backend adapter and preserve the validated deterministic scene packet without claiming rendered output.",
+      "transitions": [
+        {
+          "event": "bind backend",
+          "from": "UNBOUND",
+          "to": "BOUND"
+        },
+        {
+          "event": "invoke",
+          "from": "BOUND",
+          "to": "RUNNING"
+        },
+        {
+          "event": "receipt observed",
+          "from": "RUNNING",
+          "to": "OBSERVED"
+        },
+        {
+          "event": "backend failure",
+          "from": "RUNNING",
+          "to": "FAILED"
+        }
+      ]
+    }
+  ],
+  "decision": "VALIDATE",
+  "dependency_edges": [
+    {
+      "from": "structured-scene-ir",
+      "to": "constraint-validation"
+    },
+    {
+      "from": "constraint-validation",
+      "to": "candidate-rendering-stack"
+    },
+    {
+      "from": "structured-scene-ir",
+      "to": "candidate-rendering-stack"
+    }
+  ],
+  "evals": [
+    {
+      "capability_ids": [
+        "structured-scene-ir",
+        "constraint-validation"
+      ],
+      "eval_id": "eval:positive-roundtrip",
+      "evidence_state": "PLANNED",
+      "kind": "POSITIVE",
+      "oracle": "Three canonical edits produce stable scene-spec and validation-receipt digests.",
+      "procedure": "Create three valid scene edit cases, canonicalize, validate, serialize, parse and replay each case."
+    },
+    {
+      "capability_ids": [
+        "constraint-validation"
+      ],
+      "eval_id": "eval:negative-invalid-scene",
+      "evidence_state": "PLANNED",
+      "kind": "NEGATIVE",
+      "oracle": "Each planted invalid scene fails with the expected stable rule identifier.",
+      "procedure": "Plant missing asset references, invalid bounds and conflicting constraints and assert fail-closed receipts."
+    },
+    {
+      "capability_ids": [
+        "structured-scene-ir",
+        "constraint-validation"
+      ],
+      "eval_id": "eval:mutation-digest-drift",
+      "evidence_state": "PLANNED",
+      "kind": "MUTATION",
+      "oracle": "A mutation after validation invalidates the previous receipt and requires revalidation.",
+      "procedure": "Mutate canonical scene bytes after a PASS receipt and assert digest mismatch or STALE transition."
+    },
+    {
+      "capability_ids": [
+        "candidate-rendering-stack",
+        "constraint-validation"
+      ],
+      "eval_id": "eval:fault-backend-unavailable",
+      "evidence_state": "PLANNED",
+      "kind": "FAULT",
+      "oracle": "Backend failure cannot erase the deterministic validated scene packet or fabricate a render PASS.",
+      "procedure": "Simulate unavailable rendering backend and verify deterministic state remains readable with render state FAILED or NOT_EXERCISED."
+    },
+    {
+      "capability_ids": [
+        "candidate-rendering-stack"
+      ],
+      "eval_id": "eval:runtime-owned-canary",
+      "evidence_state": "NOT_EXERCISED",
+      "kind": "RUNTIME",
+      "oracle": "One exact backend subject produces an independently readable runtime receipt bound to input and output digests.",
+      "procedure": "Future local/provider lane only: bind an owned backend, execute one bounded render and persist the exact receipt."
+    }
+  ],
+  "evidence_state": {
+    "design": "PASS",
+    "implementation": "ABSENT",
+    "legal": "ABSENT",
+    "paid": "ABSENT",
+    "runtime": "ABSENT",
+    "user": "ABSENT"
+  },
+  "mvp_slice": {
+    "budget_usd": 200,
+    "capability_ids": [
+      "structured-scene-ir",
+      "constraint-validation"
+    ],
+    "excluded_capabilities": [
+      "candidate-rendering-stack"
+    ],
+    "maximum_days": 7,
+    "rollback": "Remove the candidate technical slice and retain only the source-constrained dossier and validation findings; no provider state is required for rollback.",
+    "stop_loss": [
+      "stop if any of the three canonical edit cases needs manual repair to restore deterministic structured state",
+      "stop if planted invalid scenes can pass without stable rule-level failure receipts",
+      "stop before selecting a rendering backend if rights remain unresolved or the deterministic wedge fails"
+    ],
+    "success_oracles": [
+      "three canonical scene edits round-trip with byte-stable structured state",
+      "all planted invalid scenes deterministically fail with stable rule identifiers",
+      "validation receipts are bound to exact scene-spec digests and become stale on mutation"
+    ]
+  },
+  "non_claims": [
+    "This packet designs technical interfaces and oracles; it does not establish that the implementation exists.",
+    "No rendering library, model, hosted provider or named-product internal architecture is selected or verified.",
+    "No package license, runtime quality, user value, paid demand, BUILD, merge, release or production state is established."
+  ],
+  "nonfunctional_evidence": {
+    "cost": [
+      "measure local deterministic validation cost separately from any future provider or rendering cost"
+    ],
+    "latency": [
+      "record p50 and p95 canonicalization plus validation latency for the three owned edit cases"
+    ],
+    "privacy": [
+      "prove public receipts contain only public canary data and no private repository, customer, credential or raw-session fields"
+    ],
+    "rollback": [
+      "prove the previous admitted scene-spec digest remains recoverable after failed validation or backend faults"
+    ],
+    "security": [
+      "reject untrusted scene fields outside the declared schema and treat future backend outputs as untrusted until validated"
+    ]
+  },
+  "packet_digest": "sha256:a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7",
+  "packet_id": "technical-systems:structured-product-compiler",
+  "schema_version": "technical-systems-packet@1",
+  "source_subject": {
+    "blob_sha": "8729b102429a5370baf78b84f424fa60db7e96a5",
+    "dossier_digest": "sha256:1a2e39bd06da3d14069573ecc67f7e94e1d95eef9d9e7e8b4d223d2645c9cded",
+    "head_sha": "736454e7ae49e351d146f3e9bb5c2ef67c846ecd",
+    "path": "evals/reverse-engineering/modern-web-architecture/dossier.json",
+    "pull_request": 54,
+    "repository": "ed3c/ai-product-notes"
+  },
+  "substitutions": [
+    {
+      "candidate": "replaceable rendering or generation backend; no package or service selected",
+      "capability_id": "candidate-rendering-stack",
+      "required_evidence": [
+        "exact selected dependency graph",
+        "code/model/data/service/content rights review",
+        "owned runtime receipt"
+      ],
+      "rights": {
+        "code": {
+          "evidence": [],
+          "scope": "candidate not selected",
+          "status": "UNKNOWN"
+        },
+        "datasets": {
+          "evidence": [],
+          "scope": "candidate not selected",
+          "status": "UNKNOWN"
+        },
+        "hosted_service": {
+          "evidence": [],
+          "scope": "candidate not selected",
+          "status": "UNKNOWN"
+        },
+        "model_weights": {
+          "evidence": [],
+          "scope": "candidate not selected",
+          "status": "UNKNOWN"
+        },
+        "third_party_content": {
+          "evidence": [],
+          "scope": "candidate not selected",
+          "status": "UNKNOWN"
+        },
+        "trajectories": {
+          "evidence": [],
+          "scope": "candidate not selected",
+          "status": "UNKNOWN"
+        }
+      },
+      "status": "UNKNOWN",
+      "substitution_id": "substitution:rendering-backend"
+    }
+  ],
+  "upstream_unknown_claims": [
+    "claim:actual-company-internals-unknown"
+  ],
+  "upstream_unresolved_contradictions": [
+    "contradiction:all-permissive-vs-lgpl-option"
+  ]
+}
