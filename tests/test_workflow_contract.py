@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import re
 import unittest
 from pathlib import Path
@@ -10,6 +11,7 @@ WORKFLOW_DIR = ROOT / ".github" / "workflows"
 WORKFLOW = WORKFLOW_DIR / "opportunity-contracts.yml"
 EXACT_EXPRESSION = "${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}"
 CHECKOUT_SHA = "3d3c42e5aac5ba805825da76410c181273ba90b1"
+WORKFLOW_SHA256 = "42dcf7fb5104d2f2e2a72ac40df10b70e82ad7962ed97c67971230cacb3fc78e"
 
 
 def workflow_security_errors(text: str) -> list[str]:
@@ -36,6 +38,8 @@ def workflow_security_errors(text: str) -> list[str]:
 
 def workflow_errors(text: str) -> list[str]:
     errors: list[str] = []
+    if hashlib.sha256(text.encode("utf-8")).hexdigest() != WORKFLOW_SHA256:
+        errors.append("admitted workflow bytes changed without a new reviewed digest")
     required = (
         "  exact-head-contracts:\n",
         "name: Exact head contracts",
@@ -136,6 +140,23 @@ class WorkflowContractTests(unittest.TestCase):
         errors = workflow_errors(mutated)
         self.assertTrue(any("write permission" in error for error in errors))
         self.assertTrue(any("directly to main" in error for error in errors))
+
+    def test_yaml_equivalent_security_bypasses_fail(self) -> None:
+        mutations = (
+            self.text.replace("on:\n  pull_request:", "on:\n  issues: {types: [opened]}\n  pull_request:"),
+            self.text.replace(
+                "  exact-head-contracts:\n",
+                "  exact-head-contracts:\n    permissions: {contents: write}\n",
+            ),
+            self.text.replace(
+                "      - name: Assert exact head subject\n",
+                "      - run: git push origin HEAD:${{ github.event.repository.default_branch }}\n"
+                "      - name: Assert exact head subject\n",
+            ),
+        )
+        for mutated in mutations:
+            with self.subTest():
+                self.assertTrue(workflow_errors(mutated))
 
     def test_missing_explicit_head_ref_fails(self) -> None:
         mutated = self.text.replace(f"ref: {EXACT_EXPRESSION}", "ref: ${{ github.sha }}")
