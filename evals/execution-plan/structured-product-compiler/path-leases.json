@@ -1,0 +1,13 @@
+{
+  "active_writers": 0,
+  "law": "One mutable branch has one active writer; overlapping active path/resource leases are forbidden.",
+  "leases": [
+    {"atom_id": "PREL-C02", "branch": "prel/59-scene-spec-contract", "paths": ["schemas/scene-spec.schema.json", "src/ai_product_notes/scene_spec.py", "tests/test_scene_spec_contract.py"], "resource_owner": "worker:PREL-C02", "state": "PROPOSED"},
+    {"atom_id": "PREL-K03", "branch": "prel/60-constraint-validator", "paths": ["src/ai_product_notes/constraint_validator.py", "tests/test_constraint_validator.py"], "resource_owner": "worker:PREL-K03", "state": "PROPOSED"},
+    {"atom_id": "PREL-E02", "branch": "prel/61-scene-deterministic-evals", "paths": ["tests/test_structured_scene_e2e.py", "evals/structured-scene/deterministic/**"], "resource_owner": "worker:PREL-E02", "state": "PROPOSED"},
+    {"atom_id": "PREL-X02", "branch": "prel/62-structured-scene-runtime-canary", "paths": ["scripts/run_structured_scene_canary.py", "evals/structured-scene/runtime/**"], "resource_owner": "worker:PREL-X02", "state": "PROPOSED"},
+    {"atom_id": "PREL-D02", "branch": "prel/63-structured-product-convergence", "paths": ["docs/architecture/STRUCTURED_PRODUCT_COMPILER.md", "docs/git/STACKED_PRS.md"], "resource_owner": "worker:PREL-D02", "state": "PROPOSED"}
+  ],
+  "run_id": "prel-stage7-structured-product-compiler-2026-08-20",
+  "schema_version": "path-leases@1"
+}
