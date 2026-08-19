@@ -1,0 +1,43 @@
+{
+  "items": [
+    {
+      "argv": [
+        "python3 -m unittest -q tests/test_execution_plan.py",
+        "python3 scripts/compile_execution_plan.py --check"
+      ],
+      "cleanup": "workspace must remain clean and exact head unchanged",
+      "cwd": "repository-root",
+      "durable_receipt": "evals/execution-plan/structured-product-compiler/local-stage7-receipt.json",
+      "entry": "Stage 7 Draft PR exact head is readable.",
+      "exit": "all Stage 7 planner controls PASS on a clean local checkout",
+      "id": "LH-S7-VERIFY",
+      "next": "LH-S8-C02",
+      "owner": "CODEX_CLI_LOCAL_OR_CLAUDE_CODE_LOCAL",
+      "state": "ACTIVE",
+      "subject": {
+        "branch": "prel/58-execution-plan",
+        "expected_parent": "34f77140968799c0c2669610609848beadf96646"
+      },
+      "timeout_seconds": 600
+    },
+    {
+      "argv": ["execute prompt-packets/PREL-C02.md"],
+      "cleanup": "no out-of-lease changes and no untracked artifacts",
+      "cwd": "fresh isolated worktree",
+      "durable_receipt": "future Stage 8 C02 exact-subject receipt",
+      "entry": "LH-S7-VERIFY exact receipt PASS and Stage 8 issue/lease admitted.",
+      "exit": "SceneSpec contract and canonicalization oracle PASS",
+      "id": "LH-S8-C02",
+      "next": "PREL-K03",
+      "owner": "CODEX_CLI_LOCAL_OR_CLAUDE_CODE_LOCAL",
+      "state": "BLOCKED_BY_PREDECESSOR",
+      "subject": {
+        "atom_id": "PREL-C02",
+        "branch": "prel/59-scene-spec-contract"
+      },
+      "timeout_seconds": 14400
+    }
+  ],
+  "queue_id": "PREL-S7-TO-S8-2026-08-20",
+  "schema_version": "local-handoff-queue@1"
+}
