@@ -1,0 +1,39 @@
+{
+  "schema": "prel-path-leases@0",
+  "run_id": "prel-2026-08-18-control-binding",
+  "active_lease": {
+    "repository": "ed3c/ai-product-notes",
+    "issue": 52,
+    "branch": "prel/52-control-plane-binding",
+    "writer": "CHATGPT_GITHUB_CONNECTOR_TECH_LEAD",
+    "paths": ["reverse-engineering/**"],
+    "excluded_paths": [
+      "README.md","AGENTS.md","docs/**","schemas/**","src/**","scripts/**","tests/**",
+      "roadmap/**","opportunities/**","experiments/**"
+    ],
+    "shared_index_owner": "ai-product-notes#50",
+    "state": "ADMITTED_FOR_DRAFT_PREPARATION"
+  },
+  "planned_disjoint_leases": [
+    {
+      "repository": "ed3c/ai-content-notes",
+      "issue": 51,
+      "paths": [
+        "schemas/source-registry.schema.json","tools/source_registry.py",
+        "tests/test_source_registry.py","docs/source-intake/**","examples/source-registry/**"
+      ],
+      "state": "PROPOSED_NOT_ACTIVE"
+    },
+    {
+      "repository": "ed3c/ai-content-notes",
+      "issue": 50,
+      "paths": [
+        "schemas/product-signal.schema.json","schemas/claim-ledger.schema.json",
+        "schemas/evidence-ledger.schema.json","tools/compile_product_signal.py",
+        "tests/test_product_signal_export.py","docs/product-signal-export/**","examples/product-signals/**"
+      ],
+      "state": "PROPOSED_NOT_ACTIVE"
+    }
+  ],
+  "overlap_check": "The two planned ai-content leases use distinct files and directories; shared root indexes remain unleased until convergence."
+}

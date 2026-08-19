@@ -1,0 +1,104 @@
+{
+  "schema": "prel-repository-role-map@0",
+  "run_id": "prel-2026-08-18-control-binding",
+  "repositories": [
+    {
+      "repository": "ed3c/ai-content-notes",
+      "plane": "EVIDENCE",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "6afe799f9ba01c0c7ab4a25dffe5f226c0d05d53",
+      "tree": "6683ba605f574a40d33265cf4ca2cc223fa77dcc",
+      "open_pull_requests": [],
+      "responsibilities": [
+        "source identity, rights and completeness",
+        "retained source or immutable pointer",
+        "atomic claims, evidence dependencies and contradictions",
+        "privacy-preserving product-signal export"
+      ],
+      "next_issues": [50, 51],
+      "mutation_state": "NO_PREL_BRANCH_OR_OPEN_PR_OBSERVED"
+    },
+    {
+      "repository": "ed3c/ai-product-notes",
+      "plane": "PRODUCT_CONTROL",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "dcef8e57a4ec74be3ff843defa82d53e213719af",
+      "tree": "ef43f7a7a35f14ede0e56edefc05a6e0ff6e5d36",
+      "open_pull_requests": [],
+      "responsibilities": [
+        "run control and repository routing",
+        "product dossier and capability graph",
+        "problem closure matrix",
+        "dual-edge execution DAG, issue plan and convergence"
+      ],
+      "next_issues": [44, 45, 46, 47, 48, 49, 50, 51, 52],
+      "mutation_state": "STAGE_1_BRANCH_ADMISSIBLE"
+    },
+    {
+      "repository": "ed3c/skills-shared",
+      "plane": "PROCEDURE",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "8f5548c5b94a31e074b3aa6cbce776f754c24f61",
+      "tree": "8bbf96f1b8b88bf711528a0796dce8c0fb9eb742",
+      "open_pull_requests": [
+        {
+          "number": 354,
+          "head": "315240d60dbc300716c274defe3c5d95d1571d00",
+          "scope": "migration, scheduler canary and shared infrastructure",
+          "relevance": "CONCURRENT_WRITER_REQUIRES_PATH_RECONCILIATION"
+        }
+      ],
+      "responsibilities": [
+        "portable reverse-engineering contracts and prompts",
+        "Tech Lead dual DAG and leases",
+        "read-only Shadow procedures and falsifiers",
+        "Molecular Stack method"
+      ],
+      "next_issues": [332, 357, 358],
+      "mutation_state": "DO_NOT_DISPATCH_357_358_UNTIL_CURRENT_MAIN_AND_PR_354_PATHS_ARE_RECONCILED"
+    },
+    {
+      "repository": "ed3c/bettor-arena",
+      "plane": "EXECUTION_AND_PROOF",
+      "visibility": "public",
+      "default_branch": "main",
+      "commit": "13ff9840fc5683b33670fa191591035bc96292dc",
+      "tree": "947ba9a2c19268b95414a2918b88283d23a0ce2c",
+      "open_pull_requests": [
+        {
+          "number": 176,
+          "head_branch": "docs/173-tech-lead-shadow-closure",
+          "scope": "canonical closure and Local Handoff authority"
+        },
+        {
+          "number": 188,
+          "head_branch": "docs/187-dual-agent-closure",
+          "base_branch": "docs/173-tech-lead-shadow-closure",
+          "scope": "documentation child using the unmerged closure vocabulary"
+        }
+      ],
+      "responsibilities": [
+        "immutable Skill and product-packet binding",
+        "Context Capsule and leased Worker execution",
+        "host-owned gates and content-addressed receipts",
+        "canonical Local Handoff consumer"
+      ],
+      "next_issues": [173, 181],
+      "mutation_state": "PREL_181_BLOCKED_BY_OPEN_CLOSURE_STACK_AND_LOCAL_RUNTIME"
+    }
+  ],
+  "human_projection": {
+    "system": "Google Drive CodexDoc",
+    "document_id": "1PMLo7I6ze0CFepwmiPbHzfH2HU_GmGMqgLjjZn-1-jo",
+    "revision_id": "AIroW37gkmO4rY-bdSwftUSmwbWWrKSE1J5mF0sjsOpEWmffBt9Dov1dCAm5BYGDf33zgZg49xWZaybrBMUZYUvEpMdPZ5aUzh44Vu7CMqw",
+    "authority": "HUMAN_PROJECTION_ONLY"
+  },
+  "single_shared_index_owner": {
+    "repository": "ed3c/ai-product-notes",
+    "issue": 50,
+    "state": "BLOCKED_BY_PREDECESSORS"
+  }
+}

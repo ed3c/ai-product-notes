@@ -1,0 +1,83 @@
+{
+  "schema": "prel-shadow-baseline@0",
+  "run_id": "prel-2026-08-18-control-binding",
+  "mode": "SAME_CONTEXT_READ_ONLY_SHADOW",
+  "independence_state": "NOT_EXERCISED",
+  "authority": "FINDINGS_ONLY_NO_BUILDER_PATH_WRITES",
+  "verdict": "PREPARATION_ALLOWED_WITH_DECLARED_BLOCKERS",
+  "findings": [
+    {
+      "id": "SH-001",
+      "severity": "HIGH",
+      "subject": "ed3c/ai-product-notes@dcef8e57a4ec74be3ff843defa82d53e213719af",
+      "finding": "`reverse-engineering/` is absent on current main.",
+      "terminal_state": "NOT_IMPLEMENTED",
+      "required_action": "Materialize Stage 1 only on an issue-leased Draft branch."
+    },
+    {
+      "id": "SH-002",
+      "severity": "HIGH",
+      "subject": "ai-product-notes#44-#52",
+      "finding": "Issue topology and Google documentation exist, but no ai-product PREL branch or open PR was observed before this run.",
+      "terminal_state": "PLANNED_NOT_IMPLEMENTED",
+      "required_action": "Publish exact Stage 1 artifacts and preserve local validation as a separate lane."
+    },
+    {
+      "id": "SH-003",
+      "severity": "MEDIUM",
+      "subject": "GoogleDoc:1PMLo7I6ze0CFepwmiPbHzfH2HU_GmGMqgLjjZn-1-jo@AIroW37gkmO4rY-bdSwftUSmwbWWrKSE1J5mF0sjsOpEWmffBt9Dov1dCAm5BYGDf33zgZg49xWZaybrBMUZYUvEpMdPZ5aUzh44Vu7CMqw",
+      "finding": "The traceability document is readable and revision-bound, but it is a human projection.",
+      "terminal_state": "PROJECTED",
+      "required_action": "Do not use the document to close a GitHub issue or implementation state."
+    },
+    {
+      "id": "SH-004",
+      "severity": "CRITICAL",
+      "subject": "DrivePDF:1G35AxLrIa95YIUAvncH6BiWkUVAeX9A9",
+      "finding": "The PDF proposes the architecture and named product mappings; it does not prove the named companies' internal implementations.",
+      "terminal_state": "SOURCE_STATEMENT",
+      "required_action": "Keep every product-internal library mapping as hypothesis/unknown until independently observed."
+    },
+    {
+      "id": "SH-005",
+      "severity": "HIGH",
+      "subject": "ai-content-notes#51/#50",
+      "finding": "The PDF has no repository-retained source manifest, content digest, rights/completeness receipt or product-signal export.",
+      "terminal_state": "BLOCKED_EVIDENCE_PLANE",
+      "required_action": "Dispatch Stage 2 and Stage 3 only after Stage 1 publication."
+    },
+    {
+      "id": "SH-006",
+      "severity": "HIGH",
+      "subject": "ed3c/skills-shared@8f5548c5b94a31e074b3aa6cbce776f754c24f61",
+      "finding": "Issues #357/#358 have no matching branch; open PR #354 is a concurrent shared-infrastructure writer.",
+      "terminal_state": "BLOCKED_PATH_RECONCILIATION",
+      "required_action": "Rebind current main and inspect PR #354 paths before leasing #357/#358."
+    },
+    {
+      "id": "SH-007",
+      "severity": "HIGH",
+      "subject": "ed3c/bettor-arena@13ff9840fc5683b33670fa191591035bc96292dc",
+      "finding": "Open PR #176 owns closure/Local Handoff authority and PR #188 is its documentation child.",
+      "terminal_state": "BLOCKED_BY_OPEN_STACK",
+      "required_action": "Do not start #181 consumer mutation or touch their shared documentation/index paths."
+    },
+    {
+      "id": "SH-008",
+      "severity": "CRITICAL",
+      "subject": "product validation lanes",
+      "finding": "No repository evidence establishes qualified-user pain, paid adoption, PMF or production release.",
+      "terminal_state": "ABSENT",
+      "required_action": "Keep roadmap state at VALIDATE and preserve #33/#34 as independent gates."
+    },
+    {
+      "id": "SH-009",
+      "severity": "MEDIUM",
+      "subject": "current Shadow execution",
+      "finding": "This review is same-context and cannot satisfy the independent Shadow requirement in skills-shared#358.",
+      "terminal_state": "NOT_EXERCISED",
+      "required_action": "Run a separate-context/model or external deterministic canary later."
+    }
+  ],
+  "first_green_rule": "Any later green result must reopen skipped subject, persistence, failure-path, lane and independence obligations before promotion."
+}

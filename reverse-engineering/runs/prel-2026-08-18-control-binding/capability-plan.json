@@ -1,0 +1,84 @@
+{
+  "schema": "prel-capability-plan@0",
+  "run_id": "prel-2026-08-18-control-binding",
+  "transitions": [
+    {
+      "id": "CAP-GH-READBACK",
+      "selection": "REQUIRED",
+      "module": "GitHub connector exact-subject readback",
+      "inputs": ["repository URLs"],
+      "output_state": "REPOSITORIES_OBSERVED",
+      "receipt_state": "LIVE_OBSERVED",
+      "authority_ceiling": "READ_AND_DRAFT_PUBLICATION"
+    },
+    {
+      "id": "CAP-GDOC-READBACK",
+      "selection": "REQUIRED",
+      "module": "Google Drive document revision readback",
+      "inputs": ["1PMLo7I6ze0CFepwmiPbHzfH2HU_GmGMqgLjjZn-1-jo"],
+      "output_state": "HUMAN_PROJECTION_BOUND",
+      "receipt_state": "LIVE_OBSERVED",
+      "authority_ceiling": "PROJECTION_ONLY"
+    },
+    {
+      "id": "CAP-PDF-READBACK",
+      "selection": "REQUIRED",
+      "module": "conversation file parser plus Drive pointer",
+      "inputs": ["1G35AxLrIa95YIUAvncH6BiWkUVAeX9A9"],
+      "output_state": "SOURCE_POINTER_BOUND",
+      "receipt_state": "PARTIAL_NO_REPOSITORY_DIGEST",
+      "fallback": "AI_CONTENT_NOTES_51"
+    },
+    {
+      "id": "CAP-DRAFT-PUBLISH",
+      "selection": "REQUIRED",
+      "module": "GitHub branch/commit/Draft PR publication",
+      "predecessors": ["CAP-GH-READBACK"],
+      "output_state": "RUN_CONTRACT_DRAFT_PUBLISHED",
+      "receipt_state": "TO_BE_BOUND_BY_PR_METADATA",
+      "authority_ceiling": "NO_MERGE"
+    },
+    {
+      "id": "CAP-LOCAL-ASSERT",
+      "selection": "REQUIRED_FOR_IMPLEMENTATION_ADMISSION",
+      "module": "repository-native local schema/tests",
+      "output_state": "LOCAL_ASSERTIONS_CLOSED",
+      "receipt_state": "NOT_EXERCISED",
+      "fallback": "TYPED_LOCAL_HANDOFF",
+      "authority_ceiling": "LOCAL_ONLY"
+    },
+    {
+      "id": "CAP-INDEPENDENT-SHADOW",
+      "selection": "REQUIRED_FOR_SHADOW_COMPLETION",
+      "module": "separate context/model or external deterministic checker",
+      "output_state": "INDEPENDENT_SHADOW_CLOSED",
+      "receipt_state": "NOT_EXERCISED",
+      "fallback": "KEEP_CURRENT_REVIEW_SAME_CONTEXT_ADVISORY",
+      "authority_ceiling": "READ_ONLY"
+    },
+    {
+      "id": "CAP-GIT-TOWN-LOCAL",
+      "selection": "NOT_APPLICABLE_TO_STAGE_1_CONNECTOR_PREPARATION",
+      "module": "Git Town linked-worktree execution",
+      "output_state": "LOCAL_STACK_SYNCHRONIZED",
+      "receipt_state": "NOT_EXERCISED"
+    },
+    {
+      "id": "CAP-MARKET",
+      "selection": "NOT_APPLICABLE_TO_STAGE_1",
+      "module": "user interview and paid-adoption evidence",
+      "output_state": "PAID_VALIDATED",
+      "receipt_state": "ABSENT"
+    }
+  ],
+  "admit_state": "CONTEXT_ADMISSION_READY_WITH_DECLARED_GAPS",
+  "blocked_downstream_states": [
+    "SOURCE_ADMITTED",
+    "PRODUCT_SIGNAL_EXPORTED",
+    "INDEPENDENT_SHADOW_CLOSED",
+    "STACK_IMPLEMENTED",
+    "LIVE_WORKFLOW_VERIFIED",
+    "USER_VALIDATED",
+    "PAID_VALIDATED"
+  ]
+}
