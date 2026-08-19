@@ -1,0 +1,27 @@
+{
+  "authority_ceiling": "PLANNING_ONLY",
+  "decision": "VALIDATE",
+  "human_owned_operations": [
+    "merge",
+    "release",
+    "rights admission",
+    "customer truth",
+    "commercial truth",
+    "production promotion",
+    "semantic conflict resolution"
+  ],
+  "nonclaims": [
+    "Planning output does not prove any Worker executed.",
+    "No rendering library/model/provider is selected.",
+    "No user, paid, rights, merge, release or production state is promoted."
+  ],
+  "run_contract_digest": "e8555b5f98d73c29d2976b37d5695e96fb2b3a964591111bb37ecbd2eb0c078f",
+  "run_id": "prel-stage7-structured-product-compiler-2026-08-20",
+  "schema_version": "execution-plan-run-contract@1",
+  "subject": {
+    "planner_subject_digest": "b14da457a71456bfa27e814b6e92fa9468b86095480daa7b8abf61705904c349",
+    "skills_commit": "4ca9417b1da5ff32f1d4d3e7af64a15908749024",
+    "stage6_audit_digest": "d221ec2b1b4dee513352571fd10572ce54f5e72e6f081f4491db98498f175b1a",
+    "stage6_head": "34f77140968799c0c2669610609848beadf96646"
+  }
+}
