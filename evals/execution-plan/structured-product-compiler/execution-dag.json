@@ -1,0 +1,57 @@
+{
+  "dag_digest": "8882635fc7d0c227d234f66de31c8b8572a019195ff36b834d717ad0aa378b18",
+  "laws": {
+    "false_serialization_forbidden": true,
+    "parent_edge_requires_consumed_bytes": true,
+    "start_is_not_completion": true
+  },
+  "nodes": [
+    {
+      "atom": "C",
+      "atom_id": "PREL-C02",
+      "branch": "prel/59-scene-spec-contract",
+      "completion_dependencies": ["SCENE_SPEC_CONTRACT_RECEIPT_PASS"],
+      "evidence_lane": "CLOUD",
+      "parents": [],
+      "start_dependencies": ["STAGE7_EXACT_PLAN_READABLE"]
+    },
+    {
+      "atom": "K",
+      "atom_id": "PREL-K03",
+      "branch": "prel/60-constraint-validator",
+      "completion_dependencies": ["PREL-C02_RECEIPT_PASS", "CONSTRAINT_VALIDATOR_RECEIPT_PASS"],
+      "evidence_lane": "CLOUD",
+      "parents": ["PREL-C02"],
+      "start_dependencies": ["PREL-C02_INTERFACE_BYTES_READABLE"]
+    },
+    {
+      "atom": "E",
+      "atom_id": "PREL-E02",
+      "branch": "prel/61-scene-deterministic-evals",
+      "completion_dependencies": ["PREL-C02_RECEIPT_PASS", "PREL-K03_RECEIPT_PASS", "DETERMINISTIC_EVAL_RECEIPT_PASS"],
+      "evidence_lane": "CLOUD",
+      "parents": ["PREL-K03"],
+      "start_dependencies": ["PREL-K03_INTERFACE_BYTES_READABLE"]
+    },
+    {
+      "atom": "X",
+      "atom_id": "PREL-X02",
+      "branch": "prel/62-structured-scene-runtime-canary",
+      "completion_dependencies": ["PREL-E02_RECEIPT_PASS", "LOCAL_RUNTIME_RECEIPT_PASS"],
+      "evidence_lane": "LOCAL",
+      "parents": ["PREL-E02"],
+      "start_dependencies": ["PREL-E02_RECEIPT_READABLE", "LOCAL_CLEAN_CHECKOUT_AVAILABLE"]
+    },
+    {
+      "atom": "D",
+      "atom_id": "PREL-D02",
+      "branch": "prel/63-structured-product-convergence",
+      "completion_dependencies": ["PREL-C02_RECEIPT_PASS", "PREL-K03_RECEIPT_PASS", "PREL-E02_RECEIPT_PASS", "LOCAL_RUNTIME_RECEIPT_PASS", "CONVERGENCE_READBACK_PASS"],
+      "evidence_lane": "CLOUD",
+      "parents": ["PREL-C02", "PREL-K03", "PREL-E02", "PREL-X02"],
+      "start_dependencies": ["ALL_ADMITTED_LEAF_RECEIPTS_READABLE"]
+    }
+  ],
+  "run_id": "prel-stage7-structured-product-compiler-2026-08-20",
+  "schema_version": "dual-edge-execution-dag@1"
+}
