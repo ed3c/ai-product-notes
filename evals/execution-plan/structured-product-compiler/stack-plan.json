@@ -1,0 +1,110 @@
+{
+  "atoms": [
+    {
+      "atom": "C",
+      "base_branch": "prel/58-execution-plan",
+      "blockers": ["STAGE7_EXACT_PLAN_READABLE"],
+      "branch": "prel/59-scene-spec-contract",
+      "consumes_paths": ["evals/execution-plan/structured-product-compiler/run-contract.json", "evals/technical-systems/modern-web-architecture/technical-systems-packet.json"],
+      "gates": [{"name": "SCENE_SPEC_CONTRACT_RECEIPT_PASS", "receipt_lane": null, "required_lane": "CLOUD"}],
+      "id": "PREL-C02",
+      "lane": "CLOUD",
+      "oracle": "Three canonical scene objects serialize byte-stably, round-trip without state repair, and reproduce the same SHA-256 digest.",
+      "owns_paths": ["schemas/scene-spec.schema.json", "src/ai_product_notes/scene_spec.py", "tests/test_scene_spec_contract.py"],
+      "parents": [],
+      "pr": {"head_sha": null, "head_source": "ABSENT", "state": "NOT_CREATED"},
+      "purpose": "Materialize owned SceneSpec schema, canonical serialization and digest contract.",
+      "stack_class": "root",
+      "writer_lease": "worker:PREL-C02"
+    },
+    {
+      "atom": "K",
+      "base_branch": "prel/59-scene-spec-contract",
+      "blockers": ["PREL-C02_INTERFACE_BYTES_READABLE"],
+      "branch": "prel/60-constraint-validator",
+      "consumes_paths": ["src/ai_product_notes/scene_spec.py", "schemas/scene-spec.schema.json"],
+      "gates": [
+        {"name": "PREL-C02_RECEIPT_PASS", "receipt_lane": null, "required_lane": "CLOUD"},
+        {"name": "CONSTRAINT_VALIDATOR_RECEIPT_PASS", "receipt_lane": null, "required_lane": "CLOUD"}
+      ],
+      "id": "PREL-K03",
+      "lane": "CLOUD",
+      "oracle": "Valid scenes yield digest-bound PASS receipts; planted missing assets, invalid bounds and conflicting constraints fail with stable rule identifiers.",
+      "owns_paths": ["src/ai_product_notes/constraint_validator.py", "tests/test_constraint_validator.py"],
+      "parents": ["PREL-C02"],
+      "pr": {"head_sha": null, "head_source": "ABSENT", "state": "NOT_CREATED"},
+      "purpose": "Implement deterministic constraint validation over the admitted SceneSpec interface.",
+      "stack_class": "child",
+      "writer_lease": "worker:PREL-K03"
+    },
+    {
+      "atom": "E",
+      "base_branch": "prel/60-constraint-validator",
+      "blockers": ["PREL-K03_INTERFACE_BYTES_READABLE"],
+      "branch": "prel/61-scene-deterministic-evals",
+      "consumes_paths": ["src/ai_product_notes/scene_spec.py", "src/ai_product_notes/constraint_validator.py"],
+      "gates": [
+        {"name": "PREL-C02_RECEIPT_PASS", "receipt_lane": null, "required_lane": "CLOUD"},
+        {"name": "PREL-K03_RECEIPT_PASS", "receipt_lane": null, "required_lane": "CLOUD"},
+        {"name": "DETERMINISTIC_EVAL_RECEIPT_PASS", "receipt_lane": null, "required_lane": "CLOUD"}
+      ],
+      "id": "PREL-E02",
+      "lane": "CLOUD",
+      "oracle": "All three canonical edits pass round-trip and all planted invalid/mutation cases fail with the expected stable receipt state.",
+      "owns_paths": ["tests/test_structured_scene_e2e.py", "evals/structured-scene/deterministic/**"],
+      "parents": ["PREL-K03"],
+      "pr": {"head_sha": null, "head_source": "ABSENT", "state": "NOT_CREATED"},
+      "purpose": "Run positive, negative and mutation controls for the deterministic scene compiler wedge.",
+      "stack_class": "child",
+      "writer_lease": "worker:PREL-E02"
+    },
+    {
+      "atom": "X",
+      "base_branch": "prel/61-scene-deterministic-evals",
+      "blockers": ["PREL-E02_RECEIPT_READABLE", "LOCAL_CLEAN_CHECKOUT_AVAILABLE"],
+      "branch": "prel/62-structured-scene-runtime-canary",
+      "consumes_paths": ["src/ai_product_notes/scene_spec.py", "src/ai_product_notes/constraint_validator.py", "evals/structured-scene/deterministic/**"],
+      "gates": [
+        {"name": "PREL-E02_RECEIPT_PASS", "receipt_lane": null, "required_lane": "LOCAL"},
+        {"name": "LOCAL_RUNTIME_RECEIPT_PASS", "receipt_lane": null, "required_lane": "LOCAL"}
+      ],
+      "id": "PREL-X02",
+      "lane": "LOCAL",
+      "oracle": "A clean local checkout executes one complete structured-state→validation workflow and emits an exact input/output/receipt digest with cleanup.",
+      "owns_paths": ["scripts/run_structured_scene_canary.py", "evals/structured-scene/runtime/**"],
+      "parents": ["PREL-E02"],
+      "pr": {"head_sha": null, "head_source": "ABSENT", "state": "NOT_CREATED"},
+      "purpose": "Exercise one bounded owned local workflow using only the deterministic SceneSpec and validator.",
+      "stack_class": "child",
+      "writer_lease": "worker:PREL-X02"
+    },
+    {
+      "atom": "D",
+      "base_branch": "prel/62-structured-scene-runtime-canary",
+      "blockers": ["ALL_ADMITTED_LEAF_RECEIPTS_READABLE"],
+      "branch": "prel/63-structured-product-convergence",
+      "consumes_paths": ["schemas/scene-spec.schema.json", "src/ai_product_notes/scene_spec.py", "src/ai_product_notes/constraint_validator.py", "evals/structured-scene/deterministic/**", "evals/structured-scene/runtime/**"],
+      "gates": [
+        {"name": "PREL-C02_RECEIPT_PASS", "receipt_lane": null, "required_lane": "CLOUD"},
+        {"name": "PREL-K03_RECEIPT_PASS", "receipt_lane": null, "required_lane": "CLOUD"},
+        {"name": "PREL-E02_RECEIPT_PASS", "receipt_lane": null, "required_lane": "CLOUD"},
+        {"name": "LOCAL_RUNTIME_RECEIPT_PASS", "receipt_lane": null, "required_lane": "CLOUD"},
+        {"name": "CONVERGENCE_READBACK_PASS", "receipt_lane": null, "required_lane": "CLOUD"}
+      ],
+      "id": "PREL-D02",
+      "lane": "CLOUD",
+      "oracle": "Every documented state, branch and receipt resolves to an exact subject; no remaining lane is promoted beyond its evidence.",
+      "owns_paths": ["docs/architecture/STRUCTURED_PRODUCT_COMPILER.md", "docs/git/STACKED_PRS.md"],
+      "parents": ["PREL-C02", "PREL-K03", "PREL-E02", "PREL-X02"],
+      "pr": {"head_sha": null, "head_source": "ABSENT", "state": "NOT_CREATED"},
+      "purpose": "Converge README/AGENTS/State Machine/DAG/Stack indexes after admitted implementation receipts exist.",
+      "stack_class": "convergence",
+      "writer_lease": "worker:PREL-D02"
+    }
+  ],
+  "convergence_owner": "PREL-D02",
+  "main_branch": "prel/56-problem-closure-audit",
+  "required_atoms": ["C", "K", "E", "X", "D"],
+  "schema_version": "git-town/molecular-stack-index/v1",
+  "subject": {"commit": "34f77140968799c0c2669610609848beadf96646", "repository": "ed3c/ai-product-notes"}
+}
