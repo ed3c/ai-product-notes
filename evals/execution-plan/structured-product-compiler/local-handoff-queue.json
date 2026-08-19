@@ -21,7 +21,9 @@
       "timeout_seconds": 600
     },
     {
-      "argv": ["execute prompt-packets/PREL-C02.md"],
+      "argv": [
+        "execute prompt-packets/PREL-C02.md"
+      ],
       "cleanup": "no out-of-lease changes and no untracked artifacts",
       "cwd": "fresh isolated worktree",
       "durable_receipt": "future Stage 8 C02 exact-subject receipt",
