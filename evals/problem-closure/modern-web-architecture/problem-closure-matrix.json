@@ -1,0 +1,110 @@
+{
+  "derived_from": {
+    "artifact": "technical-systems:structured-product-compiler",
+    "digest": "a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7"
+  },
+  "evidence_ceiling": {
+    "deterministic_contract": "PASS",
+    "live_provider_execution": "NOT_EXERCISED",
+    "portable_procedure": "PASS",
+    "product_market_fit": "ABSENT",
+    "production_readiness": "NOT_EXERCISED"
+  },
+  "rows": [
+    {
+      "closure_state": "OPEN_WITH_ORACLE",
+      "evidence_state": "ABSENT",
+      "id": "CLR-001",
+      "lane": "USER",
+      "oracle_id": "ORC-001",
+      "oracle_lane": "USER",
+      "owner": "market-validation-owner",
+      "requirement": "Qualified workflow interviews confirm repeated scene setup, correction, or state-loss pain in the target workflow.",
+      "source_id": "PRB-001"
+    },
+    {
+      "closure_state": "OPEN_WITH_ORACLE",
+      "evidence_state": "NOT_IMPLEMENTED",
+      "id": "CLR-002",
+      "lane": "DETERMINISTIC",
+      "oracle_id": "ORC-002",
+      "oracle_lane": "DETERMINISTIC",
+      "owner": "core.scene-state",
+      "requirement": "Three canonical scene edits round-trip through an owned structured scene IR with byte-stable canonical state and digest.",
+      "source_id": "PRB-003"
+    },
+    {
+      "closure_state": "OPEN_WITH_ORACLE",
+      "evidence_state": "NOT_IMPLEMENTED",
+      "id": "CLR-003",
+      "lane": "DETERMINISTIC",
+      "oracle_id": "ORC-003",
+      "oracle_lane": "DETERMINISTIC",
+      "owner": "core.constraint-validation",
+      "requirement": "Planted invalid scenes fail closed with stable rule identifiers while valid scenes receive digest-bound validation receipts.",
+      "source_id": "PRB-003"
+    },
+    {
+      "closure_state": "OPEN_WITH_ORACLE",
+      "evidence_state": "NOT_IMPLEMENTED",
+      "id": "CLR-004",
+      "lane": "DETERMINISTIC",
+      "oracle_id": "ORC-004",
+      "oracle_lane": "DETERMINISTIC",
+      "owner": "core.constraint-validation",
+      "requirement": "A mutation after PASS makes the previous validation receipt stale and requires deterministic revalidation.",
+      "source_id": "PRB-002"
+    },
+    {
+      "closure_state": "OPEN_WITH_ORACLE",
+      "evidence_state": "NOT_EXERCISED",
+      "id": "CLR-005",
+      "lane": "BEHAVIORAL",
+      "oracle_id": "ORC-005",
+      "oracle_lane": "BEHAVIORAL",
+      "owner": "runtime-owner",
+      "requirement": "One exact owned backend or local workflow executes against the deterministic packet and produces a subject-bound runtime receipt.",
+      "source_id": "PRB-003"
+    },
+    {
+      "closure_state": "HUMAN_ADMIT_REQUIRED",
+      "evidence_state": "HUMAN_ADMIT_REQUIRED",
+      "id": "CLR-006",
+      "lane": "HUMAN_ADMIT",
+      "oracle_id": "ORC-006",
+      "oracle_lane": "HUMAN_ADMIT",
+      "owner": "rights-owner",
+      "requirement": "An exact selected rendering dependency set receives separate code, model, data, trajectory, service, and content rights admission.",
+      "source_id": "PRB-004"
+    },
+    {
+      "closure_state": "OPEN_WITH_ORACLE",
+      "evidence_state": "ABSENT",
+      "id": "CLR-007",
+      "lane": "USER",
+      "oracle_id": "ORC-007",
+      "oracle_lane": "USER",
+      "owner": "customer-validation-owner",
+      "requirement": "Qualified users complete the bounded workflow and report measurable value against the declared success metrics.",
+      "source_id": "PRB-005"
+    },
+    {
+      "closure_state": "OPEN_WITH_ORACLE",
+      "evidence_state": "ABSENT",
+      "id": "CLR-008",
+      "lane": "PAID",
+      "oracle_id": "ORC-008",
+      "oracle_lane": "PAID",
+      "owner": "commercial-validation-owner",
+      "requirement": "A paid pilot, preorder, signed commercial commitment, or equivalent admitted payment evidence closes the commercial lane.",
+      "source_id": "PRB-005"
+    }
+  ],
+  "schema": "prel/problem-closure-matrix/v1",
+  "subject": {
+    "captured_at": "2026-08-19T16:05:08Z",
+    "product_id": "structured-product-compiler",
+    "subject_digest": "549fe5fc7eb9419d76f5fdf1782ffb6fdfae922415a9629f704f7545ff831e5d",
+    "surface": "public Product Reverse-Engineering Stage 4 dossier plus Stage 5 technical-systems packet"
+  }
+}
