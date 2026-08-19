@@ -1,0 +1,313 @@
+{
+  "authority_ceiling": "VALIDATION_DESIGN_ONLY",
+  "business": {
+    "defensibility": {
+      "epistemic_state": "HYPOTHESIS",
+      "required_evidence": [
+        "retention cohort behavior and workflow switching-cost evidence"
+      ],
+      "statement": "Defensibility may come from reusable structured scene specifications, deterministic validation rules, and workflow memory rather than from a single generation model."
+    },
+    "distribution": {
+      "epistemic_state": "HYPOTHESIS",
+      "required_evidence": [
+        "channel conversion evidence from a defined target segment"
+      ],
+      "statement": "A candidate distribution path is design or ecommerce workflow integration where teams already create product visuals."
+    },
+    "monetization": {
+      "epistemic_state": "UNKNOWN",
+      "required_evidence": [
+        "willingness-to-pay interviews or a paid pilot"
+      ],
+      "statement": "The viable pricing unit is unknown and must not be inferred from competitor pricing."
+    },
+    "retention": {
+      "epistemic_state": "HYPOTHESIS",
+      "required_evidence": [
+        "repeat-use evidence across at least two recurring creative cycles"
+      ],
+      "statement": "Retention may depend on whether structured scene state materially reduces repeated setup and correction work."
+    }
+  },
+  "capabilities": [
+    {
+      "capability_id": "structured-scene-ir",
+      "description": "Represent scene intent, assets, constraints, and edits in a deterministic structured intermediate representation.",
+      "importance": "must",
+      "required_evidence": [
+        "prototype round-trip and schema mutation tests"
+      ],
+      "rights_state": "NOT_APPLICABLE"
+    },
+    {
+      "capability_id": "constraint-validation",
+      "description": "Evaluate deterministic spatial and rendering constraints before or after probabilistic generation.",
+      "importance": "must",
+      "required_evidence": [
+        "owned implementation canary with planted invalid scenes"
+      ],
+      "rights_state": "NOT_APPLICABLE"
+    },
+    {
+      "capability_id": "candidate-rendering-stack",
+      "description": "Render or transform the structured scene with a replaceable graphics or generation backend.",
+      "importance": "should",
+      "required_evidence": [
+        "exact selected dependency graph and transitive license review"
+      ],
+      "rights_state": "UNKNOWN"
+    }
+  ],
+  "decision": "VALIDATE",
+  "dossier_digest": "sha256:1a2e39bd06da3d14069573ecc67f7e94e1d95eef9d9e7e8b4d223d2645c9cded",
+  "dossier_id": "dossier:structured-product-compiler",
+  "gates": {
+    "legal_evidence": "ABSENT",
+    "named_product_internals": "HYPOTHESIS_OR_UNKNOWN",
+    "paid_evidence": "ABSENT",
+    "runtime_evidence": "ABSENT",
+    "source_evidence": "PASS",
+    "user_evidence": "ABSENT"
+  },
+  "lineage": {
+    "claim_ids": [
+      "claim:actual-company-internals-unknown",
+      "claim:architecture-pattern",
+      "claim:flair-internal-mapping",
+      "claim:lgpl-row",
+      "claim:permissive-stack-claim"
+    ],
+    "signal_ids": [
+      "signal:architecture-pattern",
+      "signal:flair-mechanism",
+      "signal:rights-gap"
+    ],
+    "unknown_claims": [
+      "claim:actual-company-internals-unknown"
+    ],
+    "unresolved_contradictions": [
+      "contradiction:all-permissive-vs-lgpl-option"
+    ]
+  },
+  "mechanisms": [
+    {
+      "epistemic_state": "SOURCE_STATEMENT",
+      "mechanism_id": "mechanism:structured-compiler",
+      "required_evidence": [
+        "owned prototype showing deterministic representation and validation boundaries"
+      ],
+      "signal_refs": [
+        "signal:architecture-pattern"
+      ],
+      "statement": "A structured DSL or AST plus deterministic constraints can separate product intent from rendering or generation."
+    },
+    {
+      "epistemic_state": "HYPOTHESIS",
+      "mechanism_id": "mechanism:spatial-generation",
+      "required_evidence": [
+        "independent evidence of named-product internals or an owned runtime reproduction"
+      ],
+      "signal_refs": [
+        "signal:flair-mechanism"
+      ],
+      "statement": "A spatial generation workflow may combine structured scene state with probabilistic image-generation passes, but the named company's actual implementation is unknown."
+    },
+    {
+      "epistemic_state": "UNKNOWN",
+      "mechanism_id": "mechanism:rights-selection",
+      "required_evidence": [
+        "exact package selection and transitive license expression audit"
+      ],
+      "signal_refs": [
+        "signal:rights-gap"
+      ],
+      "statement": "The commercially admissible rendering and transformation dependency set is not yet known."
+    }
+  ],
+  "mvp": {
+    "budget_usd": 500,
+    "maximum_days": 14,
+    "non_goals": [
+      "clone a named YC product",
+      "claim production image quality",
+      "automatically clear package licenses",
+      "infer paid demand from public launch or pricing signals"
+    ],
+    "stop_loss": [
+      "stop if fewer than 2 of 5 qualified workflow interviews identify repeated scene setup or correction as a material pain",
+      "stop if the structured representation cannot round-trip three canonical edit cases without manual state repair",
+      "stop if the selected dependency path cannot reach an independently reviewed commercial-use rights state"
+    ],
+    "success_metrics": [
+      "at least 3 of 5 qualified workflow interviews confirm the same recurring correction or setup problem",
+      "three canonical scene edits round-trip through the structured representation with deterministic validation receipts",
+      "one bounded end-to-end prototype produces a readable structured-state receipt without claiming named-product equivalence"
+    ],
+    "wedge": "Validate whether a structured scene specification plus deterministic constraint checks reduces repeated setup and correction before investing in a probabilistic rendering backend."
+  },
+  "non_claims": [
+    "The dossier is a source-constrained validation design, not proof of a named product's internal implementation.",
+    "Target user, buyer, pain, workflow, distribution, monetization, retention, and defensibility remain hypotheses or unknowns until direct evidence exists.",
+    "No package license, runtime quality, customer value, paid demand, BUILD, merge, release, or production state is established."
+  ],
+  "open_evidence_gaps": [
+    "budget-owner interviews or paid pilot procurement evidence",
+    "channel conversion evidence from a defined target segment",
+    "direct user evidence of repeated setup, correction, or state-loss pain",
+    "exact selected dependency graph and license expressions",
+    "exact selected dependency graph and transitive license review",
+    "independent package and transitive-license review",
+    "independent primary evidence of the named product implementation",
+    "measured correction time, retry count, or labor cost from qualified workflows",
+    "observed workflow or interview evidence for the triggering event",
+    "official technical documentation, source code, or independently observed runtime behavior",
+    "owned implementation canary with planted invalid scenes",
+    "prototype round-trip and schema mutation tests",
+    "qualified interviews with design or ecommerce creative operators",
+    "repeat-use evidence across at least two recurring creative cycles",
+    "retention cohort behavior and workflow switching-cost evidence",
+    "runtime reproduction bound to an owned implementation",
+    "task-frequency evidence from qualified users",
+    "user interview evidence confirming the job and success criteria",
+    "willingness-to-pay interviews or a paid pilot",
+    "workflow interviews and observed task walkthroughs"
+  ],
+  "riskiest_assumptions": [
+    {
+      "assumption_id": "assumption:user-pain",
+      "falsifier": "Qualified users do not report repeated scene setup or correction as a meaningful recurring problem.",
+      "statement": "A recurring user pain exists that is better addressed by persistent structured scene state than by prompt-only generation."
+    },
+    {
+      "assumption_id": "assumption:mechanism-value",
+      "falsifier": "Structured state and deterministic constraints do not reduce retries, correction time, or edit ambiguity in the owned prototype.",
+      "statement": "The structured compiler pattern creates measurable workflow value independent of the generation model."
+    },
+    {
+      "assumption_id": "assumption:rights",
+      "falsifier": "No commercially admissible dependency set can satisfy the required workflow without unacceptable disclosure or service restrictions.",
+      "statement": "A commercially admissible implementation path exists after exact package and transitive-rights review."
+    }
+  ],
+  "schema_version": "reverse-engineering-dossier@1",
+  "source_subject": {
+    "blob_sha": "88ea1d9a76ebda28182682b67808e45291639582",
+    "head_sha": "406d981965843e094b1457dfc285d0a58e238c24",
+    "path": "evals/product-signal/modern-web-architecture/product-signal.json",
+    "product_signal_digest": "sha256:c756bbb8e5413892356b8c675f78a17837b3ac067fff064070e318548dbb1d0f",
+    "pull_request": 73,
+    "repository": "ed3c/ai-content-notes",
+    "source_digest": "sha256:7350f0e3d29ace70a6c92343e5501b34763f452e057d9b8acef3829f57230ef6"
+  },
+  "target": {
+    "kind": "PRODUCT_PATTERN",
+    "subject_id": "structured-product-compiler",
+    "title": "Structured product-scene compiler"
+  },
+  "user_context": {
+    "cost": {
+      "epistemic_state": "UNKNOWN",
+      "required_evidence": [
+        "measured correction time, retry count, or labor cost from qualified workflows"
+      ],
+      "statement": "The economic cost of the problem is unknown."
+    },
+    "current_workaround": {
+      "epistemic_state": "HYPOTHESIS",
+      "required_evidence": [
+        "workflow interviews and observed task walkthroughs"
+      ],
+      "statement": "A candidate workaround is repeated prompting plus manual visual correction and re-creation of scene state."
+    },
+    "economic_buyer": {
+      "epistemic_state": "UNKNOWN",
+      "required_evidence": [
+        "budget-owner interviews or paid pilot procurement evidence"
+      ],
+      "statement": "The economic buyer is not established by the source packet."
+    },
+    "frequency": {
+      "epistemic_state": "UNKNOWN",
+      "required_evidence": [
+        "task-frequency evidence from qualified users"
+      ],
+      "statement": "The recurrence frequency is unknown."
+    },
+    "job_to_be_done": {
+      "epistemic_state": "HYPOTHESIS",
+      "required_evidence": [
+        "user interview evidence confirming the job and success criteria"
+      ],
+      "statement": "Create and revise product-scene outputs while preserving intent, geometry, constraints, and editability across iterations."
+    },
+    "pain": {
+      "epistemic_state": "HYPOTHESIS",
+      "required_evidence": [
+        "direct user evidence of repeated setup, correction, or state-loss pain"
+      ],
+      "statement": "Prompt-only generation may force users to repeatedly reconstruct scene intent and correct spatial inconsistencies."
+    },
+    "target_user": {
+      "epistemic_state": "HYPOTHESIS",
+      "required_evidence": [
+        "qualified interviews with design or ecommerce creative operators"
+      ],
+      "statement": "A candidate target user is a design or ecommerce creative operator producing repeated product visuals."
+    },
+    "trigger": {
+      "epistemic_state": "HYPOTHESIS",
+      "required_evidence": [
+        "observed workflow or interview evidence for the triggering event"
+      ],
+      "statement": "A candidate trigger is a need to generate or revise a product visual while retaining prior scene intent and constraints."
+    }
+  },
+  "workflow": [
+    {
+      "epistemic_state": "HYPOTHESIS",
+      "required_evidence": [
+        "owned prototype and user walkthrough evidence"
+      ],
+      "signal_refs": [
+        "signal:architecture-pattern"
+      ],
+      "step_id": "step:intent",
+      "title": "Capture product assets, scene intent, and constraints into structured state"
+    },
+    {
+      "epistemic_state": "SOURCE_STATEMENT",
+      "required_evidence": [
+        "owned deterministic validator proving the same invariant set"
+      ],
+      "signal_refs": [
+        "signal:architecture-pattern"
+      ],
+      "step_id": "step:validate",
+      "title": "Evaluate deterministic constraints over the structured scene"
+    },
+    {
+      "epistemic_state": "HYPOTHESIS",
+      "required_evidence": [
+        "owned rendering canary and explicit model/backend binding"
+      ],
+      "signal_refs": [
+        "signal:architecture-pattern",
+        "signal:flair-mechanism"
+      ],
+      "step_id": "step:render",
+      "title": "Render or generate a candidate output through a replaceable backend"
+    },
+    {
+      "epistemic_state": "HYPOTHESIS",
+      "required_evidence": [
+        "bidirectional edit round-trip test with stable structured state"
+      ],
+      "signal_refs": [
+        "signal:architecture-pattern"
+      ],
+      "step_id": "step:edit",
+      "title": "Apply edits back to structured state and reproduce the output deterministically where applicable"
+    }
+  ]
+}
