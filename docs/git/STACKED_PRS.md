@@ -144,3 +144,37 @@ market decision: VALIDATE
 - Portfolio matching is not technical equivalence.
 - Deterministic compiler output and merged code do not prove buyer demand.
 - `VALIDATE` is not `BUILD`, paid pilot, market validation, production release or revenue.
+
+## Structured Product Compiler stack — local convergence snapshot
+
+Issue #47 compiled the plan; Issues #60, #62, #64, and #66 own the C02, K03,
+E02, and X02 atoms. This graph is a local D02 read-back snapshot, not a merge or
+publication claim.
+
+```text
+main@d3883498538576a5ab928956ef2a048172242eaf
+└── PR #54 prel/45-reverse-engineering-dossier@736454e7ae49e351d146f3e9bb5c2ef67c846ecd
+    └── PR #55 prel/51-technical-systems-packet@72e89c89f1961db3735231a32efc5f4ac852d670
+        └── PR #57 prel/56-problem-closure-audit@34f77140968799c0c2669610609848beadf96646
+            └── PR #59 prel/58-execution-plan@2a37430337a87380afae6fc2617cd41692d9fd75
+                └── PR #61 PREL-C02@b0f59c7afad5b9acdbffbe9c87c1d86507237ea0
+                    └── PR #63 PREL-K03@dd185109378a34109313b3a6fa150af9de0b76cf
+                        └── PR #65 PREL-E02@f840f37582e925759bdf89290d7a5da1122d21d1
+                            └── local PREL-X02 receipt@7225ca1b23d749f79ed1a98426dbcfd5302385be
+                                └── local PREL-D02 branch prel/63-structured-product-convergence
+```
+
+At read-back time, PRs #54, #55, #57, #59, #61, #63, and #65 were open Draft
+PRs with `MERGEABLE / CLEAN` metadata and successful exact-head plus synthetic-
+merge jobs for their published heads. X02 and D02 were not published and had no
+hosted receipt.
+
+PR #53 is an independent sibling from an older `main` base. Its head
+`0f492491048d0c18a57ea0049fa167ef912652a5` is not contained in the linear stack
+above. Any final integration must include and test both PR #53 and the stack;
+merging only the top stack head would omit #53.
+
+The Stage 7 machine queue remains a stale planning snapshot and is not promoted
+by this documentation convergence. No automatic semantic conflict resolution,
+Git Town execution, merge, release, market validation, or production admission
+is asserted.
