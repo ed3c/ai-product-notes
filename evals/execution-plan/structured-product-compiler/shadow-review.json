@@ -1,0 +1,22 @@
+{
+  "authority_ceiling": "PLANNING_ONLY",
+  "findings": [
+    "Stage 7 child branch was created from exact Stage 6 head before any Stage 7 write.",
+    "The planner binds Stage 6 matrix/audit/delta/Shadow by exact Git blobs and binds the portable prompt/Stack method to an exact skills-shared commit.",
+    "PREL-K03 is a true child because it consumes PREL-C02 SceneSpec bytes; PREL-E02 and PREL-X02 similarly consume their parent outputs.",
+    "The probabilistic rendering/provider adapter is excluded from the deterministic MVP and no library/model/provider is selected.",
+    "Existing #33/#34 target a different product and cannot be used as user/paid evidence for this canary; they are reconciled rather than duplicated.",
+    "Exactly one convergence owner PREL-D02 is planned; all writer leases are disjoint.",
+    "Prompt packets and Local Handoff entries are requests/contracts only and do not prove Session, Worker, Git Town or local runtime execution."
+  ],
+  "independent_shadow": "NOT_EXERCISED",
+  "mode": "SAME_CONTEXT_READ_ONLY_SHADOW",
+  "planner_subject_digest": "b14da457a71456bfa27e814b6e92fa9468b86095480daa7b8abf61705904c349",
+  "schema_version": "stage7-shadow-review@1",
+  "stage6_parent": {
+    "audit_digest": "sha256:d221ec2b1b4dee513352571fd10572ce54f5e72e6f081f4491db98498f175b1a",
+    "head_sha": "34f77140968799c0c2669610609848beadf96646",
+    "hosted_run": 32276039761
+  },
+  "verdict": "STAGE7_EXECUTION_PLAN_CANARY_ALLOWED_WITH_PLANNING_ONLY_CEILING"
+}
