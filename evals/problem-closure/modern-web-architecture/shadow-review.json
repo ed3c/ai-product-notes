@@ -6,8 +6,15 @@
     "No material problem currently earns IMPLEMENTED, TECH_VERIFIED, LIVE_WORKFLOW_VERIFIED, USER_VALIDATED or PAID_VALIDATED.",
     "Stage 5 hosted design CI is not allowed to satisfy the absent product implementation or runtime rungs.",
     "The upstream named-product UNKNOWN and permissive-vs-LGPL contradiction remain visible.",
-    "Issue deltas remain proposals with NO_WRITE_AUTHORITY."
+    "Issue deltas remain proposals with NO_WRITE_AUTHORITY.",
+    "Hosted first-green run 32275970488 passed both exact-head and synthetic-merge repository contracts on Stage 6 head 78d8fd03881695edf8dc296d4f9ee5a05346a9b2."
   ],
+  "hosted_first_green": {
+    "exact_head": "PASS",
+    "head_sha": "78d8fd03881695edf8dc296d4f9ee5a05346a9b2",
+    "run_id": 32275970488,
+    "synthetic_merge": "PASS"
+  },
   "independent_shadow": "NOT_EXERCISED",
   "mode": "SAME_CONTEXT_READ_ONLY_SHADOW",
   "schema_version": "problem-closure-stage6-shadow-review@1",
@@ -17,5 +24,5 @@
     "packet_blob": "2d102fee6123be9aefabd1471a3d1d386f2fe912",
     "packet_digest": "sha256:a34e80908f193962db9770681eaee0aba46eeb0cbbd376b81bd6d1229a26f6d7"
   },
-  "verdict": "STAGE6_CLOSURE_AUDIT_CANARY_ALLOWED_WITH_FINDINGS_ONLY_CEILING"
+  "verdict": "STAGE6_HOSTED_VERIFIED_DRAFT_WITH_FINDINGS_ONLY_CEILING"
 }
