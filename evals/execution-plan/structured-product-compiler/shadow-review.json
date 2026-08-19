@@ -7,8 +7,22 @@
     "The probabilistic rendering/provider adapter is excluded from the deterministic MVP and no library/model/provider is selected.",
     "Existing #33/#34 target a different product and cannot be used as user/paid evidence for this canary; they are reconciled rather than duplicated.",
     "Exactly one convergence owner PREL-D02 is planned; all writer leases are disjoint.",
-    "Prompt packets and Local Handoff entries are requests/contracts only and do not prove Session, Worker, Git Town or local runtime execution."
+    "Prompt packets and Local Handoff entries are requests/contracts only and do not prove Session, Worker, Git Town or local runtime execution.",
+    "Hosted first-red run 32278133949 failed because generated JSON files were semantically equivalent but not byte-identical to compiler canonical output; the byte-stability oracle correctly rejected the drift.",
+    "Only generated JSON formatting was repaired to the compiler's canonical bytes; no DAG edge, lease, authority, oracle, atom, Issue reconciliation or evidence state was widened.",
+    "Hosted repair run 32278397995 passed exact-head and synthetic-merge repository contracts on head ba2c1f4fa47de27c803c0c0c9f2e4ea93871bbc1."
   ],
+  "hosted_first_green": {
+    "exact_head": "PASS",
+    "head_sha": "ba2c1f4fa47de27c803c0c0c9f2e4ea93871bbc1",
+    "run_id": 32278397995,
+    "synthetic_merge": "PASS"
+  },
+  "hosted_first_red": {
+    "failure": "GENERATED_JSON_CANONICAL_BYTE_DRIFT",
+    "head_sha": "f54a26996cf578a645339b892e8a8ef8c736e8b0",
+    "run_id": 32278133949
+  },
   "independent_shadow": "NOT_EXERCISED",
   "mode": "SAME_CONTEXT_READ_ONLY_SHADOW",
   "planner_subject_digest": "b14da457a71456bfa27e814b6e92fa9468b86095480daa7b8abf61705904c349",
@@ -18,5 +32,5 @@
     "head_sha": "34f77140968799c0c2669610609848beadf96646",
     "hosted_run": 32276039761
   },
-  "verdict": "STAGE7_EXECUTION_PLAN_CANARY_ALLOWED_WITH_PLANNING_ONLY_CEILING"
+  "verdict": "STAGE7_HOSTED_VERIFIED_DRAFT_WITH_PLANNING_ONLY_CEILING"
 }
