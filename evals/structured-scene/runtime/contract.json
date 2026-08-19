@@ -1,0 +1,18 @@
+{
+  "allowed_paths": [
+    "scripts/run_structured_scene_canary.py",
+    "evals/structured-scene/runtime/**"
+  ],
+  "atom": "PREL-X02",
+  "authority_ceiling": "LOCAL_RUNTIME_ATOM_ONLY",
+  "expected_base": "f840f37582e925759bdf89290d7a5da1122d21d1",
+  "expected_branch": "prel/62-structured-scene-runtime-canary",
+  "input_path": "evals/structured-scene/runtime/input.json",
+  "receipt_path": "evals/structured-scene/runtime/receipt.json",
+  "repository": "ed3c/ai-product-notes",
+  "runtime_identities": [
+    "CODEX_CLI_LOCAL",
+    "CLAUDE_CODE_LOCAL"
+  ],
+  "schema_version": "structured-scene-runtime-contract@1"
+}
