@@ -1,0 +1,60 @@
+{
+  "$id": "https://github.com/ed3c/ai-product-notes/schemas/execution-plan-instance.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "atoms": {
+      "minItems": 1,
+      "type": "array"
+    },
+    "authority_ceiling": {
+      "const": "PLANNING_ONLY"
+    },
+    "decision": {
+      "const": "VALIDATE"
+    },
+    "existing_gates": {
+      "minItems": 1,
+      "type": "array"
+    },
+    "human_owned_operations": {
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "issue_plan": {
+      "minItems": 1,
+      "type": "array"
+    },
+    "nonclaims": {
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "run_id": {
+      "minLength": 3,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "execution-planner-input@1"
+    },
+    "subject_digest": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "run_id",
+    "subject_digest",
+    "authority_ceiling",
+    "decision",
+    "atoms",
+    "existing_gates",
+    "issue_plan",
+    "human_owned_operations",
+    "nonclaims"
+  ],
+  "title": "Stage 7 execution planner input",
+  "type": "object"
+}
