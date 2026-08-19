@@ -1,0 +1,14 @@
+{
+  "schema_version": "reverse-engineering-shadow-review@1",
+  "mode": "SAME_CONTEXT_READ_ONLY_SHADOW",
+  "verdict": "STAGE4_DOSSIER_CANARY_ALLOWED_WITH_VALIDATE_CEILING",
+  "independent_shadow": "NOT_EXERCISED",
+  "authority_ceiling": "VALIDATION_DESIGN_ONLY",
+  "findings": [
+    "The exact Stage 3 product-signal blob is the only admitted external evidence packet.",
+    "Named-product implementation remains hypothesis or unknown.",
+    "The unresolved permissive-versus-LGPL tension remains visible.",
+    "User, buyer, pain, frequency, cost, workaround, distribution, monetization, retention, and defensibility remain hypotheses or unknowns.",
+    "Runtime, user, paid, merge, and release lanes remain unexercised."
+  ]
+}
