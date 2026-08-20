@@ -1,0 +1,76 @@
+{
+  "schema_version": "scene-spec@1",
+  "scene_id": "scene:x02-local-canary",
+  "canvas": {
+    "width": 1000,
+    "height": 800,
+    "unit": "px"
+  },
+  "assets": [
+    {
+      "asset_id": "asset:hero",
+      "kind": "IMAGE",
+      "content_ref": "sha256:x02-hero"
+    },
+    {
+      "asset_id": "asset:label",
+      "kind": "TEXT",
+      "content_ref": "copy:x02-label"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "node:hero",
+      "asset_id": "asset:hero",
+      "x": 420,
+      "y": 80,
+      "width": 420,
+      "height": 420,
+      "z_index": 1,
+      "rotation_mdeg": 0
+    },
+    {
+      "node_id": "node:label",
+      "asset_id": "asset:label",
+      "x": 80,
+      "y": 100,
+      "width": 240,
+      "height": 80,
+      "z_index": 2,
+      "rotation_mdeg": 0
+    }
+  ],
+  "constraints": [
+    {
+      "constraint_id": "constraint:bounds",
+      "kind": "WITHIN_CANVAS",
+      "subject_ids": [
+        "node:hero",
+        "node:label"
+      ],
+      "parameters": {
+        "margin": 40
+      }
+    },
+    {
+      "constraint_id": "constraint:no-overlap",
+      "kind": "NON_OVERLAP",
+      "subject_ids": [
+        "node:hero",
+        "node:label"
+      ],
+      "parameters": {}
+    },
+    {
+      "constraint_id": "constraint:label-anchor",
+      "kind": "ANCHOR",
+      "subject_ids": [
+        "node:label"
+      ],
+      "parameters": {
+        "axis": "y",
+        "target_y": 100
+      }
+    }
+  ]
+}
