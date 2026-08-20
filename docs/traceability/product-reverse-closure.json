@@ -1,0 +1,55 @@
+{
+  "authority_ceiling": "POST_MERGE_RECONCILIATION_ONLY",
+  "captured_at": "2026-08-20T02:48:31Z",
+  "convergence": {
+    "merge_sha": "8a63575492b07daf8e1f62432181e6dc2f2b6960",
+    "pull_request": 67,
+    "superseded_publication_prs": [53, 54, 55, 57, 59, 61, 63, 65]
+  },
+  "current_subject": {
+    "repository": "ed3c/ai-product-notes",
+    "sha": "1d3365ba4eb708b827710be10740244deda95557",
+    "tree_sha": "e49696f73d3b92b88890079ec77431f76da26a72"
+  },
+  "historical_snapshots": {
+    "stage6_matrix": {
+      "blob_sha": "f33e4c41d85086ef307f8507a02ae39657b8bd3d",
+      "path": "evals/problem-closure/modern-web-architecture/problem-closure-matrix.json",
+      "state": "IMMUTABLE_CAPTURED_BEFORE_IMPLEMENTATION"
+    },
+    "stage7_queue": {
+      "blob_sha": "620ce5bc497811f4fe098a3a7cd0eb20b0c21ab6",
+      "path": "evals/execution-plan/structured-product-compiler/local-handoff-queue.json",
+      "state": "IMMUTABLE_CAPTURED_BEFORE_LOCAL_X02"
+    }
+  },
+  "local_runtime_receipt": {
+    "blob_sha": "919303fce89e5247a34d0d0b03836eff358f2dd6",
+    "commit_sha": "7225ca1b23d749f79ed1a98426dbcfd5302385be",
+    "path": "evals/structured-scene/runtime/receipt.json",
+    "receipt_digest": "sha256:0c817066f8e85babab07e096128488b8b8c04595b7c0528bca16734b597465b2"
+  },
+  "rows": [
+    {"id":"PRC-001","subject":"structured_scene_ast","highest_closure":"LIVE_WORKFLOW_VERIFIED","evidence_state":"PASS","missing":["broader_editor_workload"]},
+    {"id":"PRC-002","subject":"deterministic_constraint_solver","highest_closure":"LIVE_WORKFLOW_VERIFIED","evidence_state":"PASS","missing":["additional_rule_families","product_quality_gates"]},
+    {"id":"PRC-003","subject":"receipt_staleness_after_mutation","highest_closure":"LIVE_WORKFLOW_VERIFIED","evidence_state":"PASS","missing":["broader_state_transition_coverage"]},
+    {"id":"PRC-004","subject":"bidirectional_canvas","highest_closure":"MECHANISM_BOUND","evidence_state":"NOT_IMPLEMENTED","missing":["canvas_implementation","interaction_round_trip_receipt"]},
+    {"id":"PRC-005","subject":"deterministic_rendering_farm","highest_closure":"MECHANISM_BOUND","evidence_state":"NOT_IMPLEMENTED","missing":["renderer","quality_oracle","runtime_receipt"]},
+    {"id":"PRC-006","subject":"product_grounding_floating","highest_closure":"MECHANISM_BOUND","evidence_state":"NOT_IMPLEMENTED","missing":["3d_grounding_implementation","visual_receipt"]},
+    {"id":"PRC-007","subject":"perspective_depth_consistency","highest_closure":"MECHANISM_BOUND","evidence_state":"NOT_IMPLEMENTED","missing":["depth_camera_implementation","visual_receipt"]},
+    {"id":"PRC-008","subject":"lighting_contact_shadow","highest_closure":"MECHANISM_BOUND","evidence_state":"NOT_IMPLEMENTED","missing":["mask_inpainting_shadow_implementation","visual_receipt"]},
+    {"id":"PRC-009","subject":"latency_cost","highest_closure":"SOURCE_ANCHORED","evidence_state":"NOT_EXERCISED","missing":["bounded_benchmark"]},
+    {"id":"PRC-010","subject":"commercial_rights","highest_closure":"BLOCKED","evidence_state":"HUMAN_ADMIT_REQUIRED","missing":["exact_dependency_set","sbom","transitive_license_review"]},
+    {"id":"PRC-011","subject":"named_company_internals","highest_closure":"SOURCE_ANCHORED","evidence_state":"UNKNOWN","missing":["independent_first_party_or_runtime_evidence"]},
+    {"id":"PRC-012","subject":"qualified_user_value","highest_closure":"SOURCE_ANCHORED","evidence_state":"ABSENT","missing":["qualified_user_receipt"]},
+    {"id":"PRC-013","subject":"paid_demand","highest_closure":"SOURCE_ANCHORED","evidence_state":"ABSENT","missing":["paid_or_binding_adoption_receipt"]},
+    {"id":"PRC-014","subject":"codexdoc_sheet_projection","highest_closure":"PARTIAL","evidence_state":"NOT_IMPLEMENTED","missing":["shared_projection_contracts","exact_doc_and_sheet_transaction"]},
+    {"id":"PRC-015","subject":"three_pdf_canaries","highest_closure":"PARTIAL","evidence_state":"NOT_EXERCISED","missing":["flair_visual_canary","separate_ast_interaction_canary"]}
+  ],
+  "schema_version": "product-reverse-postmerge-closure@1",
+  "shadow": {
+    "independent_shadow": "NOT_EXERCISED",
+    "mode": "SAME_CONTEXT_READ_ONLY_SHADOW",
+    "verdict": "POST_MERGE_TECHNICAL_CORE_RECONCILED_WITH_OPEN_PRODUCT_GATES"
+  }
+}

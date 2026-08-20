@@ -1,0 +1,69 @@
+{
+  "items": [
+    {
+      "argv": [
+        "git fetch origin main prel/370-projection-session-contracts",
+        "rebind issue #443 prepared blobs/tree against current skills-shared main if main moved",
+        "materialize exactly the six admitted projection/session contract and example paths",
+        "run Draft202012 schema/example validation and Product Reverse tests",
+        "run repository commit-role gate",
+        "push and open a Draft PR with machine author agent-macro@<actual-host>.invalid"
+      ],
+      "cleanup": "clean worktree; no connector-authored machine commit; no out-of-lease paths",
+      "durable_receipt": "skills-shared Issue #443 comment plus exact PR head/tree/checks",
+      "entry": "trusted CODEX_CLI_LOCAL, CLAUDE_CODE_LOCAL or local Git host with clean checkout and machine-author control",
+      "exit": "six paths committed by compliant machine author and exact deterministic plus commit-role gates PASS",
+      "id": "LH-SS-443-PUBLISH-PROJECTION-SESSION-CONTRACTS",
+      "next": "LH-PREL-A02-GOOGLE-PROJECTION",
+      "owner": "CODEX_CLI_LOCAL_OR_CLAUDE_CODE_LOCAL_OR_TRUSTED_GIT",
+      "repository": "ed3c/skills-shared",
+      "state": "ACTIVE",
+      "subject": {
+        "candidate_tree": "cf6ed36e66a6a4de1af44ec3cb6770b95b971c8b",
+        "issue": 443,
+        "reserved_branch": "prel/370-projection-session-contracts"
+      },
+      "timeout_seconds": 7200
+    },
+    {
+      "argv": [
+        "consume admitted shared projection contract",
+        "bind one exact CodexDoc and one bounded Sheet subject",
+        "perform idempotent write/read-back/export-digest transaction",
+        "persist GitHub pointers and partial-failure compensation receipt"
+      ],
+      "cleanup": "no secrets/private metadata; Google failure cannot mark GitHub completion",
+      "durable_receipt": "ai-product-notes #48 plus ai-content-notes #41/#51 exact projection receipts",
+      "entry": "LH-SS-443 receipt PASS and owner decision for Google authority",
+      "exit": "CodexDoc and Sheet projections read back with exact revision/export digests and Git pointers",
+      "id": "LH-PREL-A02-GOOGLE-PROJECTION",
+      "next": "LH-PREL-X01-REMAINING-CANARIES",
+      "owner": "GOOGLE_PROJECTION_OWNER",
+      "repository": "ed3c/ai-product-notes",
+      "state": "BLOCKED_BY_PREDECESSOR_AND_OWNER_DECISION",
+      "subject": {"issues":[48],"external_issues":["ed3c/ai-content-notes#41","ed3c/ai-content-notes#51"]},
+      "timeout_seconds": 7200
+    },
+    {
+      "argv": [
+        "freeze exact Flair visual subject and one separate AST-interaction subject",
+        "compile source packets, dossiers, technical packets, closure matrices and molecular plans",
+        "execute only admitted deterministic/live lanes",
+        "retain named-company internals and unsupported rights as hypothesis/unknown"
+      ],
+      "cleanup": "no shared-source count inflation; no user/paid/right promotion",
+      "durable_receipt": "ai-product-notes #49 per-canary exact packets and receipts",
+      "entry": "projection/source bindings current and exact canary subjects frozen",
+      "exit": "remaining two materially distinct canaries produce complete bounded packets or typed blockers",
+      "id": "LH-PREL-X01-REMAINING-CANARIES",
+      "next": "HUMAN_PRODUCT_VALIDATION_QUEUE",
+      "owner": "PRODUCT_REVERSE_CANARY_OWNER",
+      "repository": "ed3c/ai-product-notes",
+      "state": "BLOCKED_BY_PREDECESSOR",
+      "subject": {"issue":49},
+      "timeout_seconds": 14400
+    }
+  ],
+  "queue_id": "PREL-POSTMERGE-HANDOFF-2026-08-20",
+  "schema_version": "local-handoff-queue@1"
+}

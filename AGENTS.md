@@ -36,39 +36,100 @@ Mandatory laws:
 Do not edit this managed block manually. Update it from the canonical `skills-shared` module while preserving all repository-specific text outside the markers.
 <!-- END SKILLS-SHARED INSTRUCTION PROJECTION -->
 
-Read the repository README, architecture, tests, workflows, and nearest local instructions before implementation. Preserve repository-specific evidence and authority boundaries.
+Read the repository README, architecture, tests, workflows, nearest local instructions and exact Issue/receipt subjects before implementation.
 
-## Repository-specific Market-to-MVP routing
+## Repository-owned control planes
 
-This public repository owns **market-signal normalization, opportunity compilation, roadmap admission and privacy-preserving implementation handoff**. It does not own every downstream runtime, private capability, security system, Skill qualification harness or product deployment.
+This public repository owns two related but distinct surfaces:
 
-### Mandatory read order
+1. **Market-to-MVP Opportunity Compiler** — market signals, demand gates, opportunity scoring, experiments and roadmap admission.
+2. **Product Reverse-Engineering Control Plane** — exact product signals, dossiers, capability DAGs, closure audits, molecular implementation plans and bounded technical/runtime receipts.
 
-1. `README.md` — current materialization, directory ownership, data flow and Stack PR index.
-2. `docs/CONFIG.md` — fixed monitoring, scoring, privacy and delivery policy.
-3. `docs/STATE_MACHINES.md` — allowed transitions and fail-closed edges.
-4. `docs/MARKET_SIGNAL_CONTRACT.md` — demand evidence, stack decomposition and license gates.
-5. `CONTEXT.md`, `RANK.md`, `docs/DATA_MODEL.md` — existing research and asset evidence.
-6. `docs/git/README.md`, `docs/git/REPO_PROFILE.md`, `docs/git/WORKER_PROTOCOL.md`, `docs/git/STACKED_PRS.md` — branch graph and Worker authority.
-7. The assigned Issue/work packet and the nearest README for every writable path.
+Neither surface owns customer truth, paid truth, legal admission, every downstream runtime, merge, release or production promotion.
 
-### Operating laws
+## Mandatory read order
 
-- Classify the requested change as `DATA_INCREMENT_LANE` or `PRODUCT_CHANGE_LANE` before writing.
-- A launch, funding announcement, pricing page or GitHub star count is a signal; it is not paid demand.
-- Bind freshness, independent evidence groups, buyer pain, recurrence, willingness-to-pay evidence and distribution before promoting an opportunity.
-- Decompose each product into capabilities. Validate code, model weights, datasets, trajectories, hosted services and third-party content rights separately.
-- Only a direct `PASS` right may count toward substitution coverage. `CONDITIONAL`, `UNKNOWN`, `REJECT`, `NOT_APPLICABLE` and `NOT_EXERCISED` remain distinct.
-- A commercially permissive top-level code license is not proof that bundled models, data, trajectories, hosted services, patents, trademarks or third-party content are reusable.
-- Public outputs may contain only public repository facts and sanitized private capability envelopes. Never emit private repository names, paths, URLs, code, raw traces, customer data, credentials, tokens or secret-bearing receipts.
-- Private capability envelopes may expose only: `capability_id`, `contract_version`, `state`, `evidence_label`, `receipt_digest`, `exportable`, and non-sensitive `limitations`.
-- Portfolio matching proves candidacy, not technical equivalence. A candidate becomes equivalent only after the owning runtime produces subject-bound evidence.
-- Generated MVP packets remain `VALIDATE` until buyer/pilot receipts satisfy the declared success metrics. Do not manufacture `BUILD`, `PAID`, `MARKET_VALIDATED` or `DONE`.
-- Architecture, schemas, code, tests, roadmap policy and shared indexes use Issue-first reviewable branches. Routine data automation may use the bounded data lane only when its exact workflow, file scope and verification are already admitted.
-- Git Town is a synchronization engine, not merge authority. No `.git-town.toml`, live-sync claim or automated ship is allowed while exact executable admission and live canaries are absent.
-- One Worker owns one mutable branch and path lease. Independent writable paths are sibling branches; shared indexes have one convergence owner.
-- Preserve these evidence states: `ABSENT`, `PLANNED`, `MATERIALIZED`, `TESTED`, `PUBLISHED`, `MERGED`, `PHYSICALLY_EXECUTED`, `VERIFIED`, `ADMITTED`, `BLOCKED`, `NOT_EXERCISED`.
+### Common entry
 
-### Required completion report
+1. `README.md` — current materialization, directory ownership, data flow and current Stack indexes.
+2. `docs/STATE_MACHINES.md` and `docs/ARCHITECTURE.md`.
+3. The exact owning Issue, current PR graph and checked subject.
+4. The nearest `AGENTS.md` and README for every writable path.
 
-Every product-change completion report must include the exact Issue, branch, parent, head SHA, path lease, validation commands/results, negative controls, publication state, remaining gaps, non-claims and rollback subject. GitHub publication, hosted CI, live Git Town sync, market validation and Human Admit are separate lanes.
+### Market-to-MVP work
+
+1. `docs/CONFIG.md`.
+2. `docs/MARKET_SIGNAL_CONTRACT.md`.
+3. `CONTEXT.md`, `RANK.md`, `docs/DATA_MODEL.md`.
+4. `docs/MVP_ROADMAP.md`, `docs/PORTFOLIO_INTEGRATION.md`.
+5. `docs/git/README.md`, `REPO_PROFILE.md`, `WORKER_PROTOCOL.md`, `STACKED_PRS.md`.
+
+### Product Reverse work
+
+1. `docs/traceability/PRODUCT_REVERSE_CLOSURE.md` — current post-merge truth overlay.
+2. `docs/traceability/product-reverse-closure.json` — machine-readable current closure.
+3. `docs/traceability/local-handoff-execution-queue.json` — current executable continuation queue.
+4. `reverse-engineering/README.md`.
+5. `evals/reverse-engineering/AGENTS.md` and exact dossier packet.
+6. `evals/technical-systems/AGENTS.md` and exact technical packet.
+7. `evals/problem-closure/AGENTS.md` and the immutable captured Stage 6 packet.
+8. `evals/execution-plan/AGENTS.md` and the immutable captured Stage 7 plan.
+9. `evals/structured-scene/deterministic/` and `evals/structured-scene/runtime/receipt.json`.
+10. `docs/git/STACKED_PRS.md` only as historical delivery evidence.
+
+If the current closure overlay disagrees with an older generated matrix or queue, preserve the old artifact as its captured historical subject and use the current overlay for present routing. Do not silently rewrite historical evidence.
+
+## Market-to-MVP laws
+
+- Classify every change as `DATA_INCREMENT_LANE` or `PRODUCT_CHANGE_LANE` before writing.
+- Launch, funding, pricing and GitHub stars are signals, not paid demand.
+- Bind freshness, independent evidence groups, buyer pain, recurrence, willingness-to-pay and distribution before promotion.
+- Validate code, model weights, datasets, trajectories, hosted services and third-party content rights separately.
+- Only direct `PASS` rights count toward substitution coverage.
+- Public outputs may contain only public facts and sanitized private capability envelopes.
+- Portfolio matching proves candidacy, not technical equivalence.
+- Generated MVP packets remain `VALIDATE` until declared buyer/pilot receipts pass.
+
+## Product Reverse laws
+
+- `source statement != observed company truth`.
+- A PDF/article product-internal mapping defaults to `SOURCE_STATEMENT`, `HYPOTHESIS` or `UNKNOWN`; it cannot become observed architecture from repetition or compiler output.
+- `architecture/design != implementation`.
+- `implementation != TECH_VERIFIED` without an exact deterministic oracle and receipt.
+- `hosted CI != local runtime`; `local runtime != user validation`; `user validation != paid validation`.
+- Structured SceneSpec and deterministic constraint validation have one bounded local workflow receipt. Do not generalize that receipt to bidirectional canvas, rendering, visual quality, provider performance or production.
+- Product floating, perspective mismatch, lighting/contact-shadow discontinuity and latency/cost remain open until exact implementations and subject-bound visual/benchmark receipts exist.
+- The PDF's “100% permissive” claim remains blocked by its LGPL/MIT qualification until exact selected artifacts and transitive rights are reviewed.
+- Historical PRs #53/#54/#55/#57/#59/#61/#63/#65 were superseded as publication vehicles by convergence PR #67. Do not report them as individually merged.
+- Historical Stage 6/7 generated files are immutable captured-state evidence. Current state belongs in `docs/traceability/`.
+- Exactly one current Local Handoff queue item may be `ACTIVE`.
+- Google Docs/Sheets are human projections, never implementation, completion, market, merge or release authority.
+
+## Delivery and writer laws
+
+- Architecture, schemas, code, tests, roadmap policy, root docs and current traceability indexes require Issue-first reviewable branches.
+- One Worker owns one mutable branch and path lease.
+- Independent writable paths are siblings; shared indexes have one convergence owner.
+- Start and completion dependencies are separate. Readable interfaces can open a start edge; only exact receipts close completion edges.
+- Git Town is synchronization infrastructure, not merge authority. Do not claim live Git Town execution without executable admission and runtime receipts.
+- Preserve these states literally: `PASS`, `FAIL`, `ABSENT`, `NOT_IMPLEMENTED`, `NOT_EXERCISED`, `SKIPPED_BY_POLICY`, `HUMAN_ADMIT_REQUIRED`, `BLOCKED`.
+- Merge, semantic conflict, rights/legal admission, customer truth, paid truth, release and production remain externally owned.
+
+## Required completion report
+
+Every product change must report:
+
+```text
+Issue / atom / owner
+exact base, head and tree
+consumed parent subjects
+changed paths and lease
+commands and results
+positive, negative, mutation, fault and runtime evidence states
+receipt/blob/digest identities
+open contradictions and non-claims
+rollback subject
+next owner and Local Handoff state
+```
+
+Prior conversation, Issue prose, a green badge or a generated prompt is not a completion receipt.
