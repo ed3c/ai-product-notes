@@ -13,7 +13,7 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 
 只對 `PASS` 進正式排行。Code、model weights、dataset、trajectory 必須分別驗證授權；permissive code license 不可外推到 bundled data、model weights、third-party services 或 generated trajectories。
 
-### Verified ranking — 2026-08-18
+### Verified ranking — 2026-08-20
 
 | Rank | Asset | Type | License gate | Hackathon MVP | Business | Research | Production | Stack compatibility | Avg |
 |---:|---|---|---|---:|---:|---:|---:|---:|---:|
@@ -36,10 +36,27 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 | 17 | AgentConnect | multi-agent collaboration/control plane | PASS / Apache-2.0 | 9 | 8 | 8 | 7 | 10 | 8.4 |
 | 18 | NVIDIA-NeMo/Switchyard | LLM protocol translation & routing proxy | PASS / Apache-2.0 code | 9 | 9 | 9 | 5 | 10 | 8.4 |
 | 19 | Blume | AI-ready Markdown documentation framework | PASS / MIT | 10 | 7 | 8 | 8 | 9 | 8.4 |
-| 20 | @inferock/measure | LLM billing-integrity measurement library | PASS / Apache-2.0 component code | 9 | 8 | 9 | 7 | 8 | 8.2 |
-| 21 | MemoryCustodian | repo-native agent memory | PASS / MIT | 9 | 7 | 8 | 6 | 9 | 7.8 |
-| 22 | Soup CLI | local LLM fine-tuning/post-training CLI | PASS / Apache-2.0 | 8 | 6 | 9 | 7 | 9 | 7.8 |
-| 23 | Aureka OpenDDE | biomolecular foundation model / drug-discovery engine | PASS / Apache-2.0 code + released checkpoints; datasets/search DB scope separate | 7 | 8 | 10 | 5 | 8 | 7.6 |
+| 20 | Balsa UI | agent-readable Vue/React UI component source | PASS / MIT repository code | 10 | 7 | 8 | 8 | 9 | 8.4 |
+| 21 | @inferock/measure | LLM billing-integrity measurement library | PASS / Apache-2.0 component code | 9 | 8 | 9 | 7 | 8 | 8.2 |
+| 22 | MemoryCustodian | repo-native agent memory | PASS / MIT | 9 | 7 | 8 | 6 | 9 | 7.8 |
+| 23 | Soup CLI | local LLM fine-tuning/post-training CLI | PASS / Apache-2.0 | 8 | 6 | 9 | 7 | 9 | 7.8 |
+| 24 | Aureka OpenDDE | biomolecular foundation model / drug-discovery engine | PASS / Apache-2.0 code + released checkpoints; datasets/search DB scope separate | 7 | 8 | 10 | 5 | 8 | 7.6 |
+
+### 2026-08-20 新增驗證
+
+**Balsa UI**
+- Primary repo: https://github.com/pedrobalsa/balsa-ui
+- Immutable verification commit: `20115e0bb47c9ec1e7c65c0ef81a5896d520c9c7`
+- Primary code license: https://github.com/pedrobalsa/balsa-ui/blob/20115e0bb47c9ec1e7c65c0ef81a5896d520c9c7/LICENSE
+- License gate: `PASS / MIT` **for repository code**.
+- Freshness evidence: pinned commit was committed on 2026-08-19 and carries the `Release 0.8.1` message.
+- 技術價值：Balsa UI 將 Vue 3 / React 19 components 以 editable source 安裝，而不是 opaque package-only dependency。其 machine-readable specs 由同一 source compiler 衍生，並提供 intent search、MCP tool exposure、hosted `llms.txt`、catalog index/specs、read-only diff 與 local-edit-preserving update flow。這使 UI component library 同時可被 human developer 與 coding agents 理解，適合 agentic frontend generation、design-system conformance 與 component provenance 實驗。
+- Business boundary：上游目前主要價值是 open-source component infrastructure；本排行的 Business 7 是 implementation leverage 評分，不代表 upstream 已有等價 SaaS revenue。
+- Production boundary：component generation / update 仍需在實際 application stack 驗證 accessibility、browser behavior、security、framework upgrades、local modifications 與 design-system constraints。MIT 不可外推到 app-specific assets、third-party icons/fonts、external models、customer data 或 generated trajectories。
+- `assets.code`: PASS — repository code at pinned commit.
+- `assets.llm_models`: not_found — no bundled model weights are inferred.
+- `assets.data`: not_found — component catalog metadata is project source, not treated as a separately licensed reusable production dataset.
+- `assets.trajectories`: not_found — no reusable licensed agent-trajectory corpus verified.
 
 ### 2026-08-18 新增驗證
 
@@ -92,6 +109,12 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 Only `PASS` entries receive a formal rank. Code, model weights, datasets and trajectories require separate license verification. A permissive code license never proves that bundled data, cloud services, external models or generated trajectories are commercially reusable.
 
 Evaluation dimensions: Hackathon MVP speed, Business monetization leverage, Research/reproducibility value, Production maturity, and compatibility with common production AI stacks.
+
+### New verified asset — 2026-08-20
+
+**Balsa UI** enters at rank 20 with an internal 8.4 average. Repository code was verified at commit `20115e0bb47c9ec1e7c65c0ef81a5896d520c9c7` under MIT. Balsa exposes editable Vue 3 and React 19 component source plus machine-readable specs derived from the same source compiler, intent search, MCP tools, hosted `llms.txt`, catalog metadata, read-only diffing, and updates designed to preserve local edits. This makes it a useful substrate for agentic frontend generation and design-system conformance.
+
+The PASS decision covers repository code only. No model-weight, customer-data, third-party asset, or agent-trajectory rights are inferred. Production use still requires application-level accessibility, browser, security, framework-upgrade, and local-modification validation.
 
 ### New verified asset — 2026-08-18
 
