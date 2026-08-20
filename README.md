@@ -1,329 +1,316 @@
 # AI Product Notes｜Market-to-MVP Opportunity Compiler
 
-`AI Product Notes` is an evidence-aware control plane that converts current product and market signals into **license-gated capability maps, portfolio gaps, bounded MVP experiments, and reviewable implementation handoffs**.
-
-`AI Product Notes` 是一個 evidence-first 的市場到 MVP 控制平面，把產品訊號轉成可驗證需求、可商用技術替代、現有資產缺口、MVP 實驗與可追溯交付。
+`AI Product Notes` is an evidence-aware Product Control Plane that converts product and market signals into license-gated capability maps, bounded MVP experiments, reverse-engineering dossiers, exact closure findings and reviewable implementation handoffs.
 
 ```text
-market signal
-→ freshness and identity
-→ demand evidence
-→ capability decomposition
-→ commercial-rights gate
-→ public/private portfolio match
-→ gap classification
-→ deterministic opportunity decision
-→ bounded MVP packet
-→ experiment receipts
+market or source signal
+→ freshness / identity / rights
+→ atomic evidence and contradiction ledger
+→ product dossier
+→ technical capability DAG
+→ problem-closure audit
+→ dual-edge execution plan
+→ molecular implementation atoms
+→ exact technical/runtime receipts
+→ user / paid / rights gates
 → roadmap admission or rejection
 ```
 
-## Current decision / 目前決策
+## Current decisions
 
-- **Repository product:** Market-to-MVP Opportunity Compiler.
-- **First external wedge:** Vendor API Blast-Radius CI — map a provider/API change to the exact repository call sites exposed to it.
+### Market-to-MVP opportunity compiler
+
+- **First external wedge:** Vendor API Blast-Radius CI.
 - **Decision:** `VALIDATE`.
 - **Opportunity score:** `62.06 / 100`.
 - **Packet digest:** `sha256:45752a84a18efb5d25d8559fe4a9249a46448b0393c5db5c029d9e071e651364`.
-- **Paid demand:** `ABSENT`.
 - **Customer-origin evidence:** `ABSENT`.
-- **Missing proprietary differentiator:** `callsite-impact-join`.
-- **Promotion rule:** no customer and paid-pilot receipts means no promotion to `BUILD`.
+- **Paid demand:** `ABSENT`.
+- **Promotion law:** no qualified customer and paid-pilot receipts means no promotion to `BUILD`.
 
-## Materialization snapshot / 整合現況
+### Product Reverse-Engineering loop
+
+- **Convergence merge:** [PR #67](https://github.com/ed3c/ai-product-notes/pull/67) → `8a63575492b07daf8e1f62432181e6dc2f2b6960`.
+- **Current reconciled base:** `main@1d3365ba4eb708b827710be10740244deda95557` at Issue [#68](https://github.com/ed3c/ai-product-notes/issues/68) admission.
+- **Decision ceiling:** `VALIDATE`.
+- **Structured scene IR:** `LIVE_WORKFLOW_VERIFIED` for one bounded local SceneSpec workflow.
+- **Deterministic constraint validation:** `LIVE_WORKFLOW_VERIFIED` for the same bounded local workflow.
+- **Bidirectional canvas:** `NOT_IMPLEMENTED`.
+- **Rendering / diffusion / provider lane:** `NOT_EXERCISED`.
+- **User and paid evidence:** `ABSENT`.
+- **Exact dependency rights:** `HUMAN_ADMIT_REQUIRED`.
+
+Read the current closure overlay before using older generated packets:
+
+- [`docs/traceability/PRODUCT_REVERSE_CLOSURE.md`](docs/traceability/PRODUCT_REVERSE_CLOSURE.md)
+- [`docs/traceability/product-reverse-closure.json`](docs/traceability/product-reverse-closure.json)
+- [`docs/traceability/local-handoff-execution-queue.json`](docs/traceability/local-handoff-execution-queue.json)
+
+## Materialization snapshot
 
 | Area | State | Exact evidence / boundary |
 |---|---|---|
 | Product datasets and daily intelligence | `MATERIALIZED` | `data/products/`, `notes/`, `reports/` |
-| Commercially usable asset ranking | `MATERIALIZED` | `RANK.md`; code, model, data, trajectory, hosted-service and third-party-content rights are separate |
-| Market, Agent, State Machine and Git governance | `MERGED` | [PR #7](https://github.com/ed3c/ai-product-notes/pull/7), merge `bfe03383e96183d6b6eebd24462742090c733811` |
-| Deterministic opportunity compiler | `MERGED / TESTED` | [PR #8](https://github.com/ed3c/ai-product-notes/pull/8), merge `3fc46a25cc0089e092373b1a0c92a0780f91a5a2` |
-| First Vendor API opportunity packet | `MERGED / VALIDATE` | [PR #9](https://github.com/ed3c/ai-product-notes/pull/9), merge `fe7e03557f07b7c9ae91210d0405745b870dafcc` |
-| Exact-head and synthetic-merge CI separation | `MERGED / HOSTED_VERIFIED` | [PR #11](https://github.com/ed3c/ai-product-notes/pull/11), merge `0e2654f6a89c6110728950161d968b233c7e96b4`, run `31881831160` |
-| Final README and Stack reconciliation | `MERGED / HOSTED_VERIFIED` | [PR #13](https://github.com/ed3c/ai-product-notes/pull/13), merge `407f537018d59da52231f011ed52d69bfc0b6be2`, PR run `31882048251`, exact-main run `31882091779` |
-| Terminal receipt pointer | `RECEIPT_ONLY` | [Issue #14](https://github.com/ed3c/ai-product-notes/issues/14) → [PR #15](https://github.com/ed3c/ai-product-notes/pull/15); final housekeeping result is authoritative in GitHub metadata |
-| Public/private portfolio bridge | `MATERIALIZED` | public contracts plus sanitized private capability envelopes only |
-| Historical Git Town-compatible Stack PR graph | `MERGED / AUDITABLE` | original branches, bases, stage heads and merge commits are indexed below |
-| Exact Git Town executable admission | `ABSENT / BLOCKED_POLICY` | no exact version, executable checksum, SBOM and host admission receipt |
-| Live `git town sync` | `NOT_EXERCISED` | GitHub branch ancestry is not a Git Town runtime receipt |
-| Buyer interviews, replay and paid pilot | `NOT_EXERCISED` | experiment contracts exist; no outcome is claimed |
-| Market validation / revenue | `ABSENT` | compiler output and merged code are not market evidence |
+| Commercial-rights asset ranking | `MATERIALIZED` | `RANK.md`; code/model/data/trajectory/service/content rights remain separate |
+| Market, Agent, State Machine and Git governance | `MERGED` | PR #7, merge `bfe03383e96183d6b6eebd24462742090c733811` |
+| Deterministic opportunity compiler | `MERGED / TESTED` | PR #8, merge `3fc46a25cc0089e092373b1a0c92a0780f91a5a2` |
+| First Vendor API packet | `MERGED / VALIDATE` | PR #9, merge `fe7e03557f07b7c9ae91210d0405745b870dafcc` |
+| Exact-head / synthetic-merge separation | `MERGED / HOSTED_VERIFIED` | PR #11, merge `0e2654f6a89c6110728950161d968b233c7e96b4` |
+| Market-to-MVP final reconciliation | `MERGED / HOSTED_VERIFIED` | PR #13, merge `407f537018d59da52231f011ed52d69bfc0b6be2` |
+| Product Reverse control binder | `MERGED / SUPERSEDED_BY_CURRENT_OVERLAY` | historical PR #53 payload integrated by PR #67 |
+| Reverse-engineering dossier | `MERGED / VALIDATE` | legacy PR #54 head `736454e7ae49e351d146f3e9bb5c2ef67c846ecd`; payload integrated by PR #67 |
+| Technical systems packet | `MERGED / DESIGN_ONLY` | legacy PR #55 head `72e89c89f1961db3735231a32efc5f4ac852d670`; payload integrated by PR #67 |
+| Product closure audit | `MERGED / FINDINGS_ONLY` | legacy PR #57 head `34f77140968799c0c2669610609848beadf96646`; payload integrated by PR #67 |
+| Dual-edge execution planner | `MERGED / PLANNING_ONLY` | legacy PR #59 head `2a37430337a87380afae6fc2617cd41692d9fd75`; payload integrated by PR #67 |
+| SceneSpec contract | `MERGED / TECH_VERIFIED` | legacy PR #61 head `b0f59c7afad5b9acdbffbe9c87c1d86507237ea0`; payload integrated by PR #67 |
+| Constraint validator | `MERGED / TECH_VERIFIED` | legacy PR #63 head `dd185109378a34109313b3a6fa150af9de0b76cf`; payload integrated by PR #67 |
+| Deterministic seven-case eval | `MERGED / PASS` | legacy PR #65 head `f840f37582e925759bdf89290d7a5da1122d21d1`; payload integrated by PR #67 |
+| Local structured-scene runtime | `MERGED / LIVE_WORKFLOW_VERIFIED` | local receipt commit `7225ca1b23d749f79ed1a98426dbcfd5302385be`; receipt blob `919303fce89e5247a34d0d0b03836eff358f2dd6` |
+| Product Reverse convergence | `MERGED` | PR #67, merge `8a63575492b07daf8e1f62432181e6dc2f2b6960` |
+| Exact Git Town executable admission | `ABSENT / BLOCKED_POLICY` | branch ancestry is not live Git Town execution |
+| Google CodexDoc / Sheet projection registry | `PARTIAL / OPEN` | Issue #48; generic shared contracts still blocked by `skills-shared#443` |
+| Three PDF-derived canaries | `PARTIAL` | one structured-product canary exists; Flair visual and separate AST-interaction canaries remain open under #49 |
+| Buyer interviews / paid pilots | `ABSENT` | repository technical receipts are not customer or commercial evidence |
 
-## Repository topology / 目錄結構
+## Market-to-MVP State Machine and public/private boundary
+
+The original opportunity compiler remains active and preserves these repository-owned states:
+
+```text
+DISCOVERED
+→ FRESHNESS_VERIFIED
+→ DEMAND_EVIDENCE_BOUND
+→ STACK_DECOMPOSED
+→ LICENSE_GATED
+→ PORTFOLIO_MATCHED
+→ GAP_CLASSIFIED
+→ OPPORTUNITY_SCORED
+→ MVP_PACKETED
+→ EXPERIMENT_RUNNING
+→ OUTCOME_VERIFIED
+→ ADMITTED_TO_ROADMAP
+```
+
+Private capability input uses a **Git-ignored private overlay** and may emit only a sanitized capability envelope. **Private repository content is never an input to committed public artifacts.** Forbidden committed fields include **repo names / paths / URLs / code / raw traces / customer data / credentials**.
+
+| Runtime / delivery lane | State | Boundary |
+|---|---|---|
+| Live `git town sync` | `NOT_EXERCISED` | GitHub ancestry is not an executable Git Town receipt |
+| Exact Git Town executable admission | `ABSENT / BLOCKED_POLICY` | version/checksum/SBOM/host receipt absent |
+| Customer validation | `ABSENT` | technical receipts are non-substitutable |
+| Paid validation | `ABSENT` | no paid/adoption receipt |
+
+## Repository topology
 
 ```text
 ai-product-notes/
-├── AGENTS.md                         # cross-host Agent routing and fail-closed laws
-├── README.md                         # current state, data flow, State Machines and delivery index
-├── CONTEXT.md                        # product language → implementation questions
-├── RANK.md                           # commercially usable asset evidence and ranking
+├── AGENTS.md
+├── README.md
+├── CONTEXT.md
+├── RANK.md
+├── reverse-engineering/
+│   ├── README.md
+│   └── runs/                              # control-binding and immutable run packets
 ├── docs/
-│   ├── ARCHITECTURE.md               # ownership and trust boundaries
-│   ├── STATE_MACHINES.md             # state transitions and failure edges
-│   ├── MARKET_SIGNAL_CONTRACT.md     # freshness, demand and substitution gates
-│   ├── MVP_ROADMAP.md                # experiment and promotion gates
-│   ├── PORTFOLIO_INTEGRATION.md      # public/private capability handoff
-│   ├── CONFIG.md                     # operational and delivery policy
-│   ├── DAILY_MONITOR_PROMPT.md       # recurring market-signal procedure
-│   ├── DATA_MODEL.md                 # Top-100 dataset contract
-│   └── git/
-│       ├── README.md                 # Git governance status
-│       ├── REPO_PROFILE.md           # repository-owned Git Town profile
-│       ├── WORKER_PROTOCOL.md        # Worker, lease and receipt contract
-│       ├── GIT_TOWN_ADMISSION.md     # executable/config admission state
-│       └── STACKED_PRS.md            # branches, PRs, SHAs and hosted receipts
-├── data/
-│   ├── products/                     # sharded product datasets
-│   └── assets/registry.json          # versioned assets and separate rights states
-├── config/
-│   ├── public-portfolio.json         # public capability contracts
-│   └── private-portfolio.example.json# sanitized local-overlay schema example
-├── schemas/                          # versioned input/output contracts
-├── src/ai_product_notes/             # deterministic compiler
-├── scripts/                          # repository contract and compiler entrypoints
-├── examples/                         # admitted public and negative-control fixtures
-├── opportunities/                    # reproducible opportunity packets
-├── experiments/                      # interview/replay/pilot contracts and receipt schema
-├── roadmap/                          # admitted decision states
-├── tests/                            # positive tests and planted negative controls
-└── .github/workflows/                # exact-subject hosted validation
+│   ├── ARCHITECTURE.md
+│   ├── STATE_MACHINES.md
+│   ├── MARKET_SIGNAL_CONTRACT.md
+│   ├── MVP_ROADMAP.md
+│   ├── PORTFOLIO_INTEGRATION.md
+│   ├── git/
+│   │   ├── README.md
+│   │   ├── REPO_PROFILE.md
+│   │   ├── WORKER_PROTOCOL.md
+│   │   ├── GIT_TOWN_ADMISSION.md
+│   │   └── STACKED_PRS.md                 # historical delivery ledger
+│   └── traceability/
+│       ├── PRODUCT_REVERSE_CLOSURE.md      # current post-merge truth overlay
+│       ├── product-reverse-closure.json
+│       └── local-handoff-execution-queue.json
+├── evals/
+│   ├── reverse-engineering/                # dossier input/binding/output
+│   ├── technical-systems/                  # capability DAG, rights and eval design
+│   ├── problem-closure/                    # immutable Stage 6 captured audit
+│   ├── execution-plan/                     # immutable Stage 7 plan and prompts
+│   └── structured-scene/
+│       ├── deterministic/                  # fixed positive/negative/mutation denominator
+│       └── runtime/                        # exact local X02 contract/input/receipt/tests
+├── schemas/
+│   ├── reverse-engineering-*.schema.json
+│   ├── technical-systems-*.schema.json
+│   ├── problem-closure-instance.schema.json
+│   ├── execution-plan-instance.schema.json
+│   └── scene-spec.schema.json
+├── src/ai_product_notes/
+│   ├── reverse_engineering.py
+│   ├── technical_systems.py
+│   ├── problem_closure.py
+│   ├── execution_planner.py
+│   ├── scene_spec.py
+│   └── constraint_validator.py
+├── scripts/                                # deterministic compiler and canary entrypoints
+├── tests/                                  # repository, compiler and planted-failure controls
+├── opportunities/ experiments/ roadmap/   # Market-to-MVP outputs and gates
+└── .github/workflows/                      # exact-head and synthetic-merge validation
 ```
 
 ## Directory-to-State-Machine ownership
 
 | State | Owning paths | Input | Output / receipt | Fail-closed edge |
 |---|---|---|---|---|
-| `DISCOVERED` | `reports/`, `notes/`, `data/products/` | launch, funding, pricing or pain candidate | normalized candidate identity | missing identity stays unadmitted |
-| `FRESHNESS_VERIFIED` | `docs/DAILY_MONITOR_PROMPT.md`, signal fixtures | event and source dates | freshness decision | stale, re-indexed or ambiguous sources are excluded |
-| `DEMAND_EVIDENCE_BOUND` | `docs/MARKET_SIGNAL_CONTRACT.md`, `examples/signals/` | independent evidence groups | pain, recurrence and WTP state | launch presence and competitor pricing are not paid demand |
-| `STACK_DECOMPOSED` | `CONTEXT.md`, compiler | product workflow | required capability graph | feature similarity cannot proxy implementation equivalence |
-| `LICENSE_GATED` | `RANK.md`, `data/assets/` | code/model/data/trajectory/service candidates | per-asset rights state | only direct `PASS` rights count toward substitution coverage |
-| `PORTFOLIO_MATCHED` | `config/`, `docs/PORTFOLIO_INTEGRATION.md` | required capabilities | public matches and sanitized private envelopes | forbidden private metadata blocks output |
-| `GAP_CLASSIFIED` | compiler | demand, stack and portfolio state | market/evidence/stack/portfolio/delivery gaps | unknowns remain explicit |
-| `OPPORTUNITY_SCORED` | `src/ai_product_notes/` | canonical versioned inputs | deterministic score and decision | hard privacy/rights failures cannot be offset by score |
-| `MVP_PACKETED` | `opportunities/` | admitted `VALIDATE` candidate | wedge, metrics, price test and stop-loss | packet is not an executed pilot |
-| `EXPERIMENT_RUNNING` | `experiments/` | Human-admitted MVP | interview/replay/pilot receipts | unbound anecdotes are not receipts |
-| `OUTCOME_VERIFIED` | experiment evaluator and durable owner | exact receipts | pass/fail/inconclusive result | self-authored success is insufficient |
-| `ADMITTED_TO_ROADMAP` | `roadmap/` | verified outcome plus Human Admit | durable-owner implementation handoff | no receipt, no promotion |
-| `WATCH` / `REJECTED` / `BLOCKED` | opportunity and roadmap ledgers | weak, stale, unsafe or incomplete candidate | reason and revisit condition | never silently upgraded |
+| `DISCOVERED` | `reports/`, `notes/`, `data/products/` | market/product candidate | normalized candidate | ambiguous or stale subject remains unadmitted |
+| `DEMAND_EVIDENCE_BOUND` | `docs/MARKET_SIGNAL_CONTRACT.md`, signals | independent evidence groups | pain/recurrence/WTP state | launch/funding/pricing is not paid demand |
+| `PRODUCT_SIGNAL_BOUND` | external Evidence Plane snapshot | atomic claims and contradictions | exact `product-signal@1` input | mutable URL or digest drift blocks |
+| `DOSSIER_BOUND` | `evals/reverse-engineering/`, `reverse_engineering.py` | pinned product signal | user/problem/workflow/MVP hypothesis | no user or paid evidence caps `VALIDATE` |
+| `TECHNICAL_SYSTEMS_BOUND` | `evals/technical-systems/`, `technical_systems.py` | dossier | capability DAG, rights/eval plan | design is not implementation or legal approval |
+| `CLOSURE_AUDITED` | `evals/problem-closure/`, `problem_closure.py` | technical packet | captured matrix, audit, Issue deltas | generated findings do not repair code |
+| `EXECUTION_PLANNED` | `evals/execution-plan/`, `execution_planner.py` | verified gaps | dual-edge DAG, leases, prompts, queue | start edge never satisfies completion |
+| `SCENE_SPEC_BOUND` | `scene_spec.py`, schema, tests | deterministic MVP slice | canonical bytes and digest | unknown fields / duplicate keys / provider scope fail |
+| `CONSTRAINT_VALIDATED` | `constraint_validator.py`, tests | SceneSpec | stable rule violations and digest-bound receipt | stale or unknown rules fail closed |
+| `DETERMINISTIC_EVAL_VERIFIED` | `evals/structured-scene/deterministic/` | C/K bytes | fixed seven-case receipt | denominator cannot silently shrink |
+| `LOCAL_WORKFLOW_VERIFIED` | `evals/structured-scene/runtime/` | exact local checkout | X02 local receipt | hosted CI cannot impersonate local runtime |
+| `POST_MERGE_RECONCILED` | `docs/traceability/`, Issue #68 | current main + historical receipts | current closure and handoff overlay | captured historical packets are not rewritten |
+| `USER_VALIDATED` | future qualified-user receipts | bounded workflow | user outcome | technical success cannot satisfy this lane |
+| `PAID_VALIDATED` | future commercial receipts | admitted offer/pilot | payment/adoption evidence | no payment, no promotion |
+| `RIGHTS_ADMITTED` | Human/legal owner | exact dependency set | separate rights decision | source license table is not transitive-rights proof |
 
-## State Machine
+## Product Reverse State Machine
 
 ```mermaid
 stateDiagram-v2
-    [*] --> DISCOVERED
-    DISCOVERED --> FRESHNESS_VERIFIED
-    FRESHNESS_VERIFIED --> DEMAND_EVIDENCE_BOUND: fresh and attributable
-    FRESHNESS_VERIFIED --> REJECTED: stale, duplicate or ambiguous
-    DEMAND_EVIDENCE_BOUND --> STACK_DECOMPOSED: minimum evidence
-    DEMAND_EVIDENCE_BOUND --> WATCH: weak or single-source
-    STACK_DECOMPOSED --> LICENSE_GATED
-    LICENSE_GATED --> PORTFOLIO_MATCHED: admissible candidates
-    LICENSE_GATED --> BLOCKED: hard rights gap
-    PORTFOLIO_MATCHED --> GAP_CLASSIFIED
-    GAP_CLASSIFIED --> OPPORTUNITY_SCORED
-    OPPORTUNITY_SCORED --> MVP_PACKETED: VALIDATE or BUILD
-    OPPORTUNITY_SCORED --> WATCH
-    OPPORTUNITY_SCORED --> REJECTED
-    OPPORTUNITY_SCORED --> BLOCKED
-    MVP_PACKETED --> EXPERIMENT_RUNNING: Human Admit
-    EXPERIMENT_RUNNING --> OUTCOME_VERIFIED
-    OUTCOME_VERIFIED --> ADMITTED_TO_ROADMAP: success + Human Admit
-    OUTCOME_VERIFIED --> WATCH: inconclusive
-    OUTCOME_VERIFIED --> REJECTED: stop-loss reached
+    [*] --> PRODUCT_SIGNAL_BOUND
+    PRODUCT_SIGNAL_BOUND --> DOSSIER_BOUND
+    DOSSIER_BOUND --> TECHNICAL_SYSTEMS_BOUND
+    TECHNICAL_SYSTEMS_BOUND --> CLOSURE_AUDITED
+    CLOSURE_AUDITED --> EXECUTION_PLANNED
+    EXECUTION_PLANNED --> SCENE_SPEC_BOUND
+    SCENE_SPEC_BOUND --> CONSTRAINT_VALIDATED
+    CONSTRAINT_VALIDATED --> DETERMINISTIC_EVAL_VERIFIED
+    DETERMINISTIC_EVAL_VERIFIED --> LOCAL_WORKFLOW_VERIFIED
+    LOCAL_WORKFLOW_VERIFIED --> POST_MERGE_RECONCILED
+    POST_MERGE_RECONCILED --> USER_VALIDATED: qualified user receipt
+    USER_VALIDATED --> PAID_VALIDATED: paid/adoption receipt
+    POST_MERGE_RECONCILED --> BLOCKED: rights/provider/user authority absent
 ```
 
-## Data flow and trust boundaries
+## Product Reverse data flow and trust boundaries
 
 ```mermaid
 flowchart LR
-    A[Public market sources] --> B[Freshness and identity gate]
-    B --> C[Demand evidence ledger]
-    C --> D[Capability decomposition]
-    E[Public permissive asset registry] --> F[Separate rights gates]
-    D --> F
-    G[Public portfolio contracts] --> H[Portfolio matcher]
-    I[Git-ignored private overlay] -->|sanitized capability envelope only| H
-    F --> H
-    H --> J[Gap ledger]
-    J --> K[Deterministic opportunity compiler]
-    K --> L[MVP packet]
-    L --> M[Market experiment]
-    M --> N[Subject-bound receipts]
-    N --> O[Roadmap admission or rejection]
+    A[Exact Evidence Plane product-signal] --> B[Dossier]
+    B --> C[Capability DAG + separate rights lanes]
+    C --> D[Shadow closure audit]
+    D --> E[Dual-edge Molecular plan]
+    E --> F[SceneSpec contract]
+    F --> G[Deterministic constraint validator]
+    G --> H[Fixed seven-case eval]
+    H --> I[Exact local workflow receipt]
+    I --> J[Post-merge closure overlay]
+    J --> K[User validation]
+    K --> L[Paid validation]
 
-    I -. forbidden .-> X[repo names / paths / URLs / code / raw traces / customer data / credentials]
+    M[PDF / article claims] -. source statement or hypothesis .-> B
+    N[Hosted CI] -. cannot replace .-> I
+    I -. cannot replace .-> K
+    K -. cannot replace .-> L
+    O[Google projection] -. navigation only .-> J
 ```
 
-### Public/private boundary
+## PDF-derived real-problem closure
 
-A public portfolio entry may identify public repositories and public evidence. Private capabilities enter through a **Git-ignored private overlay** and may export only a versioned, sanitized capability envelope.
+The attached architecture source proposes the reusable pattern `DSL / structured AST + Constraint Solver + Bidirectional Canvas + deterministic rendering/validation`. Current repository closure is intentionally narrower:
 
-**Private repository content is never an input to committed public artifacts.**
+| Source problem / mechanism | Current highest closure | Current evidence | Missing evidence |
+|---|---|---|---|
+| Structured DSL / AST | `LIVE_WORKFLOW_VERIFIED` | SceneSpec contract, deterministic tests, exact X02 local receipt | broader product/editor workload |
+| Deterministic Constraint Solver | `LIVE_WORKFLOW_VERIFIED` | stable rule IDs, digest-bound receipts, local workflow | more rule families and product-specific quality gates |
+| Bidirectional Canvas | `MECHANISM_BOUND / NOT_IMPLEMENTED` | dossier and technical design only | editor/canvas bytes, round-trip interaction receipt |
+| Deterministic rendering farm | `MECHANISM_BOUND / NOT_IMPLEMENTED` | source/design hypothesis only | renderer implementation, exact runtime and quality oracle |
+| Product floating / grounding | `MECHANISM_BOUND / NOT_IMPLEMENTED` | source proposes raycast/geometry grounding | exact 3D implementation and visual comparison receipt |
+| Perspective mismatch | `MECHANISM_BOUND / NOT_IMPLEMENTED` | source proposes camera/depth conditioning | exact depth/camera implementation and evaluation |
+| Lighting / contact-shadow discontinuity | `MECHANISM_BOUND / NOT_IMPLEMENTED` | source proposes mask/inpainting/contact shadow | exact implementation and visual-evidence receipt |
+| Compute / latency / cost | `SOURCE_ANCHORED / NOT_EXERCISED` | source statements only | bounded benchmark on selected implementation |
+| “100% permissive” dependency claim | `BLOCKED / HUMAN_ADMIT_REQUIRED` | source contains an LGPL/MIT qualification contradiction | exact selected artifacts, transitive license/SBOM review |
+| Named company internal stacks | `SOURCE_ANCHORED / UNKNOWN` | source statements/hypotheses only | independent first-party or runtime evidence |
+| User value | `ABSENT` | no qualified-user receipt | user study against declared workflow metrics |
+| Paid demand | `ABSENT` | no paid/adoption receipt | paid pilot, preorder or equivalent commitment |
 
-Forbidden public fields include **repo names / paths / URLs / code / raw traces / customer data / credentials**. A capability envelope may expose only provider-neutral capability IDs, contract versions, evidence labels, receipt digests, exportability and limitations.
+## Molecular Product Reverse Stack index
+
+The following branches were true parent/child implementation subjects. They were **closed unmerged and superseded as publication vehicles** when convergence PR #67 merged their combined payload. Do not describe them as individually merged.
+
+```text
+main@d3883498538576a5ab928956ef2a048172242eaf
+├── historical sibling PR #53  C00 control binding
+│   head 0f492491048d0c18a57ea0049fa167ef912652a5
+│
+└── PR #54  K01 dossier
+    head 736454e7ae49e351d146f3e9bb5c2ef67c846ecd
+    └── PR #55  K01B technical systems
+        head 72e89c89f1961db3735231a32efc5f4ac852d670
+        └── PR #57  E01 problem closure
+            head 34f77140968799c0c2669610609848beadf96646
+            └── PR #59  K02 dual-edge planner
+                head 2a37430337a87380afae6fc2617cd41692d9fd75
+                └── PR #61  C02 SceneSpec
+                    head b0f59c7afad5b9acdbffbe9c87c1d86507237ea0
+                    └── PR #63  K03 validator
+                        head dd185109378a34109313b3a6fa150af9de0b76cf
+                        └── PR #65  E02 deterministic eval
+                            head f840f37582e925759bdf89290d7a5da1122d21d1
+                            └── local X02 receipt
+                                commit 7225ca1b23d749f79ed1a98426dbcfd5302385be
+```
+
+Publication convergence:
+
+```text
+PR #67 agent/50-open-pr-convergence
+head  fbad39abb42818c7362f58bb0751378b3bd4cdd2
+merge 8a63575492b07daf8e1f62432181e6dc2f2b6960
+scope combined PR #53 + linear #54→#65 + X02 + D02 + workflow repair
+```
+
+The current main overlay is owned by Issue #68. Historical Stage 6 and Stage 7 generated artifacts remain immutable captured-state evidence; current truth is in `docs/traceability/`.
 
 ## Evidence lanes
 
 ```text
-source discovered != source fresh
+source statement != observed company truth
 fresh launch != buyer pain
 competitor pricing != payment for this product
-permissive code license != model/data/trajectory/service rights
-portfolio match != technical equivalence
-compiler PASS != market validation
-MVP packet != executed experiment
-local test != hosted CI
-exact-head CI != synthetic-merge CI
-GitHub branch graph != live Git Town sync
-merged implementation != customer adoption or revenue
-```
-
-## Opportunity compiler contract
-
-```text
-versioned market signal
-+ versioned asset/right registry
-+ public portfolio registry
-+ optional Git-ignored private capability overlay
-→ evidence and demand gates
-→ required capability graph
-→ admissible substitutions
-→ portfolio matches and uncovered capabilities
-→ gap ledger
-→ deterministic score and decision
-→ canonical SHA-256 digest
-```
-
-Hard rules:
-
-- Only direct `PASS` rights count toward substitution coverage.
-- `UNKNOWN`, `CONDITIONAL` and `REJECT` remain visible but cannot silently improve coverage.
-- Missing direct paid demand caps the decision at `VALIDATE`.
-- Privacy or rights violations produce `BLOCKED`, regardless of score.
-- Identical canonical inputs produce byte-stable output.
-
-## First MVP wedge: Vendor API Blast-Radius CI
-
-```text
-one TypeScript repository
-+ one AI-model API family
-+ two pinned provider snapshots
-→ extract source call sites
-→ normalize provider/API changes
-→ join changes to actual usage
-→ emit evidence-linked GitHub Check
-```
-
-Explicit non-goals:
-
-- automatic code repair;
-- universal language or vendor coverage;
-- universal API knowledge graph;
-- production write permissions;
-- a large dashboard before paid evidence.
-
-Validation targets:
-
-```text
-10 qualified buyer interviews
-≥ 3 strong pain confirmations
-≥ 5 relevant historical breakages
-false-positive rate < 10%
-first impact report < 5 minutes
-≥ 2 paid pilots or equivalent binding commitments
-```
-
-Stop-loss:
-
-```text
-< 3 strong confirmations after 10 interviews
-or false-positive rate ≥ 20% after two repair rounds
-or < 3 relevant historical changes
-or no legal/stable provider evidence source
-or buyers only want a free changelog summary
-→ remain WATCH or REJECT; do not build a platform
+permissive code license != model/data/trajectory/service/content rights
+architecture/design packet != implementation
+compiler or CI PASS != local runtime
+local runtime != user validation
+user validation != paid validation
+Google Doc/Sheet projection != Git completion authority
+GitHub branch graph != live Git Town execution
+merged implementation != market validation or revenue
 ```
 
 ## Delivery lanes
 
 ### `DATA_INCREMENT_LANE`
 
-Only an already-admitted automation may increment dated reports, notes, product shards and evidence-backed rankings. It must be read-before-write, bounded and subject-aware. Interactive Agents do not use this lane to bypass review.
+Only already-admitted automation may increment dated reports, notes, product shards and evidence-backed rankings. It must remain bounded and subject-aware.
 
 ### `PRODUCT_CHANGE_LANE`
 
-`AGENTS.md`, shared README/indexes, architecture, policies, schemas, compiler/runtime code, tests, workflows and roadmap semantics require Issue-first branches, explicit path leases, checks, reviewable PRs and Human Admit.
+`AGENTS.md`, shared README/indexes, architecture, schemas, compiler/runtime code, tests, workflows, closure overlays and roadmap semantics require Issue-first branches, explicit path leases, checks and Human/trusted admission.
 
-## Complete Stack PR index
-
-The original Git Town-compatible graph was published as Draft PRs and retained as historical evidence:
+## Historical Market-to-MVP Stack
 
 ```text
-main@ab9596ff1df2b44785e28baad650f93f21b9786c
-└── agent/4-market-control-plane@8ae076852bce7f1abe3344b8db0d6b2df42c61eb
-    Issue #4 · DRAFT_PUBLISHED PR #7 · base main
-    └── agent/5-opportunity-compiler@849b50a011abdbe9940fa52d597a456902601e64
-        Issue #5 · DRAFT_PUBLISHED PR #8 · base agent/4-market-control-plane
-        └── agent/6-portfolio-convergence@83243ba32729a75e953125370a8cb0b61cee197f
-            stage head 6d88ed1fc26c74d8e5ad0d0e0fdef09e38560d81
-            Issue #6 · DRAFT_PUBLISHED PR #9 · base agent/5-opportunity-compiler
-            └── agent/10-exact-head-ci@e37bf18dd39f91f207753d6aaad546125b62a6f1
-                Issue #10 · DRAFT_PUBLISHED PR #11 · original base agent/6-portfolio-convergence
+main
+├── PR #7  merge bfe03383e96183d6b6eebd24462742090c733811
+├── PR #8  merge 3fc46a25cc0089e092373b1a0c92a0780f91a5a2
+├── PR #9  merge fe7e03557f07b7c9ae91210d0405745b870dafcc
+├── PR #11 merge 0e2654f6a89c6110728950161d968b233c7e96b4
+└── PR #13 merge 407f537018d59da52231f011ed52d69bfc0b6be2
 ```
 
-Human Admit was applied bottom-up with merge commits:
-
-| Order | Issue / PR | Scope | Merge / receipt |
-|---:|---|---|---|
-| 1 | [#4](https://github.com/ed3c/ai-product-notes/issues/4) / [#7](https://github.com/ed3c/ai-product-notes/pull/7) | governance, Agent routing, State Machines, data flow, Git profile | `bfe03383e96183d6b6eebd24462742090c733811` |
-| 2 | [#5](https://github.com/ed3c/ai-product-notes/issues/5) / [#8](https://github.com/ed3c/ai-product-notes/pull/8) | compiler, schemas, asset rights, portfolio envelopes, tests | `3fc46a25cc0089e092373b1a0c92a0780f91a5a2` |
-| 3 | [#6](https://github.com/ed3c/ai-product-notes/issues/6) / [#9](https://github.com/ed3c/ai-product-notes/pull/9) | opportunity, MVP, experiments, portfolio handoff, roadmap | `fe7e03557f07b7c9ae91210d0405745b870dafcc` |
-| 4 | [#10](https://github.com/ed3c/ai-product-notes/issues/10) / [#11](https://github.com/ed3c/ai-product-notes/pull/11) | exact-head versus synthetic-merge CI evidence | `0e2654f6a89c6110728950161d968b233c7e96b4` |
-| 5 | [#12](https://github.com/ed3c/ai-product-notes/issues/12) / [#13](https://github.com/ed3c/ai-product-notes/pull/13) | final merged-state README and Stack reconciliation | `407f537018d59da52231f011ed52d69bfc0b6be2` |
-| receipt | [#14](https://github.com/ed3c/ai-product-notes/issues/14) / [#15](https://github.com/ed3c/ai-product-notes/pull/15) | replace stale pre-merge wording; no product behavior change | final result authoritative in GitHub metadata and completion comment |
-
-See [`docs/git/STACKED_PRS.md`](docs/git/STACKED_PRS.md) for exact bases, stage heads, subjects and run IDs.
-
-## Hosted CI receipts
-
-### Stage and implementation history
-
-```text
-run 31878162441
-  exact-head: 5b646ec6fe70dd2047734636b8dfd517ee2998b2
-  synthetic-merge: 3bb417881393b5faad2a91056c49c77eefeb3cc8
-  base: 83243ba32729a75e953125370a8cb0b61cee197f
-  result: HOSTED_VERIFIED · 23 tests in both lanes
-
-run 31878346277
-  exact-head: ac66cc60963b77c5f5872d0825c40319c2bfa855
-  synthetic-merge: c2336332cc279142194beaae39a04b248f45b7ed
-  result: HOSTED_VERIFIED · 24 tests in both lanes
-
-run 31881831160
-  exact-head: e37bf18dd39f91f207753d6aaad546125b62a6f1
-  synthetic-merge: 3fad2f88232fc489bc1cf0af4a68d2779944451b
-  base: fe7e03557f07b7c9ae91210d0405745b870dafcc
-  result: HOSTED_VERIFIED · 24 tests in both lanes
-```
-
-### Final reconciliation and exact-main proof
-
-```text
-PR #13 run 31882048251
-  exact-head: 2b7f2db9d832f894adace6772e63e0db824bab39
-  synthetic-merge: 18701b2644effb6c49d050b83edf6fa593c91e9f
-  base: 0e2654f6a89c6110728950161d968b233c7e96b4
-  result: HOSTED_VERIFIED · repository contract PASS · 24 tests in both lanes
-
-push run 31882091779
-  exact-main: 407f537018d59da52231f011ed52d69bfc0b6be2
-  result: repository contract PASS · 24 tests PASS · packet reproduction PASS
-  synthetic-merge: SKIPPED_BY_EVENT_POLICY on push
-```
-
-The receipt-only PR #15 must pass its own exact-head and synthetic-merge lanes; its GitHub metadata and Issue #14 completion comment are the authoritative final receipt.
+See [`docs/git/STACKED_PRS.md`](docs/git/STACKED_PRS.md) for the historical control-plane ledger. That ledger may contain captured pre-convergence wording; use the current overlay above for Product Reverse status.
 
 ## Validation
 
@@ -331,23 +318,21 @@ The receipt-only PR #15 must pass its own exact-head and synthetic-merge lanes; 
 python3 scripts/check_repository_contract.py
 python3 -m unittest discover -s tests -p 'test_*.py'
 
-python3 scripts/compile_opportunity.py \
-  examples/signals/vendor-api-blast-radius.json \
-  --assets data/assets/registry.json \
-  --public-portfolio config/public-portfolio.json \
-  --output /tmp/vendor-api-opportunity.json
-
-python3 scripts/compile_opportunity.py --check /tmp/vendor-api-opportunity.json
-python3 scripts/compile_opportunity.py --check opportunities/vendor-api-blast-radius/opportunity.json
+python3 scripts/compile_reverse_engineering_dossier.py --check
+python3 scripts/compile_technical_systems_packet.py --check
+python3 scripts/compile_problem_closure.py --check
+python3 scripts/compile_execution_plan.py --check
+python3 scripts/run_structured_scene_canary.py --check
 ```
 
-## Next roadmap gate
+Commands that need arguments or exact paths must use the owning README/AGENTS and persisted packet. Do not infer them from this summary.
 
-The control plane is materialized. The next product work is evidence generation rather than platform expansion:
+## Current roadmap gates
 
-1. run the interview contract against qualified API-heavy B2B teams;
-2. build a bounded historical replay corpus;
-3. implement and independently test the `callsite-impact-join` thin slice in the selected durable owner;
-4. emit a read-only GitHub Check;
-5. request paid-pilot commitment;
-6. promote from `VALIDATE` only after receipt thresholds and Human Admit pass.
+1. complete `skills-shared#443` through a provenance-compliant local machine-author commit;
+2. complete GitHub-canonical CodexDoc and bounded Sheet projection under #48 / `ai-content-notes#41`;
+3. execute the remaining Flair visual and separate AST-interaction canaries under #49;
+4. bind exact rendering/provider dependencies and complete separate rights review;
+5. obtain qualified-user workflow evidence;
+6. obtain paid/adoption evidence;
+7. converge documentation and close Epic #44 only when all required lanes are completed, rejected, blocked with owner, or superseded.
