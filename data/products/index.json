@@ -2,14 +2,14 @@
   "schema_version": "2.1",
   "canonical_repository": "ed3c/ai-product-notes",
   "canonical_branch": "main",
-  "generated_at": "2026-08-22T09:16:09+08:00",
-  "market_monitor_date": "2026-08-22",
+  "generated_at": "2026-08-23T09:00:00+08:00",
+  "market_monitor_date": "2026-08-23",
   "market_delta": {
-    "qualified_items": 5,
-    "best_new": 1,
+    "qualified_items": 1,
+    "best_new": 0,
     "best_updated": 0,
     "best_deduped": 0,
-    "best_dropped": 1,
+    "best_dropped": 0,
     "solopreneur_new": 0,
     "solopreneur_updated": 0,
     "solopreneur_deduped": 0,
@@ -45,8 +45,8 @@
     "unique_migrated_notes": 11
   },
   "run_artifacts": {
-    "new_deep_notes_completed": 3,
+    "new_deep_notes_completed": 1,
     "deep_note_updates_blocked": 0,
-    "verified_open_assets_added_to_rank": 2
+    "verified_open_assets_added_to_rank": 0
   }
 }
