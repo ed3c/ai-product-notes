@@ -13,7 +13,7 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 
 只有 `PASS` 進正式排行。Code、model weights、dataset、trajectory 必須分別驗證；permissive code license 不可外推到 bundled data、external models、cloud services、third-party APIs 或 generated trajectories。
 
-### Verified ranking — 2026-08-22
+### Verified ranking — 2026-08-24
 
 | Rank | Asset | Type | License gate | Hackathon MVP | Business | Research | Production | Stack compatibility | Avg |
 |---:|---|---|---|---:|---:|---:|---:|---:|---:|
@@ -40,9 +40,26 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 | 21 | Balsa UI | agent-readable Vue/React UI component source | PASS / MIT repository code | 10 | 7 | 8 | 8 | 9 | 8.4 |
 | 22 | Vercel fx | tiny embeddable coding-agent harness / CLI | PASS / Apache-2.0 repository code | 10 | 7 | 9 | 6 | 10 | 8.4 |
 | 23 | @inferock/measure | LLM billing-integrity measurement library | PASS / Apache-2.0 component code | 9 | 8 | 9 | 7 | 8 | 8.2 |
-| 24 | MemoryCustodian | repo-native agent memory | PASS / MIT | 9 | 7 | 8 | 6 | 9 | 7.8 |
-| 25 | Soup CLI | local LLM fine-tuning/post-training CLI | PASS / Apache-2.0 | 8 | 6 | 9 | 7 | 9 | 7.8 |
-| 26 | Aureka OpenDDE | biomolecular foundation model / drug-discovery engine | PASS / Apache-2.0 code + released checkpoints; datasets/search DB scope separate | 7 | 8 | 10 | 5 | 8 | 7.6 |
+| 24 | CopilotKit OpenBot | governed AI coworker / computer-use runtime | PASS / MIT repository code | 9 | 7 | 8 | 6 | 10 | 8.0 |
+| 25 | MemoryCustodian | repo-native agent memory | PASS / MIT | 9 | 7 | 8 | 6 | 9 | 7.8 |
+| 26 | Soup CLI | local LLM fine-tuning/post-training CLI | PASS / Apache-2.0 | 8 | 6 | 9 | 7 | 9 | 7.8 |
+| 27 | Aureka OpenDDE | biomolecular foundation model / drug-discovery engine | PASS / Apache-2.0 code + released checkpoints; datasets/search DB scope separate | 7 | 8 | 10 | 5 | 8 | 7.6 |
+
+### 2026-08-24 新增驗證
+
+**CopilotKit OpenBot**
+- Primary repo: https://github.com/CopilotKit/OpenBot
+- Immutable verification commit: `3c5cc825b94ff8458945d69016b8a405fc0ab1da`
+- Freshness evidence: pinned `main` commit authored 2026-08-23T22:40:19Z; this is fresh engineering activity, not a claim that OpenBot first launched in this monitoring window.
+- Primary code license: MIT at the pinned revision.
+- License gate: `PASS / MIT` **for repository code only**.
+- 技術價值：每個 Bot 可有獨立 container/browser/workspace；browser/file/MCP/component actions 經 centralized gateway 先做 policy decision 並寫 audit，再執行或拒絕；支援 AG-UI、governed MCP、encrypted write-only credentials、human takeover、framework-neutral agent endpoints。
+- Business boundary：OpenBot 本身沒有本次可驗證的標準公開 self-serve pricing；README 要求 CopilotKit Intelligence project/license，managed/self-hosted Intelligence、external model providers、connectors 與 credentials 都是獨立條款，因此 Business 只給 7。
+- Production boundary：upstream 明確標示 Alpha / active development。近期 code/issues 持續處理 authorization、private-address checks、credential rotation、snapshot refs、computer/session isolation 等 security boundaries，因此 Production 只給 6。
+- `assets.code`: PASS — repository code at pinned commit.
+- `assets.llm_models`: not_found — no bundled model-weight rights inferred; provider terms are external.
+- `assets.data`: not_found — customer/company documents, vectors, browser state and connector data are not treated as reusable licensed datasets.
+- `assets.trajectories`: not_found — audit/session/runtime histories are deployment artifacts, not a separately licensed trajectory corpus.
 
 ### 2026-08-22 新增驗證
 
@@ -117,6 +134,10 @@ Scoring is an internal 1–10 decision score, not a claim by upstream projects.
 Only `PASS` entries receive a formal rank. Code, model weights, datasets, and trajectories require separate license verification. A permissive code license never proves that bundled data, hosted services, external models, customer information, or generated trajectories are commercially reusable.
 
 Evaluation dimensions: Hackathon MVP speed, Business monetization leverage, Research/reproducibility value, Production maturity, and compatibility with common production AI stacks.
+
+### New verified assets — 2026-08-24
+
+**CopilotKit OpenBot** enters at rank 24 with an internal 8.0 average. Repository code was verified at commit `3c5cc825b94ff8458945d69016b8a405fc0ab1da` under MIT. OpenBot is a strong architecture reference for per-agent computers, AG-UI interoperability, pre-action policy decisions, audit trails, governed MCP, encrypted write-only credentials, and human takeover. Production is scored at 6 because upstream explicitly labels the project alpha and security/authorization boundaries are still actively changing. The PASS covers repository code only; CopilotKit Intelligence service terms, external models, customer/company data, browser state, third-party connectors, and runtime trajectories remain separate.
 
 ### New verified assets — 2026-08-22
 
